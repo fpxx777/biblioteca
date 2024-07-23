@@ -11,7 +11,7 @@ PAGE_COUNT_KEY = "pageCount"
 CATEGORIES_KEY = "categories"
 IMAGE_LINKS_KEY = "imageLinks"
 SMALL_THUMBNAIL_KEY = "smallThumbnail"
-
+books = []
 def get_book_info(isbn):
     response = requests.get(API_LINK + isbn)
     response.raise_for_status()
@@ -26,13 +26,18 @@ def get_book_info(isbn):
     categories = volume_info.get(CATEGORIES_KEY)
     image_links = volume_info.get(IMAGE_LINKS_KEY)
 
-    print(f"Título: {title}")
-    print(f"Autores: {', '.join(authors) if authors else 'NA'}")
-    print(f"Fecha de publicación: {published_date if published_date else 'NA'}")
-    print(f"Descripción: {description if description else 'NA'}")
-    print(f"Páginas: {page_count}")
-    print(f"Géneros: {', '.join(categories) if categories else 'NA'}")
-    print(f"Imagen: {image_links[SMALL_THUMBNAIL_KEY] if image_links else 'NA'}")
+    book = {
+        "isbn": isbn,
+        "titulo": title,
+        "autores": ', '.join(authors) if authors else 'NA',
+        "fecha de publicacion": published_date if published_date else 'NA',
+        "paginas": page_count,
+        "descripcion": description if description else 'NA',
+        "generos": ', '.join(categories) if categories else 'NA',
+        "imagen": image_links[SMALL_THUMBNAIL_KEY] if image_links else 'NA'
+    }
+    books.append(book)
+    print(books)
 
 if __name__ == "__main__":
     isbn = input("Ingresa el ISBN de tu libro (sin guiones): ")
