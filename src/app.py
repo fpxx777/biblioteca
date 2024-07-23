@@ -45,7 +45,7 @@ def index():
 
 @app.route("/category/<categoria>", methods=["GET"])
 def categorie(categoria):
-    return render_template("index.html", categoria=categoria)
+    return render_template("index.html", categoria=categoria, books=books)
 
 
 @app.route("/book/<bookid>/", methods=["GET"])
