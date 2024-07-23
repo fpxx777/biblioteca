@@ -13,7 +13,7 @@
 
     <body>
         <header>
-            <a class="logo" href="#">BiblioNauta</a>
+            <a class="logo" href="/">BiblioNauta</a>
             <nav>
                 <a href="#">Explorar</a>
                 <a href="#">Categorias</a>
@@ -25,7 +25,7 @@
             <aside class="categories">
                 <h3>Categorias</h3>
                 <ul>
-                    <li><a href="/Astronomy">Astronomy</a></li>
+                    <li><a href="/category/Astronomy">Astronomy</a></li>
                     <li><a href="#">Sci-Fi</a></li>
                     <li><a href="#">Astrophysics</a></li>
                     <li><a href="#">Space Exploration</a></li>
@@ -37,19 +37,35 @@
             <main class="featured-books">
                 <h2>{{categoria}}</h2>
                 <div class="grid">
-                {%for i in books%}
-                    <article>
-                        <div class="book-img">
-                            <a href="/book/{{i.isbn}}">
-                                <img src= {{i.imagen}} width="200" height="300" alt="Book Cover" />
-                            </a>
-                        </div>
-                        <div class="book-info">
-                            <h3>{{i.titulo}}</h3>
-                            <p>{{i.autores}}</p>
-                        </div>
-                    </article>
-                {%endfor%}
+                    {%if categoria == "Libros destacados"%}
+                        {%for i in books%}
+                        <article>
+                            <div class="book-img">
+                                <a href="/book/{{i.isbn}}">
+                                    <img src={{i.imagen}} width="200" height="300" alt="Book Cover" />
+                                </a>
+                            </div>
+                            <div class="book-info">
+                                <h3>{{i.titulo}}</h3>
+                                <p>{{i.autores}}</p>
+                            </div>
+                        </article>
+                        {%endfor%}
+                    {%endif%}
+                    {{else}}
+                        {%for i in books%}
+                        <article>
+                            <div class="book-img">
+                                <a href="/book/{{i.isbn}}">
+                                    <img src={{i.imagen}} width="200" height="300" alt="Book Cover" />
+                                </a>
+                            </div>
+                            <div class="book-info">
+                                <h3>{{i.titulo}}</h3>
+                                <p>{{i.autores}}</p>
+                            </div>
+                        </article>
+                        {%endfor%}
                 </div>
             </main>
         </div>
