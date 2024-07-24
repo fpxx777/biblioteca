@@ -25,47 +25,47 @@
             <aside class="categories">
                 <h3>Categorias</h3>
                 <ul>
-                    <li><a href="/category/Astronomy">Astronomy</a></li>
-                    <li><a href="#">Sci-Fi</a></li>
-                    <li><a href="#">Astrophysics</a></li>
-                    <li><a href="#">Space Exploration</a></li>
-                    <li><a href="#">Cosmology</a></li>
-                    <li><a href="#">Planetary Science</a></li>
+                    {%for category in categories%}
+                        <li><a href="/category/{{category}}">{{category}}</a></li>
+                    {%endfor%}
                 </ul>
                 <img src="/static/img/Astronauta.png" alt="">
             </aside>
             <main class="featured-books">
-                <h2>{{categoria}}</h2>
+                <h2>{{category}}</h2>
                 <div class="grid">
-                    {%if categoria == "Libros destacados"%}
-                        {%for i in books%}
+                    {%if category == "Libros destacados"%}
+                        {%for book in books%}
                         <article>
                             <div class="book-img">
-                                <a href="/book/{{i.isbn}}">
-                                    <img src={{i.imagen}} width="200" height="300" alt="Book Cover" />
+                                <a href="/book/{{book.isbn}}">
+                                    <img src={{book.imagen}} width="200" height="300" alt="Book Cover" />
                                 </a>
                             </div>
                             <div class="book-info">
-                                <h3>{{i.titulo}}</h3>
-                                <p>{{i.autores}}</p>
+                                <h3>{{book.titulo}}</h3>
+                                <p>{{book.autores}}</p>
                             </div>
                         </article>
+                        {%endfor%}
+                    {%else%}
+                        {%for book in books%}
+                            {%if book.generos == category%}
+                            <article>
+                                <div class="book-img">
+                                    <a href="/book/{{book.isbn}}">
+                                        <img src={{book.imagen}} width="200" height="300" alt="Book Cover" />
+                                    </a>
+                                </div>
+                                <div class="book-info">
+                                    <h3>{{book.titulo}}</h3>
+                                    <p>{{book.autores}}</p>
+                                </div>
+                            </article>
+                            {%else%}
+                            {%endif%}
                         {%endfor%}
                     {%endif%}
-                    {{else}}
-                        {%for i in books%}
-                        <article>
-                            <div class="book-img">
-                                <a href="/book/{{i.isbn}}">
-                                    <img src={{i.imagen}} width="200" height="300" alt="Book Cover" />
-                                </a>
-                            </div>
-                            <div class="book-info">
-                                <h3>{{i.titulo}}</h3>
-                                <p>{{i.autores}}</p>
-                            </div>
-                        </article>
-                        {%endfor%}
                 </div>
             </main>
         </div>

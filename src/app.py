@@ -36,16 +36,27 @@ books = [
     }
 ]
 
+categories = [] 
+
+for book in books:
+    checker = False
+    for categorie in categories:
+        if book["generos"] == categorie:
+            checker = True
+        else: pass
+    if checker: pass
+    else:
+        categories.append(book["generos"])
 
 @app.route("/", methods=["GET"])
 def index():
-    categoria = "Libros destacados"
-    return render_template("index.html", categoria=categoria, books=books)
+    category = "Libros destacados"
+    return render_template("index.html", category=category, books=books, categories=categories)
 
 
-@app.route("/category/<categoria>", methods=["GET"])
-def categorie(categoria):
-    return render_template("index.html", categoria=categoria, books=books)
+@app.route("/category/<category>", methods=["GET"])
+def categorie(category):
+    return render_template("index.html", category=category, books=books, categories=categories)
 
 
 @app.route("/book/<bookid>/", methods=["GET"])
