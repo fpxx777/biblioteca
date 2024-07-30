@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 #"autores": ', '.join(authors) if authors else 'NA',
 
 API_LINK = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
@@ -12,7 +13,7 @@ DESCRIPTION_KEY = "description"
 PAGE_COUNT_KEY = "pageCount"
 CATEGORIES_KEY = "categories"
 IMAGE_LINKS_KEY = "imageLinks"
-SMALL_THUMBNAIL_KEY = "smallThumbnail"
+THUMBNAIL_KEY = "thumbnail"
 def get_book_info(isbn):
     print(isbn)
     response = requests.get(API_LINK + isbn)
@@ -36,7 +37,7 @@ def get_book_info(isbn):
         "paginas": page_count,
         "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
         "generos": categories if categories else 'NA',
-        "imagen": image_links[SMALL_THUMBNAIL_KEY] if image_links else 'NA'
+        "imagen": image_links[THUMBNAIL_KEY] if image_links else 'NA'
     }
     return book
 
