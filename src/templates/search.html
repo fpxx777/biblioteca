@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/categories.css') }}">
+    <link rel="shortcut icon" href="/static/img/logo.png">
     <! -- fuente link -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
             rel="stylesheet">
-        <title>Document</title>
+        <title>BiblioNauta</title>
 </head>
 
 <body>
@@ -39,10 +40,11 @@
             <input type="text" placeholder="Busca algun libro..." name="search" id="search">
         </form>
         <ul>
-            <li><a class="inicio" href="#">Inicio</a></li>
+            <li><a class="inicio" href="/">Inicio</a></li>
             <li><a href="/categories">Categorias</a></li>
             <li><a class="info" href="#">info</a></li>
     </header>
+    <h2 class="results">Resultados para: {{search}}</h2>
     <main>
         <section class="book-container">
             {% for book in books %}

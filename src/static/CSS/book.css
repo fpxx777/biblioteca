@@ -4,8 +4,12 @@
     font-family: "Advent Pro", sans-serif;
 }
 
-body{
+body {
     background-color: #1C1B29;
+}
+
+.mas {
+    color: #F8F1DF;
 }
 
 .header {
@@ -14,7 +18,6 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 10px 56px 0px rgba(0, 0, 0, 0.8);
 }
 
 .header div {
@@ -72,29 +75,30 @@ body{
 main {
     margin-bottom: 10vw;
 }
-main img{
+
+main img {
     height: 50vw;
     object-fit: cover;
     aspect-ratio: 200 / 300;
     border-radius: 10px;
 }
 
-.title{
+.title {
     text-align: center;
     margin-top: 3vw;
 }
 
-.title h1{
+.title h1 {
     font-size: 80px;
     color: #F8F1DF;
 }
 
-.title h2{
+.title h2 {
     font-size: 30px;
     color: rgb(102, 96, 80);
 }
 
-.cont-box{
+.cont-box {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -102,24 +106,24 @@ main img{
     gap: 5vw;
 }
 
-.info-box{
+.info-box {
     display: flex;
     flex-direction: column;
     gap: 40px;
     color: #F8F1DF;
 }
 
-.description{
+.description {
     width: 35vw;
 }
 
-.date-box{
+.date-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2vw;
 }
 
-.date-box div{
+.date-box div {
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
@@ -153,4 +157,136 @@ main img{
 
 .social-media a {
     text-decoration: none;
+}
+
+@media (min-width:320px) and (max-width: 800px) {
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Advent Pro", sans-serif;
+    }
+
+    body {
+        background-color: #1C1B29;
+    }
+
+    .header {
+        background-color: #1C1B29;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header h1 {
+        color: #F8F1DF;
+        margin: 0;
+        font-size: 3vw;
+        font-weight: bold;
+    }
+
+    .header a {
+        text-decoration: none;
+        color: #F8F1DF;
+        font-size: 5vw;
+    }
+
+    .header ul {
+        margin-left: -2vw;
+    }
+
+    .header img {
+        width: 10vw;
+    }
+
+    .info,
+    .inicio {
+        display: none;
+    }
+
+    .header input {
+        height: 20px;
+        width: 80px;
+        background-color: #1D2C4B;
+        color: #F8F1DF;
+        border-style: none;
+        outline: none;
+        font-size: 3vw;
+    }
+
+    .header form {
+        border-radius: 5px;
+        display: flex;
+        padding: .5vw;
+        align-items: center;
+        background-color: #1D2C4B;
+        margin-left: 3vw;
+    }
+
+    .header form svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    main {
+        margin-bottom: 10vw;
+    }
+
+    main img {
+        height: 180vw;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 1vw 4vw;
+    }
+
+    .title {
+        text-align: center;
+        margin-top: 3vw;
+    }
+
+    .title h1 {
+        font-size: 14vw;
+        color: #F8F1DF;
+    }
+
+    .title h2 {
+        font-size: 8vw;
+        color: rgb(102, 96, 80);
+    }
+
+    .cont-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 3vw;
+        gap: 5vw;
+    }
+
+    .info-box {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        color: #F8F1DF;
+    }
+
+    .description {
+        font-size: 5vw;
+        text-align: center;
+        margin: 1vw 4vw;
+        width: 90vw;
+    }
+
+    .date-box {
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2vw;
+    }
+
+    .date-box div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5vw;
+    }
+
 }

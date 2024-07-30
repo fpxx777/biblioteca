@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/categories.css') }}">
+    <link rel="shortcut icon" href="/static/img/logo.png">
     <! -- fuente link -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
             rel="stylesheet">
-        <title>Document</title>
+        <title>BiblioNauta</title>
 </head>
 
 <body>
     <header class="header">
         <div>
             <img src="/static/img/logo.png" alt="">
-            <a href="/"><h1>BIBLIONAUTA</h1></a>
+            <a href="/">
+                <h1>BIBLIONAUTA</h1>
+            </a>
         </div>
         <form action="/search" method="get">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 48 48">
@@ -37,7 +40,7 @@
             <input type="text" placeholder="Busca algun libro..." name="search" id="search">
         </form>
         <ul>
-            <li><a class="inicio" href="#">Inicio</a></li>
+            <li><a class="inicio" href="/">Inicio</a></li>
             <li><a href="#">Categorias</a></li>
             <li><a class="info" href="#">info</a></li>
     </header>
@@ -45,12 +48,12 @@
         <aside class="categories">
             <h3>Categorias</h3>
             <ul>
-            {% if categories %}
+                {% if categories %}
                 {%for category in categories%}
                 <li><a href="/category/{{category}}">{{category}}</a></li>
                 {%endfor%}
-            {% else %}
-            {% endif %}
+                {% else %}
+                {% endif %}
             </ul>
         </aside>
         <div>

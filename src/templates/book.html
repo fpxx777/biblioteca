@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}">
-    <title>Document</title>
+    <link rel="shortcut icon" href="/static/img/logo.png">
+    <title>BiblioNauta</title>
     <! -- fuente link -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,10 +23,26 @@
             <img src="/static/img/logo.png" alt="">
             <a href="/"><h1>BIBLIONAUTA</h1></a>
         </div>
+        <form action="/search" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 48 48">
+                <defs>
+                    <mask id="IconifyId191010337f1eb1ccc5">
+                        <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#555"
+                                d="M21 38c9.389 0 17-7.611 17-17S30.389 4 21 4S4 11.611 4 21s7.611 17 17 17Z" />
+                            <path stroke-linecap="round"
+                                d="M26.657 14.343A7.975 7.975 0 0 0 21 12a7.975 7.975 0 0 0-5.657 2.343m17.879 18.879l8.485 8.485" />
+                        </g>
+                    </mask>
+                </defs>
+                <path fill="#1C1B29" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
+            </svg>
+            <input type="text" placeholder="Busca algun libro..." name="search" id="search">
+        </form>
         <ul>
-            <li><a href="/">Inicio</a></li>
+            <li><a class="inicio" href="/">Inicio</a></li>
             <li><a href="/categories">Categorias</a></li>
-            <li><a href="#">info</a></li>
+            <li><a class="info" href="#">info</a></li>
     </header>
     <main>
         <div class="title">

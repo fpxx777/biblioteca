@@ -1,44 +1,55 @@
-# importar la función que devolverá una instancia de una conexión
+# Importar la función para conectar a la base de datos
 from config.db import connectToMySQL
-# modelar la clase después de la tabla friend de nuestra base de datos
-class Generos:
-    def __init__( self , data ):
-        self.id_genero = data['id_genero']
-        self.id_libro = data['id_libro']
-        self.nombre_genero = data['nombre_genero']
 
-    # ahora usamos métodos de clase para consultar nuestra base de datos
-    # SELECT * FROM tareas ORDER BY (()) ASC LIMIT 50 SKIP 10;
+# Clase para representar a los géneros de un libro
+class Generos:
+    # Constructor para crear un objeto Género
+    def __init__(self, data):
+        # Asignar los valores de la base de datos a los atributos del objeto
+        self.id_genero = data['id_genero']  # ID del género
+        self.id_libro = data['id_libro']  # ID del libro al que pertenece el género
+        self.nombre_genero = data['nombre_genero']  # Nombre del género
+
+    # Método de clase para obtener todos los libros que pertenecen a un género específico
     @classmethod
     def get_all(cls, genero):
+        # Crear una consulta SQL para obtener los ID de los libros que pertenecen a un género específico
         query = f'SELECT id_libro FROM generos WHERE nombre_genero = "{genero}";'
-        # asegúrate de llamar a la función connectToMySQL con el esquema al que te diriges
+        # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
-        # crear una lista vacía para agregar nuestras instancias de friends
+        # Crear una lista para almacenar los ID de los libros
         categories = []
-        # Iterar sobre los resultados de la base de datos y crear instancias de friends con cls
+        # Iterar sobre los resultados y agregar los ID de los libros a la lista
         for category in results:
-            print(category)
-            categories.append( category["id_libro"] )
+            print(category)  # Imprimir cada resultado para depuración
+            categories.append(category["id_libro"])
+        # Regresar la lista de ID de libros
         return categories
+
+    # Método de clase para obtener la lista de todos los géneros disponibles
     def get_categories_list(cls):
+        # Crear una consulta SQL para obtener la lista de todos los géneros disponibles
         query = f"SELECT DISTINCT nombre_genero FROM generos;"
-        # asegúrate de llamar a la función connectToMySQL con el esquema al que te diriges
+        # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
-        # crear una lista vacía para agregar nuestras instancias de friends
+        # Crear una lista para almacenar los nombres de los géneros
         categories = []
-        print(results)
-        # Iterar sobre los resultados de la base de datos y crear instancias de friends con cls
+        # Iterar sobre los resultados y agregar los nombres de los géneros a la lista
         for category in results:
-                categories.append(category["nombre_genero"])
+            categories.append(category["nombre_genero"])
+        # Regresar la lista de nombres de géneros
         return categories
+
+    # Método de clase para obtener los géneros de un libro específico
     def get_category(cls, id_libro):
+        # Crear una consulta SQL para obtener los géneros de un libro específico
         query = f"SELECT * FROM generos WHERE id_libro = {id_libro};"
-        # asegúrate de llamar a la función connectToMySQL con el esquema al que te diriges
+        # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
-        # crear una lista vacía para agregar nuestras instancias de friends
+        # Crear una lista para almacenar los nombres de los géneros
         categories = []
-        # Iterar sobre los resultados de la base de datos y crear instancias de friends con cls
+        # Iterar sobre los resultados y agregar los nombres de los géneros a la lista
         for category in results:
-            categories.append( category["nombre_genero"] )
+            categories.append(category["nombre_genero"])
+        # Regresar la lista de nombres de géneros
         return categories

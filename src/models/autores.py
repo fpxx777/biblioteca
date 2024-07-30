@@ -1,22 +1,26 @@
-# importar la función que devolverá una instancia de una conexión
+# Importar la función para conectar a la base de datos
 from config.db import connectToMySQL
-# modelar la clase después de la tabla friend de nuestra base de datos
-class Autores:
-    def __init__( self , data ):
-        self.id_genero = data['id_libro']
-        self.id_libro = data['id_libro']
-        self.nombre_autor = data['nombre_autor']
 
-    # ahora usamos métodos de clase para consultar nuestra base de datos
-    # SELECT * FROM tareas ORDER BY (()) ASC LIMIT 50 SKIP 10;
+# Clase para representar a los autores de un libro
+class Autores:
+    # Constructor para crear un objeto Autor
+    def __init__(self, data):
+        # Asignar los valores de la base de datos a los atributos del objeto
+        self.id_genero = data['id_libro']  # ID del género (no utilizado en este caso)
+        self.id_libro = data['id_libro']  # ID del libro al que pertenece el autor
+        self.nombre_autor = data['nombre_autor']  # Nombre del autor
+
+    # Método de clase para obtener todos los autores de un libro
     @classmethod
     def get_all(cls, id_libro):
+        # Crear una consulta SQL para obtener todos los autores de un libro
         query = f"SELECT * FROM autores WHERE id_libro = {id_libro}"
-        # asegúrate de llamar a la función connectToMySQL con el esquema al que te diriges
+        # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
-        # crear una lista vacía para agregar nuestras instancias de friends
+        # Crear una lista para almacenar los nombres de los autores
         authors = []
-        # Iterar sobre los resultados de la base de datos y crear instancias de friends con cls
+        # Iterar sobre los resultados y agregar los nombres de los autores a la lista
         for author in results:
-            authors.append( author["nombre_autor"] )
+            authors.append(author["nombre_autor"])
+        # Regresar la lista de nombres de autores
         return authors

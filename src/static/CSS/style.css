@@ -225,13 +225,13 @@ main {
         font-size: 3vw;
         font-weight: bold;
     }
-    .header ul{
-        margin-right: 200px;
-    }
     .header a {
         text-decoration: none;
         color: #F8F1DF;
         font-size: 5vw;
+    }
+    .header ul{
+        margin-left: -2vw;
     }
     .header img{
         width: 10vw;
@@ -255,28 +255,30 @@ main {
         padding: .5vw;
         align-items: center;
         background-color: #1D2C4B;
-        margin-left: 1vw;
+        margin-left: 3vw;
     }
     .header form svg{
         width: 20px;
         height: 20px;
     }
     .img-static {
-        background-image: url(/static/img/fond.jpg);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/static/img/fond2.jpg);
         background-repeat: no-repeat;
         background-size: 100%;
         background-attachment: fixed;
-        height: 38vw;
+        height: 120vw;
         padding: 0 1vw;
     }
     
     .img-static h2 {
-        padding-top: 15vw;
-        font-size: 10vw;
+        text-align: center;
+        padding-top: 40vw;
+        font-size: 15vw;
         color: #F8F1DF;
     }
     
     .img-static p {
+        text-align: center;
         font-size: 5vw;
         color: #F8F1DF;
     }
