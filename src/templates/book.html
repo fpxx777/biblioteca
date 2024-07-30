@@ -6,59 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}">
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <! -- fuente link -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+            rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <a class="logo" href="/">BiblioNauta</a>
-        <nav>
-            <a href="/">Explore</a>
-            <a href="#">Categories</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
+    
+<body>
+    <header class="header">
+        <div>
+            <img src="/static/img/logo.png" alt="">
+            <a href="/"><h1>BIBLIONAUTA</h1></a>
+        </div>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/categories">Categorias</a></li>
+            <li><a href="#">info</a></li>
     </header>
     <main>
         <div class="title">
-            <h1>Titulo</h1>
-            <h2>autor</h2>
+            <h1>{{book[0].titulo}}</h1>
+            <h2>{{ ', '.join(authors)}}</h2>
         </div>
         <div class="cont-box">
-            <img src="/HTML/img/Stars.jpeg" alt="">
+            <img src={{book[0].imagen}} alt="">
             <div class="info-box">
-                <P class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ex quas qui, impedit,
-                    adipisci culpa vel
-                    et possimus quidem, expedita optio officiis sequi temporibus provident rem eos molestiae distinctio
-                    minus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae qui amet neque quod obcaecati
-                    itaque placeat hic quaerat molestias fuga, dolore quasi error? Distinctio, animi. Nulla optio
-                    laboriosam ullam id. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet ullam
-                    molestiae aliquam animi asperiores ea libero fugiat perferendis, quo quas. Praesentium labore
-                    exercitationem dignissimos sed impedit rerum cum harum optio! Lorem ipsum dolor, sit amet
-                    consectetur adipisicing elit. Necessitatibus voluptatum perspiciatis esse nesciunt, quo voluptas
-                    animi et accusantium distinctio, reprehenderit dicta exercitationem amet porro sed. Eveniet unde
-                    iusto neque maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo iure odit
-                    pariatur atque rem sint, porro eos praesentium reprehenderit totam velit quo corrupti, laudantium
-                    commodi provident optio est error rerum.</P>
+                <P class="description">{{book[0].descripcion}}</P>
                 <div class="date-box">
                     <div>
                         <strong>Fecha de Publicacion</strong>
-                        <p>0000/00/00</p>
+                        <p>{{book[0].fecha_publicacion}}</p>
                     </div>
                     <div>
                         <strong>Genero</strong>
-                        <p>aaaaaa</p>
+                        <p>{{ ', '.join(categories)}}</p>
                     </div>
                     <div>
                         <strong>Numero de Paginas</strong>
-                        <p>777</p>
+                        <p>{{book[0].paginas}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>
+            <ul class="social-media">
+                <li><a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                            viewBox="0 0 24 24">
+                            <path fill="#F8F1DF"
+                                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                        </svg></a></li>
+                <li><a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                            viewBox="0 0 24 24">
+                            <path fill="#F8F1DF"
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+                        </svg></a></li>
+                <li><a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                            viewBox="0 0 24 24">
+                            <path fill="#F8F1DF"
+                                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
+                        </svg></a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 
 </html>

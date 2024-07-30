@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/categories.css') }}">
     <! -- fuente link -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
             rel="stylesheet">
-        <title>Biblioauta</title>
+        <title>Document</title>
 </head>
 
 <body>
@@ -37,28 +37,26 @@
             <input type="text" placeholder="Busca algun libro..." name="search" id="search">
         </form>
         <ul>
-            <li><a  class= "inicio" href="/">Inicio</a></li>
-            <li><a href="/categories">Categorias</a></li>
+            <li><a class="inicio" href="#">Inicio</a></li>
+            <li><a href="#">Categorias</a></li>
             <li><a class="info" href="#">info</a></li>
     </header>
-    <div class="img-static">
-        <h2>BIBLIONAUTA</h2>
-        <p>Tu Catalogo Virtual</p>
-    </div>
     <main>
-        <section class="explora">
-            <p>EXPLORA AHORA</p>
-            <h2>Catalogo Espacial</h2>
-            <div class="img-promo">
-                <div class="img-izq">
-                    <h3>Explora libros de otro mundo</h3>
-                </div>
-                <div class="img-der">
-                    <h3>Pierdete en el gran universo literario</h3>
-                </div>
-            </div>
-        </section>
-        <section class="book-container">
+        <aside class="categories">
+            <h3>Categorias</h3>
+            <ul>
+            {% if categories %}
+                {%for category in categories%}
+                <li><a href="/category/{{category}}">{{category}}</a></li>
+                {%endfor%}
+            {% else %}
+            {% endif %}
+            </ul>
+        </aside>
+        <div>
+            <h2>{{category}}</h2>
+            <section class="book-container">
+                {% if category == "Libros destacados" %}
                 {% for book in books %}
                 <article>
                     <div class="book-img">
@@ -71,8 +69,25 @@
                     </div>
                 </article>
                 {% endfor %}
-        </section>
-        <p class="mas">mas proximamente...</p>
+                {% else %}
+                {%for book in books%}
+                {%if book.id_libro in category_for_book%}
+                <article>
+                    <div class="book-img">
+                        <a href="/book/{{book.id_libro}}">
+                            <img src={{book.imagen}} width="200vw" height="300vw" alt="Book Cover" />
+                        </a>
+                    </div>
+                    <div class="book-info">
+                        <h3>{{book.titulo}}</h3>
+                    </div>
+                </article>
+                {%else%}
+                {%endif%}
+                {%endfor%}
+                {% endif %}
+            </section>
+        </div>
     </main>
     <footer class="footer">
         <div class="container">
@@ -96,4 +111,7 @@
             </ul>
         </div>
     </footer>
+    </main>
 </body>
+
+</html>

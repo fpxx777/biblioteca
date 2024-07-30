@@ -1,6 +1,8 @@
 import requests
 import json
 
+#"autores": ', '.join(authors) if authors else 'NA',
+
 API_LINK = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
 ISBN_KEY = "isbn"
 TITLE_KEY = "title"
@@ -11,8 +13,8 @@ PAGE_COUNT_KEY = "pageCount"
 CATEGORIES_KEY = "categories"
 IMAGE_LINKS_KEY = "imageLinks"
 SMALL_THUMBNAIL_KEY = "smallThumbnail"
-books = []
 def get_book_info(isbn):
+    print(isbn)
     response = requests.get(API_LINK + isbn)
     response.raise_for_status()
     data = response.json()
@@ -29,16 +31,15 @@ def get_book_info(isbn):
     book = {
         "isbn": isbn,
         "titulo": title,
-        "autores": ', '.join(authors) if authors else 'NA',
-        "fecha de publicacion": published_date if published_date else 'NA',
+        "autores": authors if authors else 'NA',
+        "fecha_publicacion": published_date if published_date else 'NA',
         "paginas": page_count,
-        "descripcion": description if description else 'NA',
-        "generos": ', '.join(categories) if categories else 'NA',
+        "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
+        "generos": categories if categories else 'NA',
         "imagen": image_links[SMALL_THUMBNAIL_KEY] if image_links else 'NA'
     }
-    books.append(book)
-    print(books)
+    return book
 
 if __name__ == "__main__":
     isbn = input("Ingresa el ISBN de tu libro (sin guiones): ")
-    get_book_info(isbn)
+    print(get_book_info(isbn))

@@ -1,51 +1,78 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "Special Elite", system-ui;
+    font-family: "Advent Pro", sans-serif;
 }
 
-body {
-    min-height: 100vh;
-    background-color: #161A30;
-    color: #ffffff;
+body{
+    background-color: #1C1B29;
 }
 
-a {
-    text-decoration: none;
-}
-
-header {
-    background-color: #31304D;
-    padding: 1rem 1.5rem;
+.header {
+    background-color: #1C1B29;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 10px 56px 0px rgba(0, 0, 0, 0.8);
 }
 
-.logo {
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 2rem;
-    color: #B6BBC4;
-}
-
-nav {
-    font-size: 1.5rem;
+.header div {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 1.5rem;
 }
 
-nav a {
-    color: #F0ECE5;
+.header img {
+    width: 8vw;
 }
 
-nav a:hover {
-    color: #9b9bab;
+.header input {
+    height: 35px;
+    width: 300px;
+    background-color: #1D2C4B;
+    color: #F8F1DF;
+    border-style: none;
+    outline: none;
+    font-size: 1.5vw;
 }
 
-img{
+.header form {
+    border-radius: .5vw;
+    display: flex;
+    padding: .5vw;
+    align-items: center;
+    background-color: #1D2C4B;
+}
+
+.header h1 {
+    color: #F8F1DF;
+    margin: 0;
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header li {
+    margin-left: 20px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #F8F1DF;
+    font-size: 1.8vw;
+}
+
+main {
+    margin-bottom: 10vw;
+}
+main img{
     height: 50vw;
     object-fit: cover;
     aspect-ratio: 200 / 300;
@@ -59,12 +86,12 @@ img{
 
 .title h1{
     font-size: 80px;
-    color: #F0ECE5;
+    color: #F8F1DF;
 }
 
 .title h2{
     font-size: 30px;
-    color: #B6BBC4;
+    color: rgb(102, 96, 80);
 }
 
 .cont-box{
@@ -79,7 +106,7 @@ img{
     display: flex;
     flex-direction: column;
     gap: 40px;
-    color: #F0ECE5;
+    color: #F8F1DF;
 }
 
 .description{
@@ -96,4 +123,34 @@ img{
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
+}
+
+
+.footer {
+    background-color: #1D2C4B;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.social-media {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-media li {
+    margin-right: 20px;
+}
+
+.social-media a {
+    text-decoration: none;
 }

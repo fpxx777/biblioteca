@@ -1,68 +1,60 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request, session
+from models.libros import Libros
+from models.generos import Generos
+from models.autores import Autores
+from models.insert import Insert
+from prueba import get_book_info
 app = Flask(__name__)
 
+app.secret_key = b'Y\af1Xz\f15\xad|eQ\x72t \xca\x1a\x10K'
 
-books = [
-    {
-        "isbn": 9780307743671,
-        "titulo": "'Salem's Lot",
-        "autores": "Stephen King",
-        "fecha de publicacion": "2011-12-27",
-        "paginas": 674,
-        "descripcion": "#1 BESTSELLER • Ben Mears has returned to Jerusalem’s Lot in hopes that exploring the history of the Marsten House, an old mansion long the subject of rumor and speculation, will help him cast out his personal devils and provide inspiration for his new book. But when two young boys venture into the woods, and only one returns alive, Mears begins to realize that something sinister is at work. In fact, his hometown is under siege from forces of darkness far beyond his imagination. And only he, with a small group of allies, can hope to contain the evil that is growing within the borders of this small New England town. With this, his second novel, Stephen King established himself as an indisputable master of American horror, able to transform the old conceits of the genre into something fresh and all the more frightening for taking place in a familiar, idyllic locale.",
-        "generos": "Fiction",
-        "imagen": "http://books.google.com/books/content?id=6OxSHEbM1isC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    },
-    {
-        "isbn": 9780307743671,
-        "titulo": "'Salem's Lot",
-        "autores": "Stephen King",
-        "fecha de publicacion": "2011-12-27",
-        "paginas": 674,
-        "descripcion": "#1 BESTSELLER • Ben Mears has returned to Jerusalem’s Lot in hopes that exploring the history of the Marsten House, an old mansion long the subject of rumor and speculation, will help him cast out his personal devils and provide inspiration for his new book. But when two young boys venture into the woods, and only one returns alive, Mears begins to realize that something sinister is at work. In fact, his hometown is under siege from forces of darkness far beyond his imagination. And only he, with a small group of allies, can hope to contain the evil that is growing within the borders of this small New England town. With this, his second novel, Stephen King established himself as an indisputable master of American horror, able to transform the old conceits of the genre into something fresh and all the more frightening for taking place in a familiar, idyllic locale.",
-        "generos": "Fiction",
-        "imagen": "http://books.google.com/books/content?id=6OxSHEbM1isC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    },
-    {
-        "isbn": 9780307743671,
-        "titulo": "'Salem's Lot",
-        "autores": "Stephen King",
-        "fecha de publicacion": "2011-12-27",
-        "paginas": 674,
-        "descripcion": "#1 BESTSELLER • Ben Mears has returned to Jerusalem’s Lot in hopes that exploring the history of the Marsten House, an old mansion long the subject of rumor and speculation, will help him cast out his personal devils and provide inspiration for his new book. But when two young boys venture into the woods, and only one returns alive, Mears begins to realize that something sinister is at work. In fact, his hometown is under siege from forces of darkness far beyond his imagination. And only he, with a small group of allies, can hope to contain the evil that is growing within the borders of this small New England town. With this, his second novel, Stephen King established himself as an indisputable master of American horror, able to transform the old conceits of the genre into something fresh and all the more frightening for taking place in a familiar, idyllic locale.",
-        "generos": "Fictio",
-        "imagen": "http://books.google.com/books/content?id=6OxSHEbM1isC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    }
-]
-
-categories = [] 
-
-for book in books:
-    checker = False
-    for categorie in categories:
-        if book["generos"] == categorie:
-            checker = True
-        else: pass
-    if checker: pass
-    else:
-        categories.append(book["generos"])
-
-@app.route("/", methods=["GET"])
+@app.route("/", methods=["GET", "POST"])
 def index():
-    category = "Libros destacados"
-    return render_template("index.html", category=category, books=books, categories=categories)
+    books = Libros.get_all()
+    return render_template("index.html",books=books,categories=categories)
 
+@app.route("/search/", methods=["GET", "POST"])
+def search():
+    search = request.args.get("search")
+    books = Libros.search(search)
+    return render_template("search.html",books=books) 
+
+@app.route("/categories", methods=["GET"])
+def categories():
+    books = Libros.get_all()
+    categories = Generos.get_categories_list(Generos)
+    category = "Libros destacados"
+    return render_template("categories.html",category=category,books=books,categories=categories)
 
 @app.route("/category/<category>", methods=["GET"])
 def categorie(category):
-    return render_template("index.html", category=category, books=books, categories=categories)
+    category_for_book = Generos.get_all(category)
+    books = Libros.get_all_for_category(Libros, category_for_book)
+    categories = Generos.get_categories_list(Generos)
+    return render_template("categories.html",category=category,books=books,categories=categories,category_for_book=category_for_book)
 
 
 @app.route("/book/<bookid>/", methods=["GET"])
 def a(bookid):
-    return render_template("book.html")
+    book = Libros.get_book(Libros, bookid)
+    authors = Autores.get_all(bookid)
+    categories = Generos.get_category(Generos, bookid)
+    print(categories)
+    return render_template("book.html", book=book, authors=authors, categories=categories)
 
+responses = []
+
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    if request.method == "POST":
+        response = request.form.get("isbn")
+        book = get_book_info(response)
+        if book:
+            response2 = Insert.insert_all(book)
+            if response2 == False:
+                return "ISBN INVALIDO / NO TIENE IMAGEN"
+        else: return "ISBN INVALIDO"
+    return render_template("insert.html")
 
 @app.route("/", methods=["POST"])
 def hello_world_post():
