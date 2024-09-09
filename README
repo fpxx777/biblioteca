@@ -1,0 +1,6 @@
+Instalaciones necesarias:
+
+flask
+pymysql
+flask_bycrypt
+requests
