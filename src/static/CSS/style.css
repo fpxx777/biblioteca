@@ -4,12 +4,19 @@
     font-family: "Advent Pro", sans-serif;
 }
 
+:root {
+    --dark-bg-color: #1C1B29;
+    --dark2-bg-color: #1D2C4B;
+    --contrast-bg-color: #EE9E59;
+    --contrast2-bg-color: #6EBFC2;
+    --light-bg-color: #F8F1DF;
+  }
+
 .mas{
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 .header {
-    background-color: #1C1B29;
-    padding: 10px;
+    background-color: var(--dark-bg-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,8 +35,7 @@
 .header input {
     height: 35px;
     width: 300px;
-    background-color: #1D2C4B;
-    color: #F8F1DF;
+    background-color: var(--contrast-bg-color);
     border-style: none;
     outline: none;
     font-size: 1.5vw;
@@ -40,11 +46,15 @@
     display: flex;
     padding: .5vw;
     align-items: center;
-    background-color: #1D2C4B;
+    background-color: var(--contrast-bg-color);
+}
+
+#search::placeholder{
+    color: var(--dark-bg-color);
 }
 
 .header h1 {
-    color: #F8F1DF;
+    color: var(--light-bg-color);
     margin: 0;
     font-size: 3vw;
     font-weight: bold;
@@ -55,15 +65,21 @@
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 .header li {
     margin-left: 20px;
 }
 
+.header li svg{
+    width: 8vw;
+    max-height: 15vh;
+}
+
 .header a {
     text-decoration: none;
-    color: #F8F1DF;
+    color: var(--light-bg-color);
     font-size: 1.8vw;
 }
 
@@ -79,28 +95,28 @@
 .img-static h2 {
     padding-top: 15vw;
     font-size: 10vw;
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 
 .img-static p {
     font-size: 2vw;
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 
 main {
-    background-color: #1C1B29;
+    background-color: var(--dark-bg-color);
     height: auto;
 }
 
 .explora h2{
-    color: #F8F1DF;
+    color: var(--contrast2-bg-color);
     text-align: center;
     font-size: 3.5vw;
 }
 .explora p{
-    color: #F8F1DF;
+    color: var(--light-bg-color);
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 2vw;
     padding-top: 4vw;
 }
 
@@ -110,11 +126,11 @@ main {
     display: flex;
     flex-direction: row;
     height: 43vw;
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 
 .img-izq {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/static/img/img-promo-der2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/static/img/48sintítulo_20240903122551.jpg);
 }
 
 .img-izq h3,
@@ -137,6 +153,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.img-center{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/static/img/776507155becf8114634271603b6cb0f.gif)
 }
 
 .book-container {
