@@ -3,6 +3,19 @@ import json
 
 
 #"autores": ', '.join(authors) if authors else 'NA',
+def translate(text):
+    url = "https://api.mymemory.translated.net/get"
+    params = {
+        "q": text,
+        "langpair": "en|es"
+    }
+    try:
+        response = requests.get(url, params=params)
+        translation = response.json()["responseData"]["translatedText"]
+        return translation
+    except requests.exceptions.RequestException as e:
+        return None
+
 
 API_LINK = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
 ISBN_KEY = "isbn"
@@ -26,7 +39,14 @@ def get_book_info(isbn):
     published_date = volume_info.get(PUBLISHED_DATE_KEY)
     description = volume_info.get(DESCRIPTION_KEY)
     page_count = volume_info.get(PAGE_COUNT_KEY)
+    key_words = ["fiction", "literary", "literature", "education"]
     categories = volume_info.get(CATEGORIES_KEY)
+    new_categories = []
+    if len(categories) < 1:
+        for text in categories:
+            new_categories.append(translate(text))
+    else:
+        new_categories.append(translate(categories[0]))
     image_links = volume_info.get(IMAGE_LINKS_KEY)
 
     book = {
@@ -36,7 +56,7 @@ def get_book_info(isbn):
         "fecha_publicacion": published_date if published_date else 'NA',
         "paginas": page_count,
         "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
-        "generos": categories if categories else 'NA',
+        "generos": new_categories,
         "imagen": image_links[THUMBNAIL_KEY] if image_links else 'NA'
     }
     return book
