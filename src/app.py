@@ -77,13 +77,11 @@ def test():
         # Obtener la información del libro a partir del ISBN
         book = get_book_info(response)
         # Si se obtuvo la información del libro, insertar los datos
-        if book:
-            response2 = Insert.insert_all(book)
-            # Si la inserción falló, mostrar un mensaje de error
-            if response2 == False:
-                return "ISBN INVALIDO / NO TIENE IMAGEN"
+        if len(book) == 2:
+            print("todo mal")
+            print(book)
         else:
-            return "ISBN INVALIDO"
+            print("aaaaaaaaaaa")
     # Renderizar la plantilla insert.html para probar la inserción de datos
     return render_template("insert.html")
 
