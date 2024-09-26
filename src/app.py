@@ -13,6 +13,10 @@ from prueba import get_book_info  # Función para obtener información de un lib
 # Crear una aplicación Flask
 app = Flask(__name__)
 
+@app.route("/login&register")
+def login_register():
+    return render_template("login&register.html")
+
 # Ruta raíz de la aplicación (index)
 @app.route("/", methods=["GET", "POST"])
 def index():
