@@ -16,12 +16,25 @@
 </head>
 
 <body>
-    
-<body>
+    <!-- parte derecha al darle click icono -->
+    <div class="overlay" id="overlay"></div>
+    <div class="login-container" id="login-container">
+        <div class="align-login-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+                <path fill="#F8F1DF"
+                    d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
+            </svg>
+            <a href="#" class="login-button">Iniciar Sesión</a>
+            <p>No tienes cuenta? <a href="#" class="register-button">Regístrate</a></p>
+        </div>
+    </div>
+
     <header class="header">
         <div>
             <img src="/static/img/logo.png" alt="">
-            <a href="/"><h1>BIBLIONAUTA</h1></a>
+            <a href="/">
+                <h1>BIBLIONAUTA</h1>
+            </a>
         </div>
         <form action="/search" method="get">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 48 48">
@@ -35,15 +48,38 @@
                         </g>
                     </mask>
                 </defs>
-                <path fill="#1C1B29" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
+                <path fill="#" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
             </svg>
             <input type="text" placeholder="Busca algun libro..." name="search" id="search">
         </form>
         <ul>
-            <li><a class="inicio" href="/">Inicio</a></li>
-            <li><a href="/categories">Categorias</a></li>
-            <li><a class="info" href="#">info</a></li>
+            <li>
+                <a class="inicio" href="#">Info</a>
+            </li>
+            <li>
+                <a href="/categories">Categorias</a>
+            </li>
+            <li>
+                <a class="info" href="/">Inicio</a>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256" id="user-icon">
+                    <path fill="#F8F1DF"
+                        d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
+                </svg>
+            </li>
     </header>
+
+    <main>
+        <div>
+            <img src={{book[0].imagen}} alt="asda">
+            <div class="libro-titulo">{{book[0].titulo}}</div>
+        </div>
+        <div>
+            <p>asda</p>
+        </div>
+    </main>
+    <!--
     <main>
         <div class="title">
             <h1>{{book[0].titulo}}</h1>
@@ -70,6 +106,7 @@
             </div>
         </div>
     </main>
+        -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>
@@ -93,5 +130,7 @@
         </div>
     </footer>
 </body>
+
+<script src="{{ url_for('static', filename='JS/script.js') }}"></script>
 
 </html>
