@@ -4,6 +4,11 @@
     font-family: "Advent Pro", sans-serif;
 }
 
+
+body{
+    background-color: var(--dark-bg-color);
+    color: var(--light-bg-color);
+}
 :root {
     --dark-bg-color: #1C1B29;
     --dark2-bg-color: #1D2C4B;

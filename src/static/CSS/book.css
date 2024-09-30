@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     font-family: "Advent Pro", sans-serif;
-    color: var(--light-bg-color);
 }
 
 body {
     background-color: var(--dark-bg-color);
+    color: var(--light-bg-color);
 }
 
 :root {
@@ -162,7 +162,6 @@ body {
 main {
     margin-bottom: 10vw;
     display: block;
-    color: var(--contrast2-bg-color);
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 3vh;
@@ -236,6 +235,25 @@ main div img {
     width: 35vw;
 }
 
+
+.book-img {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.book-container .book-info {
+    padding: 10px;
+    object-fit: cover;
+}
+
+.book-container h3 {
+    font-size: 1.25vw;
+    font-weight: 600;
+    color: var(--light-bg-color);
+}
+
+
 .subscribe{
     width: 100%;
     position: absolute;
@@ -249,7 +267,24 @@ main div img {
     display: flex;
     justify-content: center;
     width: 60%;
-    height: 5vh;
+    height: 12vh;
+    color: var(--light-bg-color);
+    align-items: center;
+    border-radius: 15px;
+}
+
+.container-subscribe h2{
+    font-size: 1.5vw;
+}
+
+.container-subscribe a{
+    text-decoration: none;
+    color: var(--light-bg-color);
+    margin-left: 2vw;
+    background-color: var(--contrast-bg-color);
+    font-size: 1.5vw;
+    border-radius: 20px;
+    padding: 0.5vw;
 }
 
 .footer {
@@ -257,7 +292,7 @@ main div img {
     color: var(--dark-bg-color);
     padding: 20px 0;
     text-align: center;
-
+    margin-top: 5%;
 }
 
 .container {
@@ -266,7 +301,7 @@ main div img {
     padding-top: 8vh;
     font-size: 1.75vw;
     font-weight: 600;
-    color: var(--dark-bg-color);
+    color: var(--dark2-bg-color);
 }
 
 .social-media {
@@ -286,6 +321,7 @@ main div img {
 .social-media a {
     text-decoration: none;
 }
+
 
 @media (min-width:320px) and (max-width: 800px) {
     * {

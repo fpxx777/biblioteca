@@ -6,6 +6,7 @@
 
 body {
     background-color: var(--dark-bg-color);
+    color: var(--light-bg-color);
 }
 
 :root {
@@ -246,9 +247,9 @@ main h2 {
 }
 
 .book-container h3 {
-    font-size: 1.5vw;
+    font-size: 1.25vw;
     font-weight: 600;
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 
 
