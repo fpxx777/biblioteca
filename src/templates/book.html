@@ -68,6 +68,7 @@
                         d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
                 </svg>
             </li>
+        </ul>
     </header>
 
     <main>
@@ -75,8 +76,42 @@
             <img src={{book[0].imagen}} alt="asda">
             <div class="libro-titulo">{{book[0].titulo}}</div>
         </div>
+        <div class="description-space">
+            <h1 class="description-h1">
+                Descripcion
+            </h1>
+            <p class="description-p">
+                {{book[0].descripcion}}
+            </p>
+            <div>
+                <div class="descripcion-sub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+                        <path fill="#F8F1DF"
+                            d="M208 36h-28V24a4 4 0 0 0-8 0v12H84V24a4 4 0 0 0-8 0v12H48a12 12 0 0 0-12 12v160a12 12 0 0 0 12 12h160a12 12 0 0 0 12-12V48a12 12 0 0 0-12-12M48 44h28v12a4 4 0 0 0 8 0V44h88v12a4 4 0 0 0 8 0V44h28a4 4 0 0 1 4 4v36H44V48a4 4 0 0 1 4-4m160 168H48a4 4 0 0 1-4-4V92h168v116a4 4 0 0 1-4 4m-100-92v64a4 4 0 0 1-8 0v-57.53l-10.21 5.11a4 4 0 0 1-3.58-7.16l16-8A4 4 0 0 1 108 120m60 28l-24 32h24a4 4 0 0 1 0 8h-32a4 4 0 0 1-3.2-6.4l28.78-38.37A11.88 11.88 0 0 0 164 136a12 12 0 0 0-22.4-6a4 4 0 0 1-6.92-4A20 20 0 0 1 172 136a19.8 19.8 0 0 1-4 12" />
+                    </svg>
+                    <div>
+                        <h1 class="description-h1-fecha">Fecha de publicacion: {{book[0].fecha_publicacion}}</h1>
+                        <p class="description-p">{{book[0].paginas}} paginas</p>
+                    </div>
+                </div>
+                <div class="descripcion-sub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+                        <path fill="#F8F1DF"
+                            d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z" />
+                    </svg>
+                    <div>
+                        <h1 class="description-h1-género">Género</h1>
+                        <p class="description-p">{{ ', '.join(categories)}}</p>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="description-h1">Autores</h1>
+                    <h1 class="description-h1">{{ ', '.join(authors)}}</h1>
+                </div>
+            </div>
+        </div>
         <div>
-            <p>asda</p>
+            <h1 class="description-h1">Libros similares</h1>
         </div>
     </main>
     <!--
@@ -89,7 +124,7 @@
             <img src={{book[0].imagen}} alt="">
             <div class="info-box">
                 <P class="description">{{book[0].descripcion}}</P>
-                <div class="date-box">
+                <div    class="date-box">
                     <div>
                         <strong>Fecha de Publicacion</strong>
                         <p>{{book[0].fecha_publicacion}}</p>
@@ -107,6 +142,12 @@
         </div>
     </main>
         -->
+    <section class="subscribe">
+        <div class="container-subscribe">
+            <h2>Suscríbete para saber cuándo llegan nuevos libros</h2>
+            <a href="#">Suscríbete</a>
+        </div>
+    </section>
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>

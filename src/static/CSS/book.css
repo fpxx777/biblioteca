@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     font-family: "Advent Pro", sans-serif;
+    color: var(--light-bg-color);
 }
 
 body {
-    background-color: #1C1B29;
+    background-color: var(--dark-bg-color);
 }
 
 :root {
@@ -17,7 +18,7 @@ body {
   }
 
 .mas {
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 
 #user-icon {
@@ -165,6 +166,7 @@ main {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 3vh;
+    margin-bottom: 5vh;
 }
 
 main div {
@@ -192,52 +194,63 @@ main div img {
     border-radius: 10px;
 }
 
-.title {
-    text-align: center;
-    margin-top: 3vw;
-}
-
-.title h1 {
-    font-size: 80px;
-    color: #F8F1DF;
-}
-
-.title h2 {
-    font-size: 30px;
-    color: rgb(102, 96, 80);
-}
-
-.cont-box {
+.descripcion-sub{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 3vw;
-    gap: 5vw;
+    align-items: center;
+    margin-top: 3vh;
 }
 
-.info-box {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    color: #F8F1DF;
+.descripcion-sub svg{
+    width: 2vw;
+    height: 4vh;
+    padding: 0.5vw;
+    background-color: var(--dark2-bg-color);
+    border-radius: 2.5px;
+    margin-right: 1vw;
+}
+
+.description-h1{
+    font-size: 2vw;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.description-h1-fecha{
+    font-size: 1.25vw;
+}
+
+.description-h1-género{
+    font-size: 1.25vw;
+}
+
+.description-p{
+    font-size: 1.25vw;
+    font-weight:normal ;
+}
+
+.description-space{
+    margin-bottom: 15%;
 }
 
 .description {
     width: 35vw;
 }
 
-.date-box {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2vw;
-}
-
-.date-box div {
+.subscribe{
+    width: 100%;
+    position: absolute;
+    margin-bottom: 50%;
     display: flex;
-    flex-direction: column;
-    gap: 0.5vw;
+    justify-content: center;
 }
 
+.container-subscribe{
+    background-color: var(--dark2-bg-color);
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 5vh;
+}
 
 .footer {
     background-color: var(--contrast2-bg-color);
@@ -253,6 +266,7 @@ main div img {
     padding-top: 8vh;
     font-size: 1.75vw;
     font-weight: 600;
+    color: var(--dark-bg-color);
 }
 
 .social-media {
