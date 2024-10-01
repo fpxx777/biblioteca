@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/categories.css') }}">
     <link rel="shortcut icon" href="/static/img/logo.png">
     <! -- fuente link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
-        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+            rel="stylesheet">
 </head>
 
 <body class="body">
@@ -73,11 +73,9 @@
     <main>
         <aside class="categories">
             <h3>Categorias</h3>
-            <ul>
-                <li><h4>Géneros</h4></li>
-                <li><h4>Autores</h4></li>
-                <li><h4>Fechas</h4></li>
-            </ul>
+            <h4 class="sub-categorias">Géneros</h4>
+            <h4 class="sub-categorias">Autores</h4>
+            <h4 class="sub-categorias">Fechas</h4>
             <!--
             <ul>
                 {% if categories %}

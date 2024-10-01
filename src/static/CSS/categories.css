@@ -26,6 +26,11 @@ body {
     cursor: pointer;
 }
 
+.align-login-container{
+    display: block;
+    justify-content: center;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -35,11 +40,6 @@ body {
     background: rgba(0, 0, 0, 0.7);
     display: none;
     z-index: 1;
-}
-
-.align-login-container{
-    display: block;
-    justify-content: center;
 }
 
 .login-container {
@@ -53,12 +53,24 @@ body {
     display: none;
     z-index: 2;
     height: 100%;
+    transition: all 1s linear;
     background-size: 100% 100%;
     width: 25%;
     background-repeat: no-repeat;
     justify-content: center;
     text-align: center;
 }
+/* js login-container*/
+
+.hidden {
+    display: none;
+  }
+  
+  .visuallyhidden {
+    opacity: 0;
+  }
+
+/* js login-container*/
 
 .align-login-container svg{
     width: 15vw;
@@ -166,13 +178,13 @@ main {
 }
 
 .results{
-    color: #F8F1DF;
+    color: var(--light-bg-color);
     margin: 1vw 2vw;
 }
 
 .categories {
     padding: 1.5rem;
-    border-right: 1px solid #F8F1DF;
+    border-right: 1px solid var(--light-bg-color);
     height: auto;
 }
 
@@ -180,7 +192,7 @@ main {
     font-size: 2vw;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #F8F1DF;
+    color: var(--light-bg-color);
 }
 
 .categories ul {
@@ -195,14 +207,21 @@ main {
 }
 
 .categories a {
-    color: #F8F1DF;
+    color: var(--light-bg-color);
     text-decoration: none;
 }
 
 .categories a:hover {
-    color: #EE9E59;
+    color: var(--contrast-bg-color);
 }
 
+.sub-categorias{
+    margin-left: 20%;
+    margin-top: 10%;
+    font-size: 1.75vw;
+    cursor: pointer;
+    font-weight: 600;
+}
 
 .book-container {
     display: grid;
@@ -212,13 +231,13 @@ main {
 }
 
 main h2 {
-    color: #F8F1DF;
+    color: var(--light-bg-color);
     margin: 2vw;
     font-size: 2.5vw;
 }
 
 .book-container >article {
-    background-color: #1D2C4B;
+    background-color: var(--dark2-bg-color);
     border-radius: 10px;
     overflow: hidden;
 }

@@ -176,6 +176,7 @@ body{
 main {
     background-color: var(--dark-bg-color);
     height: auto;
+    margin-bottom: 2.55%;
 }
 
 .explora h2{
@@ -289,12 +290,45 @@ main {
     padding-bottom: 9vh;
 }
 
+.subscribe{
+    width: 100%;
+    position: absolute;
+    margin-bottom: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-subscribe{
+    background-color: var(--dark2-bg-color);
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 12vh;
+    color: var(--light-bg-color);
+    align-items: center;
+    border-radius: 15px;
+}
+
+.container-subscribe h2{
+    font-size: 1.5vw;
+}
+
+.container-subscribe a{
+    text-decoration: none;
+    color: var(--light-bg-color);
+    margin-left: 2vw;
+    background-color: var(--contrast-bg-color);
+    font-size: 1.5vw;
+    border-radius: 20px;
+    padding: 0.5vw;
+}
+
 .footer {
     background-color: var(--contrast2-bg-color);
     color: var(--dark-bg-color);
     padding: 20px 0;
     text-align: center;
-
+    margin-top: 5%;
 }
 
 .container {
