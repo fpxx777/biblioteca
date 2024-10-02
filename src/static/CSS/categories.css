@@ -15,18 +15,18 @@ body {
     --contrast-bg-color: #EE9E59;
     --contrast2-bg-color: #6EBFC2;
     --light-bg-color: #F8F1DF;
-  }
+}
 
 body {
     background-color: #1C1B29;
 }
 
 #user-icon {
-    
+
     cursor: pointer;
 }
 
-.align-login-container{
+.align-login-container {
     display: block;
     justify-content: center;
 }
@@ -75,7 +75,7 @@ body {
 
 
 
-.align-login-container svg{
+.align-login-container svg {
     width: 15vw;
     max-height: 15vh;
     display: block;
@@ -83,7 +83,7 @@ body {
 
 }
 
-.login-button{
+.login-button {
     text-decoration: none;
     color: var(--light-bg-color);
     background-color: var(--contrast2-bg-color);
@@ -93,13 +93,13 @@ body {
     margin-top: 15%;
 }
 
-.register-button{
+.register-button {
     text-decoration: none;
     color: var(--contrast-bg-color);
-    
+
 }
 
-.login-container p{
+.login-container p {
     margin-top: 2vh;
     color: var(--light-bg-color);
 }
@@ -140,7 +140,7 @@ body {
     background-color: var(--contrast-bg-color);
 }
 
-#search::placeholder{
+#search::placeholder {
     color: var(--dark-bg-color);
 }
 
@@ -163,7 +163,7 @@ body {
     margin-left: 20px;
 }
 
-.header li svg{
+.header li svg {
     width: 5vw;
     max-height: 15vh;
 }
@@ -180,7 +180,7 @@ main {
     margin-bottom: 2.55%;
 }
 
-.results{
+.results {
     color: var(--light-bg-color);
     margin: 1vw 2vw;
 }
@@ -218,12 +218,53 @@ main {
     color: var(--contrast-bg-color);
 }
 
-.sub-categorias{
+.sub-categorias {
     margin-left: 20%;
     margin-top: 10%;
     font-size: 1.75vw;
     cursor: pointer;
     font-weight: 600;
+}
+
+.categoria {
+    display: none;
+}
+
+.hidden2 {
+    display: none;
+}
+
+.visuallyhidden2 {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.visible {
+    display: block;
+    opacity: 1;
+}
+
+
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.overlay2.visible {
+    display: block;
+}
+
+header,
+main,
+aside {
+    position: relative;
+    z-index: 2;
 }
 
 .book-container {
@@ -239,7 +280,7 @@ main h2 {
     font-size: 2.5vw;
 }
 
-.book-container >article {
+.book-container>article {
     background-color: var(--dark2-bg-color);
     border-radius: 10px;
     overflow: hidden;
@@ -275,7 +316,7 @@ main h2 {
 }
 
 
-.subscribe{
+.subscribe {
     width: 100%;
     position: absolute;
     margin-bottom: 50%;
@@ -283,7 +324,7 @@ main h2 {
     justify-content: center;
 }
 
-.container-subscribe{
+.container-subscribe {
     background-color: var(--dark2-bg-color);
     display: flex;
     justify-content: center;
@@ -294,11 +335,11 @@ main h2 {
     border-radius: 15px;
 }
 
-.container-subscribe h2{
+.container-subscribe h2 {
     font-size: 1.5vw;
 }
 
-.container-subscribe a{
+.container-subscribe a {
     text-decoration: none;
     color: var(--light-bg-color);
     margin-left: 2vw;
@@ -342,7 +383,7 @@ main h2 {
     text-decoration: none;
 }
 
-@media (min-width:320px) and (max-width: 800px){
+@media (min-width:320px) and (max-width: 800px) {
     .header {
         background-color: #1C1B29;
         padding: 10px;
@@ -350,26 +391,33 @@ main h2 {
         justify-content: space-between;
         align-items: center;
     }
+
     .header h1 {
         color: #F8F1DF;
         margin: 0;
         font-size: 3vw;
         font-weight: bold;
     }
+
     .header a {
         text-decoration: none;
         color: #F8F1DF;
         font-size: 5vw;
     }
-    .header ul{
+
+    .header ul {
         margin-left: -2vw;
     }
-    .header img{
+
+    .header img {
         width: 10vw;
     }
-    .info, .inicio{
+
+    .info,
+    .inicio {
         display: none;
     }
+
     .header input {
         height: 20px;
         width: 80px;
@@ -379,7 +427,7 @@ main h2 {
         outline: none;
         font-size: 3vw;
     }
-    
+
     .header form {
         border-radius: 5px;
         display: flex;
@@ -388,10 +436,12 @@ main h2 {
         background-color: #1D2C4B;
         margin-left: 3vw;
     }
-    .header form svg{
+
+    .header form svg {
         width: 20px;
         height: 20px;
     }
+
     .img-static {
         background-image: url(/static/img/fond.jpg);
         background-repeat: no-repeat;
@@ -400,32 +450,32 @@ main h2 {
         height: 38vw;
         padding: 0 1vw;
     }
-    
+
     .img-static h2 {
         padding-top: 15vw;
         font-size: 10vw;
         color: #F8F1DF;
     }
-    
+
     .img-static p {
         font-size: 5vw;
         color: #F8F1DF;
     }
-    
+
     .book-container {
         display: grid;
         margin: 5vw;
         gap: 5vw;
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .book-container >article {
+
+    .book-container>article {
         background-color: #1D2C4B;
         border-radius: 10px;
         overflow: hidden;
         margin-bottom: 10vw;
     }
-    
+
     .book-container img {
         width: 100%;
         height: 100%;
@@ -433,60 +483,62 @@ main h2 {
         transition: 0.5s;
         aspect-ratio: 200 / 300;
     }
-    
+
     .book-container img:hover {
         transform: scale(1.1);
     }
-    
+
     .book-img {
         width: 100%;
         height: 150px;
         overflow: hidden;
     }
-    
+
     .book-container .book-info {
         padding: 10px;
         object-fit: cover;
     }
-    
+
     .book-container h3 {
         font-size: 5vw;
         font-weight: 600;
         color: #F8F1DF;
     }
+
     .categories {
         padding: 1px;
         border-right: 1px solid #F8F1DF;
         height: auto;
         text-align: center;
     }
-    
+
     .categories h3 {
         font-size: 5vw;
         font-weight: 600;
         margin-bottom: 1rem;
         color: #F8F1DF;
     }
-    
+
     .categories ul {
         list-style: none;
         padding: 0;
         margin: 0;
     }
-    
+
     .categories li {
         margin-bottom: 0.5rem;
         font-size: 4vw;
     }
-    
+
     .categories a {
         color: #F8F1DF;
         text-decoration: none;
     }
-    
+
     .categories a:hover {
         color: #EE9E59;
     }
+
     main h2 {
         color: #F8F1DF;
         margin: 2vw;

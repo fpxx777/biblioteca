@@ -67,15 +67,15 @@
                     <path fill="#F8F1DF"
                         d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
                 </svg>
-            </li>   
+            </li>
         </ul>
     </header>
     <main>
         <aside class="categories">
             <h3>Categorias</h3>
-            <h4 class="sub-categorias">Géneros</h4>
-            <h4 class="sub-categorias">Autores</h4>
-            <h4 class="sub-categorias">Fechas</h4>
+            <h4 class="sub-categorias" id="categoria-genero" onclick="showCategory('genero')">Géneros</h4>
+            <h4 class="sub-categorias" id="categoria-autor" onclick="showCategory('autor')">Autores</h4>
+            <h4 class="sub-categorias" id="categoria-fecha" onclick="showCategory('fecha')">Fechas</h4>
             <!--
             <ul>
                 {% if categories %}
@@ -87,6 +87,30 @@
             </ul>
             -->
         </aside>
+        <div class="overlay2" id="overlay2"></div>
+        <div class="categoria hidden2 visuallyhidden2" id="categoria-container">
+            <h1 class="titulo-categoria" id="titulo-categoria">
+                titulo-categoria
+            </h1>
+            <div>
+                <h1 class="nombre-categoria" id="nombre-categoria">
+                    nombre-categoria
+                </h1>
+                <ul class="lista-categorias">
+                    <li>
+                        <a href="#">
+                            nombre-libro
+                        </a>
+                        <a href="#">
+                            nombre-libro
+                        </a>
+                        <a href="#">
+                            nombre-libro
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div>
             <section class="book-container">
                 {% if category == "Libros destacados" %}
@@ -150,5 +174,6 @@
 </body>
 
 <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/categories.js') }}"></script>
 
 </html>
