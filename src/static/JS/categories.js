@@ -1,30 +1,40 @@
-function toggleCategory(category) {
-    const container = document.getElementById('categoria-container');
-    const tituloCategoria = document.getElementById('titulo-categoria');
-    const nombreCategoria = document.getElementById('nombre-categoria');
-    const overlay2 = document.getElementById('overlay2');
+let categoriaGenero = document.getElementById('categoria-genero'),
+    categoriaAutor = document.getElementById('categoria-autor'),
+    categoriaFecha = document.getElementById('categoria-fecha'),
+    overlay = document.getElementById('overlay2'),
+    container = document.getElementById('categoria-container');
 
-    if (container.classList.contains('visible')) {
-        hideCategory();
+function toggleVisibility() {
+    if (overlay.classList.contains('hidden2')) {
+        overlay.classList.remove('hidden2');
+        container.classList.remove('hidden2');
+        setTimeout(function () {
+            overlay.classList.remove('visuallyhidden2');
+            container.classList.remove('visuallyhidden2');
+        }, 20);
     } else {
-        tituloCategoria.textContent = category;
-        nombreCategoria.textContent = category + '1';
-
-        container.classList.remove('hidden2', 'visuallyhidden2');
-        container.classList.add('visible');
-        overlay2.classList.add('visible');
+        overlay.classList.add('visuallyhidden2');
+        container.classList.add('visuallyhidden2');
+        overlay.addEventListener('transitionend', function(e) {
+            if (e.target === overlay) {
+                overlay.classList.add('hidden2');
+                container.classList.add('hidden2');
+            }
+        }, {
+            capture: false,
+            once: true,
+            passive: false
+        });
     }
 }
 
-function hideCategory() {
-    const container = document.getElementById('categoria-container');
-    const overlay2 = document.getElementById('overlay2');
+categoriaAutor.addEventListener('click', toggleVisibility);
+categoriaFecha.addEventListener('click', toggleVisibility);
+categoriaGenero.addEventListener('click', toggleVisibility);
 
-    container.classList.add('visuallyhidden2');
-    overlay2.classList.remove('visible');
+document.addEventListener('DOMContentLoaded', function() {
+    overlay.classList.add('hidden2');
+    container.classList.add('hidden2');
+});
 
-    container.addEventListener('transitionend', function (e) {
-        container.classList.add('hidden2');
-        container.classList.remove('visible');
-    }, { once: true });
-}
+
