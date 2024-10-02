@@ -46,14 +46,14 @@ def get_book_info(isbn, info_faltante= None):
     if categories and len(categories) > 0:
         for text in key_words:
             for cat in categories:
-                if text in cat.lower():
+                if text in cat.lower(): 
                     new_categories.append(translate(text))
         if len(new_categories) == 0:
             new_categories.append(translate(categories[0]))    
     else:
         errors.append("generos")
     image_links = volume_info.get(IMAGE_LINKS_KEY)
-    if info_faltante == None:
+    if info_faltante == {}:
         book = {
             "isbn": isbn,
             "titulo": title,

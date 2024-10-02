@@ -78,8 +78,7 @@ def test():
         book = get_book_info(response)
         # Si se obtuvo la información del libro, insertar los datos
         if len(book) == 2:
-            print("todo mal")
-            print(book)
+            return render_template("insert-error.html")
         else:
             print("aaaaaaaaaaa")
     # Renderizar la plantilla insert.html para probar la inserción de datos
