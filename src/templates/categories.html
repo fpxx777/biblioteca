@@ -73,9 +73,9 @@
     <main>  
         <aside class="categories">
             <h3>Categorias</h3>
-            <h4 class="sub-categorias" id="categoria-genero" onclick="showCategory('genero')">Géneros</h4>
-            <h4 class="sub-categorias" id="categoria-autor" onclick="showCategory('autor')">Autores</h4>
-            <h4 class="sub-categorias" id="categoria-fecha" onclick="showCategory('fecha')">Fechas</h4>
+            <h4 class="sub-categorias" id="categoria-genero">Géneros</h4>
+            <h4 class="sub-categorias" id="categoria-autor">Autores</h4>
+            <h4 class="sub-categorias" id="categoria-fecha">Fechas</h4>
             <!--
             <ul>
                 {% if categories %}
@@ -173,7 +173,6 @@
     </footer>
 </body>
 
-<script src="{{ url_for('static', filename='JS/script.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/categories.js') }}"></script>
 
 </html>
