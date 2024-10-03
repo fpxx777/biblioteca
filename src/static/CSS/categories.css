@@ -44,6 +44,19 @@ body {
     transition: opacity 0.5s linear;
 }
 
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.5s linear;
+}
+
 .login-container {
     position: fixed;
     top: 50%;
@@ -68,7 +81,16 @@ body {
     display: none;
 }
 
+.hidden2 {
+    display: none;
+}
+
 .visuallyhidden {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.visuallyhidden2 {
     opacity: 0;
     transition: opacity 0.5s linear;
 }
@@ -87,17 +109,23 @@ body {
     transform: translateY(-50%);
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/20042f9caa485bddeac299a0abc2b984~2.jpg_1725883222476.jpg');
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: none;
+    display: flex;
     z-index: 2;
     height: 100%;
     transition: opacity 0.5s linear, transform 0.5s linear;
     background-size: cover;
     width: 50%;
     background-repeat: no-repeat;
-    opacity: 0;
+    opacity: 1;
 }
 
+.overlay2.hidden2 {
+    display: none;
+}
 
+.categoria.hidden2 {
+    display: none;
+}
 
 .align-login-container svg {
     width: 15vw;

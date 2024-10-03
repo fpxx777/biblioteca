@@ -1,13 +1,10 @@
-let categoriaGenero = document.getElementById('categoria-genero'),
-  categoriaAutor = document.getElementById('categoria-autor'),
-  categoriaFecha = document.getElementById('categoria-fecha'),
-  container = document.getElementById('categoria-container'),
+let container = document.getElementById('categoria-container'),
   icono = document.getElementById('user-icon'),
   exterior_login = document.getElementById('overlay'),
   interior_login = document.getElementById('login-container'),
   subCategorias = document.querySelector('.sub-categorias'),
-  categoria = document.querySelector('.categoria'),
-  overlay = document.querySelector('.overlay');
+  exterior_categoria = document.querySelector('.overlay2'),
+  interior_categoria = document.querySelector('.categoria');
 
 icono.addEventListener('click', function () {
   if (interior_login.classList.contains('hidden')) {
@@ -56,48 +53,50 @@ exterior_login.addEventListener('click', function () {
 }, false);
 
 subCategorias.addEventListener('click', function () {
-  console.log('Click en sub-categorias');
-
-  // Toggle visibility of categoria
-  if (categoria.classList.contains('hidden')) {
-    console.log('Mostrando categoria');
-    categoria.classList.remove('hidden');
+  if (interior_categoria.classList.contains('hidden2')) {
+    interior_categoria.classList.remove('hidden2');
     setTimeout(function () {
-      categoria.classList.remove('visuallyhidden');
-      console.log('Categoria visible');
+      interior_categoria.classList.remove('visuallyhidden2');
     }, 20);
   } else {
-    console.log('Ocultando categoria');
-    categoria.classList.add('visuallyhidden');    
-    categoria.addEventListener('transitionend', function(e) {
+    interior_categoria.classList.add('visuallyhidden2');
+    interior_categoria.addEventListener('transitionend', function (e) {
       if (e.propertyName === 'opacity') {
-        categoria.classList.add('hidden');
-        console.log('Categoria oculta');
+        interior_categoria.classList.add('hidden2');
       }
     }, { once: true });
   }
 
-  // Toggle visibility of overlay
-  if (overlay.classList.contains('hidden')) {
-    console.log('Mostrando overlay');
-    overlay.classList.remove('hidden');
+  if (exterior_categoria.classList.contains('hidden2')) {
+    exterior_categoria.classList.remove('hidden2');
     setTimeout(function () {
-      overlay.classList.remove('visuallyhidden');
-      console.log('Overlay visible');
+      exterior_categoria.classList.remove('visuallyhidden2');
     }, 20);
   } else {
-    console.log('Ocultando overlay');
-    overlay.classList.add('visuallyhidden');    
-    overlay.addEventListener('transitionend', function(e) {
+    exterior_categoria.classList.add('visuallyhidden2');
+    exterior_categoria.addEventListener('transitionend', function (e) {
       if (e.propertyName === 'opacity') {
-        overlay.classList.add('hidden');
-        console.log('Overlay oculto');
+        exterior_categoria.classList.add('hidden2');
       }
     }, { once: true });
   }
 }, false);
 
+exterior_categoria.addEventListener('click', function () {
+  interior_categoria.classList.add('visuallyhidden2');
+  interior_categoria.addEventListener('transitionend', function (e) {
+    if (e.propertyName === 'opacity') {
+      interior_categoria.classList.add('hidden2');
+    }
+  }, { once: true });
 
+  exterior_categoria.classList.add('visuallyhidden2');
+  exterior_categoria.addEventListener('transitionend', function (e) {
+    if (e.propertyName === 'opacity') {
+      exterior_categoria.classList.add('hidden2');
+    }
+  }, { once: true });
+}, false);
 
 
 /*
