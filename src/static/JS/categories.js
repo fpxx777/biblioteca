@@ -1,11 +1,13 @@
 let categoriaGenero = document.getElementById('categoria-genero'),
-    categoriaAutor = document.getElementById('categoria-autor'),
-    categoriaFecha = document.getElementById('categoria-fecha'),
-    overlay = document.getElementById('overlay2'),
-    container = document.getElementById('categoria-container'),
-    icono = document.getElementById('user-icon'),
+  categoriaAutor = document.getElementById('categoria-autor'),
+  categoriaFecha = document.getElementById('categoria-fecha'),
+  container = document.getElementById('categoria-container'),
+  icono = document.getElementById('user-icon'),
   exterior_login = document.getElementById('overlay'),
-  interior_login = document.getElementById('login-container');
+  interior_login = document.getElementById('login-container'),
+  subCategorias = document.querySelector('.sub-categorias'),
+  categoria = document.querySelector('.categoria'),
+  overlay = document.querySelector('.overlay');
 
 icono.addEventListener('click', function () {
   if (interior_login.classList.contains('hidden')) {
@@ -53,38 +55,47 @@ exterior_login.addEventListener('click', function () {
   }, { once: true });
 }, false);
 
-function toggleVisibility() {
-    if (overlay.classList.contains('hidden2')) {
-        overlay.classList.remove('hidden2');
-        container.classList.remove('hidden2');
-        setTimeout(function () {
-            overlay.classList.remove('visuallyhidden2');
-            container.classList.remove('visuallyhidden2');
-        }, 20);
-    } else {
-        overlay.classList.add('visuallyhidden2');
-        container.classList.add('visuallyhidden2');
-        overlay.addEventListener('transitionend', function(e) {
-            if (e.target === overlay) {
-                overlay.classList.add('hidden2');
-                container.classList.add('hidden2');
-            }
-        }, {
-            capture: false,
-            once: true,
-            passive: false
-        });
-    }
-}
+subCategorias.addEventListener('click', function () {
+  console.log('Click en sub-categorias');
 
-categoriaAutor.addEventListener('click', toggleVisibility);
-categoriaFecha.addEventListener('click', toggleVisibility);
-categoriaGenero.addEventListener('click', toggleVisibility);
+  // Toggle visibility of categoria
+  if (categoria.classList.contains('hidden')) {
+    console.log('Mostrando categoria');
+    categoria.classList.remove('hidden');
+    setTimeout(function () {
+      categoria.classList.remove('visuallyhidden');
+      console.log('Categoria visible');
+    }, 20);
+  } else {
+    console.log('Ocultando categoria');
+    categoria.classList.add('visuallyhidden');    
+    categoria.addEventListener('transitionend', function(e) {
+      if (e.propertyName === 'opacity') {
+        categoria.classList.add('hidden');
+        console.log('Categoria oculta');
+      }
+    }, { once: true });
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-    overlay.classList.add('hidden2');
-    container.classList.add('hidden2');
-});
+  // Toggle visibility of overlay
+  if (overlay.classList.contains('hidden')) {
+    console.log('Mostrando overlay');
+    overlay.classList.remove('hidden');
+    setTimeout(function () {
+      overlay.classList.remove('visuallyhidden');
+      console.log('Overlay visible');
+    }, 20);
+  } else {
+    console.log('Ocultando overlay');
+    overlay.classList.add('visuallyhidden');    
+    overlay.addEventListener('transitionend', function(e) {
+      if (e.propertyName === 'opacity') {
+        overlay.classList.add('hidden');
+        console.log('Overlay oculto');
+      }
+    }, { once: true });
+  }
+}, false);
 
 
 
