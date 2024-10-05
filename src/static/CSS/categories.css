@@ -40,7 +40,7 @@ body {
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     opacity: 1;
-    z-index: 1;
+    z-index: 4;
     transition: opacity 0.5s linear;
 }
 
@@ -51,10 +51,12 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    opacity: 1;
     z-index: 1;
-    transition: opacity 0.5s linear;
+    display: none;
+}
+
+.overlay2.mostrar {
+    display: block;
 }
 
 .login-container {
@@ -66,7 +68,7 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
-    z-index: 2;
+    z-index: 5;
     height: 100%;
     transition: opacity 0.5s linear, transform 0.5s linear;
     background-size: 100% 100%;
@@ -96,35 +98,34 @@ body {
 }
 
 .categories {
+    position: relative;
+    z-index: 2; /* Asegúrate de que esté por encima del overlay */
     padding: 1.5rem;
     border-right: 1px solid var(--light-bg-color);
     height: auto;
-    z-index: 1;
+    width: 12vw;
 }
 
 .categoria {
     position: fixed;
     top: 50%;
-    right: 0;
+    left: -50%;
     transform: translateY(-50%);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/20042f9caa485bddeac299a0abc2b984~2.jpg_1725883222476.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/6b763e13d645ca8801c4ee4cec767566.jpg');
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: block;
     z-index: 2;
+    margin-top: 8%;
     height: 100%;
-    transition: opacity 0.5s linear, transform 0.5s linear;
-    background-size: cover;
+    transition: left 0.5s ease, opacity 0.5s linear, transform 0.5s linear;
+    background-size: 100% 100%;
     width: 50%;
     background-repeat: no-repeat;
     opacity: 1;
 }
 
-.overlay2.hidden2 {
-    display: none;
-}
-
-.categoria.hidden2 {
-    display: none;
+.categoria.mostrar {
+    left: 12vw;
 }
 
 .align-login-container svg {
@@ -163,6 +164,8 @@ body {
     align-items: center;
     border-bottom: solid;
     border-bottom-color: var(--light-bg-color);
+    z-index: 3;
+    position: relative;
 }
 
 .header div {
@@ -237,12 +240,6 @@ main {
     margin: 1vw 2vw;
 }
 
-.categories {
-    padding: 1.5rem;
-    border-right: 1px solid var(--light-bg-color);
-    height: auto;
-    z-index: 1;
-}
 
 .categories h3 {
     font-size: 2vw;
@@ -277,21 +274,9 @@ main {
     font-size: 1.75vw;
     cursor: pointer;
     font-weight: 600;
+    ;
 }
 
-
-.overlay2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 0.5s linear;
-}
 
 
 .book-container {

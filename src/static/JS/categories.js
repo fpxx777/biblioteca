@@ -52,51 +52,17 @@ exterior_login.addEventListener('click', function () {
   }, { once: true });
 }, false);
 
-subCategorias.addEventListener('click', function () {
-  if (interior_categoria.classList.contains('hidden2')) {
-    interior_categoria.classList.remove('hidden2');
-    setTimeout(function () {
-      interior_categoria.classList.remove('visuallyhidden2');
-    }, 20);
-  } else {
-    interior_categoria.classList.add('visuallyhidden2');
-    interior_categoria.addEventListener('transitionend', function (e) {
-      if (e.propertyName === 'opacity') {
-        interior_categoria.classList.add('hidden2');
-      }
-    }, { once: true });
-  }
+document.querySelectorAll('.sub-categorias').forEach(item => {
+  item.addEventListener('click', () => {
+      document.querySelector('.categoria').classList.toggle('mostrar');
+      document.querySelector('.overlay2').classList.toggle('mostrar');
+  });
+});
 
-  if (exterior_categoria.classList.contains('hidden2')) {
-    exterior_categoria.classList.remove('hidden2');
-    setTimeout(function () {
-      exterior_categoria.classList.remove('visuallyhidden2');
-    }, 20);
-  } else {
-    exterior_categoria.classList.add('visuallyhidden2');
-    exterior_categoria.addEventListener('transitionend', function (e) {
-      if (e.propertyName === 'opacity') {
-        exterior_categoria.classList.add('hidden2');
-      }
-    }, { once: true });
-  }
-}, false);
-
-exterior_categoria.addEventListener('click', function () {
-  interior_categoria.classList.add('visuallyhidden2');
-  interior_categoria.addEventListener('transitionend', function (e) {
-    if (e.propertyName === 'opacity') {
-      interior_categoria.classList.add('hidden2');
-    }
-  }, { once: true });
-
-  exterior_categoria.classList.add('visuallyhidden2');
-  exterior_categoria.addEventListener('transitionend', function (e) {
-    if (e.propertyName === 'opacity') {
-      exterior_categoria.classList.add('hidden2');
-    }
-  }, { once: true });
-}, false);
+document.querySelector('.overlay2').addEventListener('click', () => {
+  document.querySelector('.categoria').classList.remove('mostrar');
+  document.querySelector('.overlay2').classList.remove('mostrar');
+});
 
 
 /*
