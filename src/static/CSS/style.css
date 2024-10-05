@@ -64,11 +64,11 @@ body{
     transition: opacity 0.5s linear;
 }
 
-.align-login-container svg{
-    width: 15vw;
-    max-height: 15vh;
+.align-login-container svg {
+    width: 7.5vw;;
     display: block;
     margin: 10vh auto;
+    display: block;
 
 }
 
@@ -103,6 +103,9 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 0;
+    position: relative;
+    width: 100%;
 }
 
 .header div {
@@ -112,12 +115,12 @@ body{
 }
 
 .header img {
-    width: 8vw;
+    width: 6vw;
 }
 
 .header input {
-    height: 35px;
-    width: 300px;
+    height: 3.5vh;
+    width: 30vw;
     background-color: var(--contrast-bg-color);
     border-style: none;
     outline: none;
@@ -125,34 +128,36 @@ body{
 }
 
 .header form {
-    border-radius: .5vw;
+    border-radius: 0.5vw;
     display: flex;
-    padding: .5vw;
+    padding: 0.5vw;
     align-items: center;
     background-color: var(--contrast-bg-color);
 }
 
 #search::placeholder{
     color: var(--dark-bg-color);
+    width: 20vw;
+    height: 10vh;
 }
 
 .header h1 {
     color: var(--light-bg-color);
-    margin: 0;
+    margin: 0%;
     font-size: 3vw;
     font-weight: bold;
 }
 
 .header ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
     display: flex;
     align-items: center;
 }
 
 .header li {
-    margin-left: 20px;
+    margin-left: 2vw;
 }
 
 .header li svg{
@@ -164,6 +169,10 @@ body{
     text-decoration: none;
     color: var(--light-bg-color);
     font-size: 1.8vw;
+}
+
+.header a:hover{
+    color: var(--contrast-bg-color);
 }
 
 .img-static {
