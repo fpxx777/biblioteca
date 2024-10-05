@@ -1,5 +1,5 @@
 # Importar la biblioteca Flask para crear una aplicación web
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 
 # Importar modelos de datos para libros, géneros, autores y inserción de datos
 from models.libros import Libros  # Modelo para libros
@@ -68,7 +68,7 @@ def a(bookid):
     return render_template("book.html", book=book, authors=authors, categories=categories)
 
 # Ruta para probar la inserción de datos
-@app.route("/test", methods=["GET", "POST"])
+@app.route("/test/", methods=["GET", "POST"])
 def test():
     # Si se envía una solicitud POST, procesar la inserción de datos
     if request.method == "POST":
@@ -78,12 +78,18 @@ def test():
         book = get_book_info(response)
         # Si se obtuvo la información del libro, insertar los datos
         if len(book) == 2:
-            return render_template("insert-error.html")
+            return render_template("insert-error.html", isbn= book[1]["isbn"])
         else:
             print("aaaaaaaaaaa")
     # Renderizar la plantilla insert.html para probar la inserción de datos
     return render_template("insert.html")
 
+@app.route("/test/fill/", methods=["POST"])
+def fill():
+    response = request.form.to_dict()
+    book = get_book_info(response["isbn"], response)
+    print(book)
+    return redirect("/test/")
 # Iniciar la aplicación Flask en modo depuración
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

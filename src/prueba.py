@@ -27,7 +27,7 @@ PAGE_COUNT_KEY = "pageCount"
 CATEGORIES_KEY = "categories"
 IMAGE_LINKS_KEY = "imageLinks"
 THUMBNAIL_KEY = "thumbnail"
-def get_book_info(isbn, info_faltante= None):
+def get_book_info(isbn, info_faltante = {}):
     print(isbn)
     response = requests.get(API_LINK + isbn)
     response.raise_for_status()
@@ -62,7 +62,7 @@ def get_book_info(isbn, info_faltante= None):
             "paginas": page_count,
             "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
             "generos": new_categories,
-            "imagen": image_links[THUMBNAIL_KEY] if image_links else errors.append("imagen")
+            "imagen": image_links[THUMBNAIL_KEY] if image_links else errors.append("img")
         }
     else:
         book = {
@@ -72,8 +72,8 @@ def get_book_info(isbn, info_faltante= None):
             "fecha_publicacion": published_date if published_date else info_faltante["fecha_publicacion"],
             "paginas": page_count,
             "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
-            "generos": new_categories,
-            "imagen": image_links[THUMBNAIL_KEY] if image_links else info_faltante["imagen"]
+            "generos": new_categories if new_categories != [] else info_faltante["generos"],
+            "imagen": image_links[THUMBNAIL_KEY] if image_links else info_faltante["img"]
         }
     if len(errors) > 0:
         return errors, book
