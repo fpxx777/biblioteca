@@ -98,10 +98,11 @@ body {
 
 .categories {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 1.5rem;
     height: auto;
     width: 14vw;
+    background-color: var(--dark-bg-color);
 }
 
 .categoria {
