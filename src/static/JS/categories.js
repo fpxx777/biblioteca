@@ -1,6 +1,10 @@
-let icono = document.getElementById('user-icon'),
+let container = document.getElementById('categoria-container'),
+  icono = document.getElementById('user-icon'),
   exterior_login = document.getElementById('overlay'),
-  interior_login = document.getElementById('login-container');
+  interior_login = document.getElementById('login-container'),
+  subCategorias = document.querySelector('.sub-categorias'),
+  exterior_categoria = document.querySelector('.overlay2'),
+  interior_categoria = document.querySelector('.categoria');
 
 icono.addEventListener('click', function () {
   if (interior_login.classList.contains('hidden')) {
@@ -47,3 +51,38 @@ exterior_login.addEventListener('click', function () {
     }
   }, { once: true });
 }, false);
+
+document.querySelectorAll('.sub-categorias').forEach(item => {
+  item.addEventListener('click', () => {
+      document.querySelector('.categoria').classList.toggle('mostrar');
+      document.querySelector('.overlay2').classList.toggle('mostrar');
+  });
+});
+
+document.querySelector('.overlay2').addEventListener('click', () => {
+  document.querySelector('.categoria').classList.remove('mostrar');
+  document.querySelector('.overlay2').classList.remove('mostrar');
+});
+
+
+/*
+btn.addEventListener('click', function () {
+  
+  if (box.classList.contains('hidden')) {
+    box.classList.remove('hidden');
+    setTimeout(function () {
+      box.classList.remove('visuallyhidden');
+    }, 20);
+  } else {
+    box.classList.add('visuallyhidden');    
+    box.addEventListener('transitionend', function(e) {
+      box.classList.add('hidden');
+    }, {
+      capture: false,
+      once: true,
+      passive: false
+    });
+  }
+  
+}, false);
+*/

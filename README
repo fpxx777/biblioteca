@@ -1,13 +1,2 @@
 Instalaciones necesarias:
 
-python3 -m venv .venv
-
-.venv/bin/pip install
-flask
-pymysql
-flask_bcrypt
-requests
-
-
-DB
-mysql -h root -u admin -p

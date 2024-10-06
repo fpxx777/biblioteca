@@ -2,7 +2,6 @@
 .env
 my-venv
 
-__pycache__/
-*.py[cod]
+__pycache__
 
 .pytest_cache/
