@@ -223,6 +223,25 @@ main div {
     margin-top: 3vh;
 }
 
+.favorite-button{
+    display: flex;
+    align-items: center;
+    margin-top: 3vh;
+    background-color: transparent;
+    cursor: pointer;
+    border-style: none;
+    color: var(--light-bg-color);
+}
+
+.favorite-button svg{
+    width: 2vw;
+    height: 4vh;
+    padding: 0.5vw;
+    background-color: var(--contrast-bg-color);
+    border-radius: 2.5px;
+    margin-right: 1vw;
+}
+
 .descripcion-sub svg{
     width: 2vw;
     height: 4vh;
