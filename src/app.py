@@ -1,17 +1,24 @@
 # Importar la biblioteca Flask para crear una aplicación web
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, redirect, session
+from flask_bcrypt import Bcrypt
 
 # Importar modelos de datos para libros, géneros, autores y inserción de datos
 from models.libros import Libros  # Modelo para libros
 from models.generos import Generos  # Modelo para géneros
 from models.autores import Autores  # Modelo para autores
 from models.insert import Insert  # Modelo para inserción de datos
+from models.favorites import Favoritos
 
 # Importar función para obtener información de un libro a partir de su ISBN
 from prueba import get_book_info  # Función para obtener información de un libro
 
 # Crear una aplicación Flask
 app = Flask(__name__)
+
+app.secret_key = "P4S$W0rd"
+
+bcrypt = Bcrypt(app)
+
 
 @app.route("/login&register")
 def login_register():
@@ -32,6 +39,8 @@ def index2():
 # Ruta raíz de la aplicación (index)
 @app.route("/", methods=["GET", "POST"])
 def index():
+    session["id"] = 1
+    session["username"] = "Admin"
     # Obtener todos los libros
     books = Libros.get_all_limit_all(1)
     # Renderizar la plantilla index.html con la lista de libros y categorías
@@ -74,6 +83,11 @@ def categorie(category):
 @app.route("/book/<bookid>/", methods=["GET"])
 def a(bookid):
     # Obtener el libro específico
+    is_book = Favoritos.verify_book(bookid, session["id"])
+    if len(is_book) > 0:
+        is_book = True
+    else:
+        is_book = False
     book = Libros.get_book(Libros, bookid)
     # Obtener la lista de autores del libro
     authors = Autores.get_all(bookid)
@@ -81,7 +95,7 @@ def a(bookid):
     categories = Generos.get_category(Generos, bookid)
     print(categories)  # Imprimir la categoría del libro para depuración
     # Renderizar la plantilla book.html con la información del libro
-    return render_template("book.html", book=book, authors=authors, categories=categories)
+    return render_template("book.html", book=book, authors=authors, categories=categories, is_book=is_book)
 
 # Ruta para probar la inserción de datos
 @app.route("/test", methods=["GET", "POST"])
@@ -103,6 +117,20 @@ def test():
     # Renderizar la plantilla insert.html para probar la inserción de datos
     return render_template("insert.html")
 
+@app.route("/favorites/", methods=["GET"])
+def favorites():
+    books = Favoritos.select_all(session["id"])
+    return render_template("favorites.html", books=books)
+
+@app.route("/favorites/add/", methods=["POST"])
+def add():
+    id_book = request.form.get("id-book")
+    is_book = Favoritos.verify_book(id_book, session["id"])
+    if len(is_book) > 0:
+        Favoritos.del_book(id_book, session["id"])
+    else:
+        Favoritos.insert_book(id_book, session['id'])
+    return redirect("/favorites/")
 # Iniciar la aplicación Flask en modo depuración
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
