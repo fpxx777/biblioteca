@@ -91,4 +91,3 @@ function changeForm(type) {
         `;
     }
 }
-

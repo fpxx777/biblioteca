@@ -24,6 +24,18 @@ bcrypt = Bcrypt(app)
 def login_register():
     return render_template("login&register.html")
 
+@app.route("/edituser")
+def edituser():
+    return render_template("edituser.html")
+
+# Ruta raíz de la aplicación (index)
+@app.route("/index2", methods=["GET", "POST"])
+def index2():
+    # Obtener todos los libros
+    books = Libros.get_all_limit_all(1)
+    # Renderizar la plantilla index.html con la lista de libros y categorías
+    return render_template("index2.html", books=books)
+
 # Ruta raíz de la aplicación (index)
 @app.route("/", methods=["GET", "POST"])
 def index():
