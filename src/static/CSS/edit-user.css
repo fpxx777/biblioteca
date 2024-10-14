@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Advent Pro", sans-serif;
+}
+
+body {
+    color: var(--light-bg-color);
+}
+
+:root {
+    --dark-bg-color: #1C1B29;
+    --dark2-bg-color: #1D2C4B;
+    --contrast-bg-color: #EE9E59;
+    --contrast2-bg-color: #6EBFC2;
+    --light-bg-color: #F8F1DF;
+  }
+
+.fondo{
+    position: fixed;
+    background-size: 100% 100%;
+    background-image: url(/static/img/cda743136c0457323ab07c776eeb9c4f~3.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.edit-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+}
+
+.user{
+    background-color: var(--dark-bg-color);
+    border-radius: 2.5%;
+    padding: 1%;
+
+}
+
+.foto-user{
+    display: flex;
+    align-items: center;
+    font-size: 1.5vw;
+    margin-bottom: 2vw;
+}
+
+.foto-user img:hover{
+    opacity: 0.3;
+}
+
+.foto-user img{
+    width: 8.5vw;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.edit-user{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vw;
+}
+
+.edit-user h1{
+    font-size: 2vw;
+    font-weight: 500;
+}
+
+.edit-user svg{
+    width: 2.5vw;
+    margin-right: 1vw;
+}

@@ -26,7 +26,7 @@ def login_register():
 
 @app.route("/edituser")
 def edituser():
-    return render_template("edituser.html")
+    return render_template("edit-user.html")
 
 # Ruta raíz de la aplicación (index)
 @app.route("/index2", methods=["GET", "POST"])
