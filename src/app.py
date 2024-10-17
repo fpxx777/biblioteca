@@ -29,15 +29,14 @@ def login_register():
 def edituser():
     return render_template("edituser.html")
 
-@app.route("/logout")
+@app.route("/logout/", methods=["GET"])
 def logout():
     session.clear()
-    redirect("/")
+    return redirect("/")
 
 # Ruta raíz de la aplicación (index)
 @app.route("/", methods=["GET", "POST"])
 def index():
-    session.clear()
     # Obtener todos los libros
     books = Libros.get_all_limit_all(1)
     # Renderizar la plantilla index.html con la lista de libros y categorías
@@ -78,7 +77,7 @@ def categorie(category):
 
 # Ruta para mostrar información de un libro específico
 @app.route("/book/<bookid>/", methods=["GET"])
-def a(bookid):
+def book(bookid):
     book = Libros.get_book(Libros, bookid)
     # Obtener la lista de autores del libro
     authors = Autores.get_all(bookid)
@@ -97,6 +96,8 @@ def a(bookid):
 # Ruta para probar la inserción de datos
 @app.route("/test", methods=["GET", "POST"])
 def test():
+    session["id"] = 1
+    session["username"] = "fpxx"
     # Si se envía una solicitud POST, procesar la inserción de datos
     if request.method == "POST":
         # Obtener el ISBN del libro
