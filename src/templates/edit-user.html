@@ -18,38 +18,67 @@
 <body>
     <div class="fondo"></div>
     <div class="edit-container">
-        <div class="user">
+        <form class="user">
             <div class="foto-user">
-                <img src="/static/img/PhUserCircleFill (1).png">
-                <h1>User.nombre</h1>
+                <div class="photo-container">
+                    <img class="photo" src="/static/img/PhUserCircleFill (1).png">
+                    <div class="overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                            <path fill="#EE9E59"
+                                d="m225.9 74.78l-44.69-44.69a14 14 0 0 0-19.8 0L38.1 153.41a13.94 13.94 0 0 0-4.1 9.9V208a14 14 0 0 0 14 14h44.69a13.94 13.94 0 0 0 9.9-4.1L225.9 94.58a14 14 0 0 0 0-19.8M94.1 209.41a2 2 0 0 1-1.41.59H48a2 2 0 0 1-2-2v-44.69a2 2 0 0 1 .59-1.41L136 72.48L183.51 120ZM217.41 86.1L192 111.51L144.49 64l25.41-25.42a2 2 0 0 1 2.83 0l44.68 44.69a2 2 0 0 1 0 2.83" />
+                        </svg>
+                        <span>Cambiar foto</span>
+                    </div>
+                </div>
+                <label for="nameuser">User.nombre</label>
+                <input type="text" name="nameuser" value="">
+                <button class="edit-button" type="button">
+                    <svg class="icon-lapiz" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <path fill="#EE9E59"
+                            d="m225.9 74.78l-44.69-44.69a14 14 0 0 0-19.8 0L38.1 153.41a13.94 13.94 0 0 0-4.1 9.9V208a14 14 0 0 0 14 14h44.69a13.94 13.94 0 0 0 9.9-4.1L225.9 94.58a14 14 0 0 0 0-19.8M94.1 209.41a2 2 0 0 1-1.41.59H48a2 2 0 0 1-2-2v-44.69a2 2 0 0 1 .59-1.41L136 72.48L183.51 120ZM217.41 86.1L192 111.51L144.49 64l25.41-25.42a2 2 0 0 1 2.83 0l44.68 44.69a2 2 0 0 1 0 2.83" />
+                    </svg>
+                </button>
+                <button class="x" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <path fill="#EE9E59"
+                            d="M165.66 101.66L139.31 128l26.35 26.34a8 8 0 0 1-11.32 11.32L128 139.31l-26.34 26.35a8 8 0 0 1-11.32-11.32L116.69 128l-26.35-26.34a8 8 0 0 1 11.32-11.32L128 116.69l26.34-26.35a8 8 0 0 1 11.32 11.32M232 128A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88" />
+                    </svg>
+                </button>
             </div>
             <div class="edit-user">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-                    <path fill="#F8F1DF"
-                        d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64" />
-                    <path fill="#F8F1DF"
-                        d="M904 224L656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0l210.56 240.704a128 128 0 0 0 192.704 0L818.944 224z" />
-                </svg>
-                <h1>example@gmail.com</h1>
-            </div>
-            <div class="edit-user">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                    <defs>
-                        <mask id="IconifyId1928b80f79bfb861">
-                            <g fill="none" stroke-linejoin="round" stroke-width="4">
-                                <path fill="#fff" stroke="#fff" d="M5 19h38v21a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" />
-                                <path stroke="#fff" d="M5 9a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v10H5z" />
-                                <path stroke="#fff" stroke-linecap="round" d="M16 4v8m16-8v8" />
-                                <path stroke="#000" stroke-linecap="round" d="M28 34h6m-20 0h6m8-8h6m-20 0h6" />
-                            </g>
-                        </mask>
-                    </defs>
-                    <path fill="#F8F1DF" d="M0 0h48v48H0z" mask="url(#IconifyId1928b80f79bfb861)" />
-                </svg>
-                <h1> Se unio el xx/xx/xxxx</h1>
-            </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                        <path fill="#F8F1DF"
+                            d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64" />
+                        <path fill="#F8F1DF"
+                            d="M904 224L656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0l210.56 240.704a128 128 0 0 0 192.704 0L818.944 224z" />
+                    </svg>
+                    <label for="useremail">User.gmail</label>
+                    <input type="email" name="useremail" value="">
+                </div>
 
-        </div>
+            </div>
+            <div class="edit-user">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                        <defs>
+                            <mask id="IconifyId1928b80f79bfb861">
+                                <g fill="none" stroke-linejoin="round" stroke-width="4">
+                                    <path fill="#fff" stroke="#fff" d="M5 19h38v21a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" />
+                                    <path stroke="#fff" d="M5 9a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v10H5z" />
+                                    <path stroke="#fff" stroke-linecap="round" d="M16 4v8m16-8v8" />
+                                    <path stroke="#000" stroke-linecap="round" d="M28 34h6m-20 0h6m8-8h6m-20 0h6" />
+                                </g>
+                            </mask>
+                        </defs>
+                        <path fill="#F8F1DF" d="M0 0h48v48H0z" mask="url(#IconifyId1928b80f79bfb861)" />
+                    </svg>
+                    <label for="userdate">Se unio el User.date</label>
+                    <input type="date" name="userdate" id="">
+                </div>
+
+            </div>
+        </form>
     </div>
 </body>
 

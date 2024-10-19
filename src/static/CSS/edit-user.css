@@ -44,32 +44,121 @@ body {
 
 }
 
-.foto-user{
+.foto-user {
     display: flex;
     align-items: center;
-    font-size: 1.5vw;
     margin-bottom: 2vw;
+    
 }
 
-.foto-user img:hover{
-    opacity: 0.3;
+.foto-user label {
+    font-size: 3vw;
+    font-weight: 600;
 }
 
-.foto-user img{
+.foto-user input {
+    font-size: 1.5vw;
+    font-weight: 500;
+    display: none;
+}
+
+.icon-lapiz{
+    width: 3vw;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out
+}
+
+.edit-button{
+    background-color: var(--dark-bg-color);
+    margin-left: 2vw;
+    cursor: pointer;
+}
+
+.x{
+    display: none;
+}
+
+.foto-user:hover .icon-lapiz {
+    opacity: 1;
+}
+
+.photo-container {
+    position: relative;
+    display: inline-block;
+}
+
+.photo {
     width: 8.5vw;
     cursor: pointer;
     border-radius: 50%;
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    border-radius: 50%;
+    display: block;
+}
+
+.overlay svg, .overlay span {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 35%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.photo-container:hover .photo {
+    opacity: 0.3;
+}
+
+.photo-container:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.overlay svg {
+    width: 2.5vw;
+}
+
+.overlay span {
+    color: var(--contrast-bg-color);
+    font-size: 1.25vw;
+    font-weight: 600;
+    margin-left: 1.25vw;
+    display: inline-block;
+}
+
 .edit-user{
     display: flex;
     align-items: center;
+    margin-left: 0.5vw;
     margin-bottom: 2vw;
+    justify-content: space-between;
 }
 
-.edit-user h1{
+.edit-user div{
+    display: flex;
+    align-items: center;
+}
+
+.edit-user label{
     font-size: 2vw;
+    font-weight: 600;
+}
+
+.edit-user input{
+    font-size: 1.5vw;
     font-weight: 500;
+    display: none;
 }
 
 .edit-user svg{
