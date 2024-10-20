@@ -76,6 +76,17 @@ body {
 
 .x{
     display: none;
+    margin-left: 2vw;
+    cursor: pointer;
+    background-color: var(--dark-bg-color);
+}
+
+.x svg{
+    width: 3vw;
+}
+
+.enviar{
+    width: 3vw;
 }
 
 .foto-user:hover .icon-lapiz {
