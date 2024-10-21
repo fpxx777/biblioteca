@@ -115,7 +115,6 @@ body {
     margin-left: 2vw;
     cursor: pointer;
     background-color: var(--dark-bg-color);
-    display: flex;
     align-items: center;
 }
 
@@ -152,9 +151,10 @@ body {
     opacity: 1;
 }
 
-.volver-editar:hover .x h1  {
+.volver-editar:hover .x h1 {
     opacity: 1;
 }
+
 
 .photo-container {
     position: relative;
