@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Advent Pro", sans-serif;
+}
+
+body {
+    color: var(--light-bg-color);
+    background-color: var(--dark-bg-color);
+}
+
+:root {
+    --dark-bg-color: #1C1B29;
+    --dark2-bg-color: #1D2C4B;
+    --contrast-bg-color: #EE9E59;
+    --contrast2-bg-color: #6EBFC2;
+    --light-bg-color: #F8F1DF;
+}
+
+.contenedor {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#left,
+#right {
+    transition: transform 0.5s ease-in-out;
+}
+
+#left.move-right {
+    transform: translateX(-100%);
+}
+
+#right.move-left {
+    transform: translateX(  100%);
+}
+
+
+.left,
+.right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    height: 100vh;
+    z-index: 2;
+}
+
+.left img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.right {
+    background-color: var(--dark-bg-color);
+    display: block;
+    height: 100vh;
+    z-index: 1;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: var(--dark-bg-color);
+}
+
+form button {
+    
+}
+
+
+h2 {
+    margin-top: 2.5vh;
+    margin-bottom: 2vh;
+    color: var(--contrast2-bg-color);
+    font-size: 3vw;
+}
+
+.rellenar {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.rellenar label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--contrast2-bg-color);
+    font-size: 1.25vw;
+}
+
+.rellenar input {
+    width: 92.5%;
+    padding: 1vh 1vw;
+    border: 2px solid var(--light-bg-color);
+    border-radius: 8px;
+    background-color: var(--dark-bg-color);
+    color: var(--light-bg-color);
+    font-size: 1.25vw;
+}
+
+.opciones {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.25vw;
+}
+
+.opciones label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--light-bg-color);
+}
+
+.checkbox {
+    display: flex;
+}
+
+.opciones input {
+    margin-right: 10px;
+    width: 1.25vw;
+}
+
+.forgot-contraseña {
+    color: var(--contrast2-bg-color);
+    text-decoration: none;
+}
+
+button {
+    background-color: var(--contrast-bg-color);
+    color: var(--dark-bg-color);
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: var(--dark2-bg-color);
+    color: var(--contrast-bg-color);
+}
+
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    font-size: 1    vw;
+}
+
+.bottom p {
+    color: var(--contrast2-bg-color);
+}
+
+.bottom h4 {
+    color: var(--contrast-bg-color);
+    margin-left: 2.5%;
+    cursor: pointer;
+}

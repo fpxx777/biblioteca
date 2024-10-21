@@ -20,6 +20,10 @@ app.secret_key = "P4S$W0rd"
 bcrypt = Bcrypt(app)
 
 
+@app.route("/register&login")
+def register_login():
+    return render_template("register&login.html")
+
 @app.route("/login&register")
 def login_register():
     return render_template("login&register.html")

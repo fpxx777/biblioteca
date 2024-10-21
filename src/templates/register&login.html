@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/register&login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="right" id="right">
+            <div class="top" id="form-container">
+                <form id="signup-form">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2.5vw" viewBox="0 0 256 256" class="logo">
+                        <path fill="#F8F1DF"
+                            d="M208 20H72a36 36 0 0 0-36 36v168a12 12 0 0 0 12 12h144a12 12 0 0 0 0-24H60v-4a12 12 0 0 1 12-12h136a12 12 0 0 0 12-12V32a12 12 0 0 0-12-12m-88 24h36v59l-10.51-8.41a12 12 0 0 0-15 0L120 103Zm76 128H72a35.6 35.6 0 0 0-12 2.06V56a12 12 0 0 1 12-12h24v84a12 12 0 0 0 19.5 9.37l22.49-18l22.51 18A12 12 0 0 0 180 128V44h16Z" />
+                    </svg>
+                    <h2 style="color:var(--contrast-bg-color)">Crea tu cuenta</h2>
+                    <div class="rellenar">
+                        <label for="email" style="color:var(--contrast-bg-color)">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="rellenar">
+                        <label for="username" style="color:var(--contrast-bg-color)">Nombre usuario</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="rellenar">
+                        <label for="password" style="color:var(--contrast-bg-color)">Contraseña</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="rellenar">
+                        <label for="confirm-password" style="color:var(--contrast-bg-color)">Confirma tu
+                            contraseña</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <button type="submit" ;>Crear Cuenta</button>
+                </form>
+            </div>
+            <div class="bottom">
+                <p id="cambio-p" style="display: none; color: #6EBFC2;">¿Aún no tienes cuenta?</p>
+                <p id="volver-p" style="color: #EE9E59;">¿Ya tienes una cuenta?</p>
+                <h4 class="cambiar" id="cambiar" style="display: none; color: #EE9E59;">Crear cuenta</h4>
+                <h4 class="volver" id="volver" style="color: #6EBFC2;">Volver a Iniciar Sesión</h4>
+            </div>
+        </div>
+        <div class="left" id="left">
+            <img src="/static/img/390c94faa66a0ac5d34fe0003f693b36.jpg">
+        </div>
+
+    </div>
+
+</body>
+
+<script src="{{ url_for('static', filename='JS/register&login.js') }}"></script>
+
+</html>
