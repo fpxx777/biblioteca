@@ -14,10 +14,10 @@ body {
     --contrast-bg-color: #EE9E59;
     --contrast2-bg-color: #6EBFC2;
     --light-bg-color: #F8F1DF;
-  }
+}
 
 
-.fondo{
+.fondo {
     position: fixed;
     background-size: 100% 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/static/img/cda743136c0457323ab07c776eeb9c4f~3.jpg);
@@ -27,7 +27,7 @@ body {
     z-index: 1;
 }
 
-.edit-container{
+.edit-container {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -38,116 +38,130 @@ body {
     background-size: 100%;
 }
 
-.user{
+.user {
     background-color: var(--dark-bg-color);
     border-radius: 2.5%;
-    padding: 1%;
+    padding: 2vw;
     width: 35%;
 
 }
 
-.volver-editar{
+.volver-editar {
     display: flex;
     justify-content: space-between;
-    align-items: center ;
+    align-items: center;
 }
 
-.volver{
+.volver {
     display: flex;
     align-items: center;
 }
 
-.volver a{
+.volver a {
     font-size: 1.5vw;
     font-weight: 500;
     text-decoration: none;
     color: var(--contrast-bg-color);
 }
 
-.volver svg{
-    width: 1.5vw;
+.volver a:hover {
+    color: var(--contrast2-bg-color);
 }
 
-.editar{
-    
+.volver svg {
+    transform: scaleX(-1);
+    width: 1.5vw;
+    margin-right: 2vw;
 }
 
 .foto-user {
     display: flex;
     align-items: center;
     margin-bottom: 2vw;
-    
-}
-
-.foto-user label {
-    font-size: 3vw;
-    font-weight: 600;
-}
-
-.foto-user input {
-    font-size: 1.5vw;
-    font-weight: 500;
-    display: none;
+    justify-content: center;
+    margin-top: 2vw;
 }
 
 
-.icon-lapiz{
+.icon-lapiz {
     width: 3vw;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out
+    transition: opacity 0.3s ease-in-out;
 }
 
-.edit-button{
+.edit-button {
     background-color: var(--dark-bg-color);
     margin-left: 2vw;
+    width: 8vw;
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
 }
 
-.edit-button h1{
+.edit-button h1 {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    color: var(--contrast-bg-color);
+    margin-left: 1vw;
 }
 
-.x{
+.x {
     display: none;
+    width: 9vw;
     margin-left: 2vw;
     cursor: pointer;
     background-color: var(--dark-bg-color);
     align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
 }
 
-.x svg{
+.x svg {
     width: 3vw;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
 
-.x h1{
+.x h1 {
     width: 3vw;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    color: var(--contrast-bg-color);
+    margin-left: 1vw;
 }
 
-.enviar{
-    font-size: 1.75vw;
-    width: 12vw;
+.enviar {
+    font-size: 1.25vw;
+    width: 11vw;
     font-weight: 600;
     margin-left: 0.5vw;
-    background-color: var(--dark-bg-color);
+    background-color: var(--contrast-bg-color);
     color: var(--light-bg-color);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 1vh 0vw;
 }
 
-.volver-editar:hover .icon-lapiz{
+.enviar:hover {
+    color: var(--dark2-bg-color);
+    background-color: var(--contrast2-bg-color);
+}
+
+.volver-editar:hover .icon-lapiz {
     opacity: 1;
 }
 
-.volver-editar:hover .edit-button h1{
+.volver-editar:hover .edit-button h1 {
     opacity: 1;
 }
 
-.volver-editar:hover .x svg  {
+.volver-editar:hover .x svg {
     opacity: 1;
 }
 
@@ -158,60 +172,32 @@ body {
 
 .photo-container {
     position: relative;
-    display: inline-block;
-}
-
-.photo {
-    width: 8.5vw;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .3s ease;
-    border-radius: 50%;
-    display: block;
-}
-
-.overlay svg, .overlay span {
-    display: block;
-    margin: auto;
-    position: relative;
-    top: 35%;
-    transform: translateY(-50%);
     text-align: center;
 }
 
-.photo-container:hover .photo {
+.photo-container h1 {
+    font-size: 1.25vw;
+    color: var(--contrast-bg-color);
+    cursor: pointer;
+    font-weight: 500;
+
+}
+
+.photo-container h1:hover {
+    color: rgb(255, 189, 103);
+}
+
+.photo {
+    width: 9vw;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.photo:hover {
     opacity: 0.3;
 }
 
-.photo-container:hover .overlay {
-    opacity: 1;
-    cursor: pointer;
-}
-
-.overlay svg {
-    width: 2.5vw;
-}
-
-.overlay span {
-    color: var(--contrast-bg-color);
-    font-size: 1.25vw;
-    font-weight: 600;
-    margin-left: 1.25vw;
-    display: inline-block;
-}
-
-.edit-user{
+.edit-user {
     display: flex;
     align-items: center;
     margin-left: 0.5vw;
@@ -219,23 +205,39 @@ body {
     justify-content: space-between;
 }
 
-.edit-user div{
+.edit-user div {
     display: flex;
     align-items: center;
 }
 
-.edit-user label{
-    font-size: 2vw;
+.edit-user label {
+    font-size: 1.25vw;
     font-weight: 600;
 }
 
-.edit-user input{
-    font-size: 1.5vw;
+.edit-user input {
+    font-size: 1.25vw;
     font-weight: 500;
     display: none;
+    border-style: solid;
+    border-color: var(--dark-bg-color) var(--light-bg-color) var(--light-bg-color) var(--dark-bg-color);
+    border-radius: 0 0 5px 0;
+
+    background-color: var(--dark-bg-color);
+    color: var(--light-bg-color);
 }
 
-.edit-user svg{
-    width: 2.5vw;
+.edit-user input::placeholder {
+    background-color: var(--dark-bg-color);
+    color: var(--light-bg-color)
+}
+
+.edit-user svg {
+    width: 1.5vw;
     margin-right: 1vw;
+}
+
+.centrar-enviar {
+    display: flex;
+    justify-content: center;
 }

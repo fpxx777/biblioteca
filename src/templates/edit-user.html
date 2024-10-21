@@ -24,7 +24,7 @@
                 <div class="volver">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 256 256">
                         <g fill="#EE9E59">
-                            <path d="m176 104l-48 48V56Z" opacity=".2" />
+                            <path d="m176 104l-48 48V56Z" opacity="2" />
                             <path
                                 d="m229.66 109.66l-48 48a8 8 0 0 1-11.32-11.32L212.69 104l-42.35-42.34a8 8 0 0 1 11.32-11.32l48 48a8 8 0 0 1 0 11.32m-48 0l-48 48A8 8 0 0 1 120 152v-39.63A88.11 88.11 0 0 0 40 200a8 8 0 0 1-16 0a104.15 104.15 0 0 1 96-103.7V56a8 8 0 0 1 13.66-5.66l48 48a8 8 0 0 1 0 11.32m-17-5.66L136 75.31v57.38Z" />
                         </g>
@@ -53,19 +53,11 @@
                         </h1>
                     </button>
                 </div>
-
             </div>
             <div class="foto-user">
-
                 <div class="photo-container">
                     <img class="photo" src="/static/img/PhUserCircleFill (1).png">
-                    <div class="overlay">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                            <path fill="#EE9E59"
-                                d="m225.9 74.78l-44.69-44.69a14 14 0 0 0-19.8 0L38.1 153.41a13.94 13.94 0 0 0-4.1 9.9V208a14 14 0 0 0 14 14h44.69a13.94 13.94 0 0 0 9.9-4.1L225.9 94.58a14 14 0 0 0 0-19.8M94.1 209.41a2 2 0 0 1-1.41.59H48a2 2 0 0 1-2-2v-44.69a2 2 0 0 1 .59-1.41L136 72.48L183.51 120ZM217.41 86.1L192 111.51L144.49 64l25.41-25.42a2 2 0 0 1 2.83 0l44.68 44.69a2 2 0 0 1 0 2.83" />
-                        </svg>
-                        <span>Cambiar foto</span>
-                    </div>
+                    <h1>Cambiar foto</h1>
                 </div>
             </div>
             <div class="edit-user">
@@ -81,13 +73,12 @@
             <div class="edit-user">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-                        <path fill="#F8F1DF"
+                        <path fill="#EE9E59"
                             d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64" />
-                        <path fill="#F8F1DF"
+                        <path fill="#EE9E59"
                             d="M904 224L656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0l210.56 240.704a128 128 0 0 0 192.704 0L818.944 224z" />
                     </svg>
                     <label for="useremail">User.gmail</label>
-                    <input type="email" name="useremail" placeholder="User.gmail" value="">
                 </div>
             </div>
             <div class="edit-user">
@@ -103,13 +94,15 @@
                                 </g>
                             </mask>
                         </defs>
-                        <path fill="#F8F1DF" d="M0 0h48v48H0z" mask="url(#IconifyId1928b80f79bfb861)" />
+                        <path fill="#EE9E59" d="M0 0h48v48H0z" mask="url(#IconifyId1928b80f79bfb861)" />
                     </svg>
                     <label for="userdate">Se unio el User.date</label>
-                    <input type="date" name="userdate" id="">
                 </div>
             </div>
-            <button class="enviar" type="submit" style="display: none;">Actualizar datos</button>
+            <div class="centrar-enviar">
+                <button class="enviar" type="submit" style="display: none;">Actualizar datos</button>
+            </div>
+            
         </form>
     </div>
 </body>
@@ -119,13 +112,13 @@
         document.querySelectorAll('.edit-user input, .foto-user input').forEach(input => input.style.display = 'block');
         document.querySelector('.edit-button').style.display = 'none';
         document.querySelector('.x').style.display = 'flex';
-        document.querySelector('.enviar').style.display = 'block';
+        document.querySelector('.enviar').style.display = 'flex';
     });
 
     document.querySelector('.x').addEventListener('click', function () {
         document.querySelectorAll('.edit-user label, .foto-user label').forEach(label => label.style.display = 'block');
         document.querySelectorAll('.edit-user input, .foto-user input').forEach(input => input.style.display = 'none');
-        document.querySelector('.edit-button').style.display = 'block';
+        document.querySelector('.edit-button').style.display = 'flex';
         document.querySelector('.x').style.display = 'none';
         document.querySelector('.enviar').style.display = 'none';
     });
