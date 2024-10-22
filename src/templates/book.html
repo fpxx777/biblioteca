@@ -176,9 +176,9 @@
             </div>
           </div>
           {% if session %}
-            <form action="/favorites/add/" method="POST"></form>
+            <form action="/favorites/add/" method="POST">
           {% else %}
-            <form action="/login&register" method="POST"></form>
+            <form action="/login&register" method="GET">
           {% endif %}
             <input type="hidden" name="id-book" value="{{book[0].id_libro}}" />
             <button class="favorite-button">
