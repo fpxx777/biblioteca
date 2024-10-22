@@ -64,14 +64,11 @@ body {
     color: var(--contrast-bg-color);
 }
 
-.volver a:hover {
-    color: var(--contrast2-bg-color);
-}
-
 .volver svg {
     transform: scaleX(-1);
     width: 1.5vw;
     margin-right: 2vw;
+    fill: var(--contrast-bg-color);
 }
 
 .foto-user {
@@ -84,9 +81,8 @@ body {
 
 
 .icon-lapiz {
-    width: 3vw;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    width: 2vw;
+    fill: var(--contrast-bg-color);
 }
 
 .edit-button {
@@ -102,10 +98,10 @@ body {
 }
 
 .edit-button h1 {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
     color: var(--contrast-bg-color);
     margin-left: 1vw;
+    font-size: 1.75vw;
+    font-weight: 600;
 }
 
 .x {
@@ -121,17 +117,39 @@ body {
 }
 
 .x svg {
-    width: 3vw;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    width: 2vw;
+    fill: var(--contrast-bg-color);
 }
 
 .x h1 {
-    width: 3vw;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    font-size: 1.75vw;
     color: var(--contrast-bg-color);
     margin-left: 1vw;
+    font-weight: 600;
+}
+
+.volver:hover svg{
+    fill: var(--contrast2-bg-color);
+}
+
+.volver:hover a{
+    color: var(--contrast2-bg-color);
+}
+
+.edit-button:hover .icon-lapiz {
+    fill: var(--contrast2-bg-color)
+}
+
+.edit-button:hover h1 {
+    color: var(--contrast2-bg-color);
+}
+
+.x:hover svg {
+    fill: var(--contrast2-bg-color)
+}
+
+.x:hover h1 {
+    color: var(--contrast2-bg-color);
 }
 
 .enviar {
@@ -153,22 +171,6 @@ body {
     background-color: var(--contrast2-bg-color);
 }
 
-.volver-editar:hover .icon-lapiz {
-    opacity: 1;
-}
-
-.volver-editar:hover .edit-button h1 {
-    opacity: 1;
-}
-
-.volver-editar:hover .x svg {
-    opacity: 1;
-}
-
-.volver-editar:hover .x h1 {
-    opacity: 1;
-}
-
 
 .photo-container {
     position: relative;
@@ -180,11 +182,14 @@ body {
     color: var(--contrast-bg-color);
     cursor: pointer;
     font-weight: 500;
-
 }
 
-.photo-container h1:hover {
+.photo-container:hover h1 {
     color: rgb(255, 189, 103);
+}
+
+.photo-container:hover .photo {
+    opacity: 0.3;
 }
 
 .photo {
@@ -193,9 +198,6 @@ body {
     border-radius: 50%;
 }
 
-.photo:hover {
-    opacity: 0.3;
-}
 
 .edit-user {
     display: flex;
@@ -235,6 +237,7 @@ body {
 .edit-user svg {
     width: 1.5vw;
     margin-right: 1vw;
+    fill: var(--contrast-bg-color);
 }
 
 .centrar-enviar {

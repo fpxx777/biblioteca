@@ -1,190 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static',filename='CSS/book.css') }}"
-    />
-    <link rel="shortcut icon" href="/static/img/logo.png" />
-    <title>BiblioNauta</title>
-    <!-- fuente link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <!-- parte derecha al darle click icono -->
-    <div class="overlay hidden visuallyhidden" id="overlay"></div>
-    <div class="login-container hidden visuallyhidden" id="login-container">
-      <div class="align-login-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-          <path
-            fill="#F8F1DF"
-            d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
-          />
-        </svg>
-        <a href="#" class="login-button">Iniciar Sesión</a>
-        <p>
-          No tienes cuenta? <a href="#" class="register-button">Regístrate</a>
-        </p>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}" />
+  <link rel="shortcut icon" href="/static/img/logo.png" />
+  <title>BiblioNauta</title>
+  <!-- fuente link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!-- parte derecha al darle click icono -->
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  <div class="login-container hidden visuallyhidden" id="login-container">
+    <div class="align-login-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <path fill="#F8F1DF"
+          d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
+      </svg>
+      <a href="#" class="login-button">Iniciar Sesión</a>
+      <p>
+        No tienes cuenta? <a href="#" class="register-button">Regístrate</a>
+      </p>
     </div>
+  </div>
 
-    <header class="header">
-      <div>
-        <img src="/static/img/logo.png" alt="" />
-        <a href="/">
-          <h1>BIBLIONAUTA</h1>
-        </a>
-      </div>
-      <form action="/search" method="get">
-        <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 48 48">
-          <defs>
-            <mask id="IconifyId191010337f1eb1ccc5">
-              <g
-                fill="none"
-                stroke="#fff"
-                stroke-linejoin="round"
-                stroke-width="4"
-              >
-                <path
-                  fill="#555"
-                  d="M21 38c9.389 0 17-7.611 17-17S30.389 4 21 4S4 11.611 4 21s7.611 17 17 17Z"
-                />
-                <path
-                  stroke-linecap="round"
-                  d="M26.657 14.343A7.975 7.975 0 0 0 21 12a7.975 7.975 0 0 0-5.657 2.343m17.879 18.879l8.485 8.485"
-                />
-              </g>
-            </mask>
-          </defs>
-          <path
-            fill="#"
-            d="M0 0h48v48H0z"
-            mask="url(#IconifyId191010337f1eb1ccc5)"
-          />
+  <header class="header">
+    <div>
+      <img src="/static/img/logo.png" alt="" />
+      <a href="/">
+        <h1>BIBLIONAUTA</h1>
+      </a>
+    </div>
+    <form action="/search" method="get">
+      <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 48 48">
+        <defs>
+          <mask id="IconifyId191010337f1eb1ccc5">
+            <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+              <path fill="#555" d="M21 38c9.389 0 17-7.611 17-17S30.389 4 21 4S4 11.611 4 21s7.611 17 17 17Z" />
+              <path stroke-linecap="round"
+                d="M26.657 14.343A7.975 7.975 0 0 0 21 12a7.975 7.975 0 0 0-5.657 2.343m17.879 18.879l8.485 8.485" />
+            </g>
+          </mask>
+        </defs>
+        <path fill="#" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
+      </svg>
+      <input type="text" placeholder="Busca algun libro..." name="search" id="search" />
+    </form>
+    <ul>
+      <li>
+        <a class="inicio" href="/">Info</a>
+      </li>
+      <li>
+        <a href="/categories">Categorias</a>
+      </li>
+      <li>
+        <a class="info" href="#">Inicio</a>
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256" id="user-icon">
+          <path fill="#F8F1DF"
+            d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
         </svg>
-        <input
-          type="text"
-          placeholder="Busca algun libro..."
-          name="search"
-          id="search"
-        />
-      </form>
-      <ul>
-        <li>
-          <a class="inicio" href="/">Info</a>
-        </li>
-        <li>
-          <a href="/categories">Categorias</a>
-        </li>
-        <li>
-          <a class="info" href="#">Inicio</a>
-        </li>
-        <li>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="128"
-            height="128"
-            viewBox="0 0 256 256"
-            id="user-icon"
-          >
-            <path
-              fill="#F8F1DF"
-              d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
-            />
-          </svg>
-        </li>
-      </ul>
-    </header>
+      </li>
+    </ul>
+  </header>
 
-    <main>
+  <main>
+    <div>
+      <img src="{{book[0].imagen}}" class="titulo_imagen" />
+      <div class="libro-titulo">{{book[0].titulo}}</div>
+    </div>
+    <div class="description-space">
+      <h1 class="description-h1">Descripcion</h1>
+      <p class="description-p">{{book[0].descripcion}}</p>
       <div>
-        <img src="{{book[0].imagen}}" class="titulo_imagen" />
-        <div class="libro-titulo">{{book[0].titulo}}</div>
-      </div>
-      <div class="description-space">
-        <h1 class="description-h1">Descripcion</h1>
-        <p class="description-p">{{book[0].descripcion}}</p>
-        <div>
-          <div class="descripcion-sub">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 256 256"
-            >
-              <path
-                fill="#F8F1DF"
-                d="M208 36h-28V24a4 4 0 0 0-8 0v12H84V24a4 4 0 0 0-8 0v12H48a12 12 0 0 0-12 12v160a12 12 0 0 0 12 12h160a12 12 0 0 0 12-12V48a12 12 0 0 0-12-12M48 44h28v12a4 4 0 0 0 8 0V44h88v12a4 4 0 0 0 8 0V44h28a4 4 0 0 1 4 4v36H44V48a4 4 0 0 1 4-4m160 168H48a4 4 0 0 1-4-4V92h168v116a4 4 0 0 1-4 4m-100-92v64a4 4 0 0 1-8 0v-57.53l-10.21 5.11a4 4 0 0 1-3.58-7.16l16-8A4 4 0 0 1 108 120m60 28l-24 32h24a4 4 0 0 1 0 8h-32a4 4 0 0 1-3.2-6.4l28.78-38.37A11.88 11.88 0 0 0 164 136a12 12 0 0 0-22.4-6a4 4 0 0 1-6.92-4A20 20 0 0 1 172 136a19.8 19.8 0 0 1-4 12"
-              />
+        <div class="descripcion-sub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+            <path fill="#F8F1DF"
+              d="M208 36h-28V24a4 4 0 0 0-8 0v12H84V24a4 4 0 0 0-8 0v12H48a12 12 0 0 0-12 12v160a12 12 0 0 0 12 12h160a12 12 0 0 0 12-12V48a12 12 0 0 0-12-12M48 44h28v12a4 4 0 0 0 8 0V44h88v12a4 4 0 0 0 8 0V44h28a4 4 0 0 1 4 4v36H44V48a4 4 0 0 1 4-4m160 168H48a4 4 0 0 1-4-4V92h168v116a4 4 0 0 1-4 4m-100-92v64a4 4 0 0 1-8 0v-57.53l-10.21 5.11a4 4 0 0 1-3.58-7.16l16-8A4 4 0 0 1 108 120m60 28l-24 32h24a4 4 0 0 1 0 8h-32a4 4 0 0 1-3.2-6.4l28.78-38.37A11.88 11.88 0 0 0 164 136a12 12 0 0 0-22.4-6a4 4 0 0 1-6.92-4A20 20 0 0 1 172 136a19.8 19.8 0 0 1-4 12" />
+          </svg>
+          <div>
+            <h1 class="description-h1-fecha">
+              Fecha de publicacion: {{book[0].fecha_publicacion}}
+            </h1>
+            <p class="description-p">{{book[0].paginas}} paginas</p>
+          </div>
+        </div>
+        <div class="descripcion-sub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+            <path fill="#F8F1DF"
+              d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z" />
+          </svg>
+          <div>
+            <h1 class="description-h1-género">Género</h1>
+            <p class="description-p">{{ ', '.join(categories)}}</p>
+          </div>
+        </div>
+        <form action="/favorites/add/" method="POST">
+          <input type="hidden" name="id-book" value="{{book[0].id_libro}}" />
+          <button class="favorite-button">
+            {% if is_book == True %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+              <path fill="#1C1B29"
+                d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m0 152.46L176 165V72a16 16 0 0 0-16-16H96V40h96Z" />
             </svg>
             <div>
-              <h1 class="description-h1-fecha">
-                Fecha de publicacion: {{book[0].fecha_publicacion}}
-              </h1>
-              <p class="description-p">{{book[0].paginas}} paginas</p>
-            </div>
-          </div>
-          <div class="descripcion-sub">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 256 256"
-            >
-              <path
-                fill="#F8F1DF"
-                d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z"
-              />
-            </svg>
-            <div>
-              <h1 class="description-h1-género">Género</h1>
-              <p class="description-p">{{ ', '.join(categories)}}</p>
-            </div>
-          </div>
-          <form action="/favorites/add/" method="POST">
-            <input type="hidden" name="id-book" value="{{book[0].id_libro}}" />
-            <button class="favorite-button">
-              {% if is_book == True %} 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="128"
-                height="128"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  fill="#1C1B29"
-                  d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m0 152.46L176 165V72a16 16 0 0 0-16-16H96V40h96Z"
-                />
-              </svg>
-              <div>
-                <h1 class="description-h1-género">Eliminar de favoritos</h1>
+              <h1 class="description-h1-género">Eliminar de favoritos</h1>
               {% else %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256"><g fill="#1C1B29"><path d="M200 40v152l-32-22.85V72a8 8 0 0 0-8-8H88V40a8 8 0 0 1 8-8h96a8 8 0 0 1 8 8" opacity=".2"/><path d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m-32 184.46l-43.36-31a8 8 0 0 0-9.3 0L64 208.45V72h96Zm32-32L176 165V72a16 16 0 0 0-16-16H96V40h96Z"/></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+                <g fill="#1C1B29">
+                  <path d="M200 40v152l-32-22.85V72a8 8 0 0 0-8-8H88V40a8 8 0 0 1 8-8h96a8 8 0 0 1 8 8" opacity=".2" />
+                  <path
+                    d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m-32 184.46l-43.36-31a8 8 0 0 0-9.3 0L64 208.45V72h96Zm32-32L176 165V72a16 16 0 0 0-16-16H96V40h96Z" />
+                </g>
+              </svg>
               <div>
                 <h1 class="description-h1-género">Agregar a favoritos</h1>
                 {% endif %}
               </div>
-            </button>
-          </form>
-          <div>
-            <h1 class="description-h1">Autores</h1>
-            <h1 class="description-h1">{{ ', '.join(authors)}}</h1>
-          </div>
+          </button>
+        </form>
+        <div>
+          <h1 class="description-h1">Autores</h1>
+          <h1 class="description-h1">{{ ', '.join(authors)}}</h1>
         </div>
       </div>
-      <div>
-        <h1 class="description-h1">Libros similares</h1>
-      </div>
-    </main>
-    <!--
+    </div>
+    <div>
+      <h1 class="description-h1">Libros similares</h1>
+    </div>
+  </main>
+  <!--
     <main>
         <div class="title">
             <h1>{{book[0].titulo}}</h1>
@@ -212,53 +165,33 @@
         </div>
     </main>
         -->
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>
-        <ul class="social-media">
-          <li>
-            <a href="#" target="_blank"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="4vw"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="#1C1B29"
-                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"
-                /></svg
-            ></a>
-          </li>
-          <li>
-            <a href="#" target="_blank"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="4vw"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="#1C1B29"
-                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"
-                /></svg
-            ></a>
-          </li>
-          <li>
-            <a href="#" target="_blank"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="4vw"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="#1C1B29"
-                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
-                /></svg
-            ></a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  </body>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>
+      <ul class="social-media">
+        <li>
+          <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="4vw" viewBox="0 0 24 24">
+              <path fill="#1C1B29"
+                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="4vw" viewBox="0 0 24 24">
+              <path fill="#1C1B29"
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="4vw" viewBox="0 0 24 24">
+              <path fill="#1C1B29"
+                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
+            </svg></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
 
-  <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+
 </html>
