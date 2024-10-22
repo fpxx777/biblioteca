@@ -46,6 +46,18 @@ body {
 
 }
 
+#centrar-user {
+    transition: transform 0.5s ease-in-out;
+}
+
+#centrar-user.move-left {
+    transform: translateX(-25%);
+}
+
+#centrar-user.move-center {
+    transform: translateX(100%);
+}
+
 .volver-editar {
     display: flex;
     justify-content: space-between;
@@ -128,11 +140,11 @@ body {
     font-weight: 600;
 }
 
-.volver:hover svg{
+.volver:hover svg {
     fill: var(--contrast2-bg-color);
 }
 
-.volver:hover a{
+.volver:hover a {
     color: var(--contrast2-bg-color);
 }
 
