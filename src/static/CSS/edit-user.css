@@ -43,6 +43,8 @@ body {
     border-radius: 2.5%;
     padding: 2vw;
     width: 35%;
+    transition: height .5s;
+    interpolate-size: allow-keywords;
 
 }
 
@@ -51,11 +53,11 @@ body {
 }
 
 #centrar-user.move-left {
-    transform: translateX(-25%);
+    transform: translateX(0%);
 }
 
 #centrar-user.move-center {
-    transform: translateX(100%);
+    transform: translateX(60%);
 }
 
 .volver-editar {
@@ -226,7 +228,7 @@ body {
 
 .edit-user label {
     font-size: 1.25vw;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .edit-user input {
@@ -236,7 +238,6 @@ body {
     border-style: solid;
     border-color: var(--dark-bg-color) var(--light-bg-color) var(--light-bg-color) var(--dark-bg-color);
     border-radius: 0 0 5px 0;
-
     background-color: var(--dark-bg-color);
     color: var(--light-bg-color);
 }
