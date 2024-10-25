@@ -38,6 +38,10 @@ body {
 }
 
 
+.hidden {
+    visibility: hidden;
+}
+
 .left,
 .right {
     width: 50%;
