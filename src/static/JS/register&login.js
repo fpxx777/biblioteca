@@ -1,60 +1,59 @@
 document.addEventListener('DOMContentLoaded', function () {
     const params = new URLSearchParams(window.location.search);
     const formType = params.get('form');
-    
+
     if (formType === 'login') {
-      changeForm('login');
-      document.getElementById('left').style.transition = 'none';
-      document.getElementById('right').style.transition = 'none';
-      document.getElementById('left').classList.add('move-right');
-      document.getElementById('right').classList.add('move-left');
-      document.getElementById('cambio-p').style.display = 'block';
-      document.getElementById('volver-p').style.display = 'none';
-      document.getElementById('volver').style.display = 'none';
-      document.getElementById('cambiar').style.display = 'block';
-  
-      // Restablecer transiciones después de cambiar el formulario
-      setTimeout(function () {
+        changeForm('login');
+        document.getElementById('left').style.transition = 'none';
+        document.getElementById('right').style.transition = 'none';
+        document.getElementById('left').classList.add('move-right');
+        document.getElementById('right').classList.add('move-left');
+        document.getElementById('cambio-p').style.display = 'block';
+        document.getElementById('volver-p').style.display = 'none';
+        document.getElementById('volver').style.display = 'none';
+        document.getElementById('cambiar').style.display = 'block';
+
+        setTimeout(function () {
+            document.getElementById('left').style.transition = 'transform 0.5s ease-in-out';
+            document.getElementById('right').style.transition = 'transform 0.5s ease-in-out';
+        }, 0);
+    } else if (formType === 'signup') {
+        changeForm('signup');
+    }
+
+    document.getElementById('volver').addEventListener('click', function () {
+        document.getElementById('left').classList.add('move-right');
+        document.getElementById('right').classList.add('move-left');
         document.getElementById('left').style.transition = 'transform 0.5s ease-in-out';
         document.getElementById('right').style.transition = 'transform 0.5s ease-in-out';
-      }, 0);
-    } else if (formType === 'signup') {
-      changeForm('signup');
-    }
-  
-    document.getElementById('volver').addEventListener('click', function () {
-      document.getElementById('left').classList.add('move-right');
-      document.getElementById('right').classList.add('move-left');
-      document.getElementById('left').style.transition = 'transform 0.5s ease-in-out';
-      document.getElementById('right').style.transition = 'transform 0.5s ease-in-out';
-      document.getElementById('cambiar').style.display = 'block';
-      document.getElementById('volver').style.display = 'none';
-      document.getElementById('cambio-p').style.display = 'block';
-      document.getElementById('volver-p').style.display = 'none';
-  
-      setTimeout(() => {
-        changeForm('login');
-      }, 250);
+        document.getElementById('cambiar').style.display = 'block';
+        document.getElementById('volver').style.display = 'none';
+        document.getElementById('cambio-p').style.display = 'block';
+        document.getElementById('volver-p').style.display = 'none';
+
+        setTimeout(() => {
+            changeForm('login');
+        }, 250);
     });
-  
+
     document.getElementById('cambiar').addEventListener('click', function () {
-      document.getElementById('left').classList.remove('move-right');
-      document.getElementById('right').classList.remove('move-left');
-      document.getElementById('volver').style.display = 'block';
-      document.getElementById('cambiar').style.display = 'none';
-      document.getElementById('cambio-p').style.display = 'none';
-      document.getElementById('volver-p').style.display = 'block';
-  
-      setTimeout(() => {
-        changeForm('signup');
-      }, 250);
+        document.getElementById('left').classList.remove('move-right');
+        document.getElementById('right').classList.remove('move-left');
+        document.getElementById('volver').style.display = 'block';
+        document.getElementById('cambiar').style.display = 'none';
+        document.getElementById('cambio-p').style.display = 'none';
+        document.getElementById('volver-p').style.display = 'block';
+
+        setTimeout(() => {
+            changeForm('signup');
+        }, 250);
     });
-  });
-  
-  function changeForm(type) {
+});
+
+function changeForm(type) {
     const formContainer = document.getElementById('form-container');
     if (type === 'login') {
-      formContainer.innerHTML = `
+        formContainer.innerHTML = `
         <form id="login-form">
           <svg xmlns="http://www.w3.org/2000/svg" width="2.5vw" viewBox="0 0 256 256" class="logo">
             <path fill="#F8F1DF"
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </form>
       `;
     } else {
-      formContainer.innerHTML = `
+        formContainer.innerHTML = `
         <form id="signup-form">
           <svg xmlns="http://www.w3.org/2000/svg" width="2.5vw" viewBox="0 0 256 256" class="logo">
             <path fill="#F8F1DF"
@@ -117,5 +116,4 @@ document.addEventListener('DOMContentLoaded', function () {
         </form>
       `;
     }
-  }
-  
+}
