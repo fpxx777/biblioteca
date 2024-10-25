@@ -43,9 +43,6 @@ body {
     border-radius: 2.5%;
     padding: 2vw;
     width: 35%;
-    transition: height .5s;
-    interpolate-size: allow-keywords;
-
 }
 
 #centrar-user {
@@ -166,6 +163,20 @@ body {
     color: var(--contrast2-bg-color);
 }
 
+#fijo, #fijo2 {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#fijo.hidden, #fijo2.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#fijo.visible, #fijo2.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
 .enviar {
     font-size: 1.25vw;
     width: 11vw;
@@ -178,6 +189,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 1vh 0vw;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .enviar:hover {
@@ -185,6 +197,15 @@ body {
     background-color: var(--contrast2-bg-color);
 }
 
+.enviar.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.enviar.visible {
+    opacity: 1;
+    visibility: visible;
+}
 
 .photo-container {
     position: relative;
