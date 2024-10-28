@@ -8,6 +8,7 @@ from models.generos import Generos  # Modelo para géneros
 from models.autores import Autores  # Modelo para autores
 from models.insert import Insert  # Modelo para inserción de datos
 from models.favorites import Favoritos
+from models.usuarios import Usuarios
 
 # Importar función para obtener información de un libro a partir de su ISBN
 from prueba import get_book_info  # Función para obtener información de un libro
@@ -20,35 +21,26 @@ app.secret_key = "P4S$W0rd"
 bcrypt = Bcrypt(app)
 
 
-@app.route("/register&login")
-def register_login():
-    return render_template("register&login.html")
-
-@app.route("/login&register")
+@app.route("/login&register", methods=["GET"])
 def login_register():
     return render_template("login&register.html")
 
 @app.route("/edituser")
 def edituser():
-    return render_template("edit-user.html")
+    return render_template("edituser.html")
 
-# Ruta raíz de la aplicación (index)
-@app.route("/index2", methods=["GET", "POST"])
-def index2():
-    # Obtener todos los libros
-    books = Libros.get_all_limit_all(1)
-    # Renderizar la plantilla index.html con la lista de libros y categorías
-    return render_template("index2.html", books=books)
+@app.route("/logout/", methods=["GET"])
+def logout():
+    session.clear()
+    return redirect("/")
 
 # Ruta raíz de la aplicación (index)
 @app.route("/", methods=["GET", "POST"])
 def index():
-    session["id"] = 1
-    session["username"] = "Admin"
     # Obtener todos los libros
     books = Libros.get_all_limit_all(1)
     # Renderizar la plantilla index.html con la lista de libros y categorías
-    return render_template("index.html", books=books)
+    return render_template("index.html", books=books, session=session)
 
 # Ruta para búsqueda de libros
 @app.route("/search/", methods=["GET", "POST"])
@@ -85,25 +77,27 @@ def categorie(category):
 
 # Ruta para mostrar información de un libro específico
 @app.route("/book/<bookid>/", methods=["GET"])
-def a(bookid):
-    # Obtener el libro específico
-    is_book = Favoritos.verify_book(bookid, session["id"])
-    if len(is_book) > 0:
-        is_book = True
-    else:
-        is_book = False
+def book(bookid):
     book = Libros.get_book(Libros, bookid)
     # Obtener la lista de autores del libro
     authors = Autores.get_all(bookid)
     # Obtener la categoría del libro
     categories = Generos.get_category(Generos, bookid)
-    print(categories)  # Imprimir la categoría del libro para depuración
-    # Renderizar la plantilla book.html con la información del libro
-    return render_template("book.html", book=book, authors=authors, categories=categories, is_book=is_book)
+    if session:
+        is_book = Favoritos.verify_book(bookid, session["id"])
+        if len(is_book) > 0:
+            is_book = True
+        else:
+            is_book = False
+        return render_template("book.html", book=book, authors=authors, categories=categories, is_book=is_book)
+    else:
+        return render_template("book.html", book=book, authors=authors, categories=categories)
 
 # Ruta para probar la inserción de datos
 @app.route("/test", methods=["GET", "POST"])
 def test():
+    session["id"] = 1
+    session["username"] = "fpxx"
     # Si se envía una solicitud POST, procesar la inserción de datos
     if request.method == "POST":
         # Obtener el ISBN del libro
@@ -136,5 +130,47 @@ def add():
         Favoritos.insert_book(id_book, session['id'])
     return redirect("/favorites/")
 # Iniciar la aplicación Flask en modo depuración
+
+@app.route("/register/", methods=["POST"])
+def register():
+    email = request.form.get("email")
+    username = request.form.get("username")
+    password = request.form.get("password")
+    confirm_password = request.form.get("confirm-password")
+    errors = []
+    is_email = Usuarios.ver_user(email)
+    if len(is_email) > 0:
+        errors.append("existe")
+    elif password != confirm_password:
+        errors.append("no igual")
+    if len(errors) > 0:
+        return render_template("login&register.html", errors=errors)
+    else:
+        password = bcrypt.generate_password_hash(password).decode("utf-8")
+        user = Usuarios.insert_user(email, username, password)
+        return redirect("/")
+
+@app.route("/login/", methods=["POST"])
+def login():
+    email = request.form.get("email")
+    password = request.form.get("password")
+    password = str(password)
+    print(password)
+    errors = []
+    user = Usuarios.ver_user(email)
+    if len(user) != 1:
+        errors.append("no register")
+        return render_template("login&register.html", errors=errors)
+    user = user[0]
+    print(user)
+    print("aki")
+    if not bcrypt.check_password_hash(user["contrasena"], str(password)):
+        errors.append("mal")
+        return render_template("login&register.html", errors=errors)
+    else:
+        session["id"] = user.id_usuario
+        session["username"] = user.nombre
+        return redirect("/")
+    
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
