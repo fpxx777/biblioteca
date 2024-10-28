@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Advent Pro", sans-serif;
+}
+
+body {
+    color: var(--light-bg-color);
+}
+
+:root {
+    --dark-bg-color: #1C1B29;
+    --dark2-bg-color: #1D2C4B;
+    --contrast-bg-color: #EE9E59;
+    --contrast2-bg-color: #6EBFC2;
+    --light-bg-color: #F8F1DF;
+}
+
+
+.fondo {
+    position: fixed;
+    background-size: 100% 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/static/img/cda743136c0457323ab07c776eeb9c4f~3.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.edit-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 100vw;
+    height: 100%;
+    background-size: 100%;
+}
+
+.user {
+    background-color: var(--dark-bg-color);
+    border-radius: 2.5%;
+    padding: 2vw;
+    width: 35%;
+}
+
+#centrar-user {
+    transition: transform 0.5s ease-in-out;
+}
+
+#centrar-user.move-left {
+    transform: translateX(0%);
+}
+
+#centrar-user.move-center {
+    transform: translateX(60%);
+}
+
+.volver-editar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.volver {
+    display: flex;
+    align-items: center;
+}
+
+.volver a {
+    font-size: 1.5vw;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--contrast-bg-color);
+}
+
+.volver svg {
+    transform: scaleX(-1);
+    width: 1.5vw;
+    margin-right: 2vw;
+    fill: var(--contrast-bg-color);
+}
+
+.foto-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vw;
+    justify-content: center;
+    margin-top: 2vw;
+}
+
+
+.icon-lapiz {
+    width: 2vw;
+    fill: var(--contrast-bg-color);
+}
+
+.edit-button {
+    background-color: var(--dark-bg-color);
+    margin-left: 2vw;
+    width: 8vw;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.edit-button h1 {
+    color: var(--contrast-bg-color);
+    margin-left: 1vw;
+    font-size: 1.75vw;
+    font-weight: 600;
+}
+
+.x {
+    display: none;
+    width: 9vw;
+    margin-left: 2vw;
+    cursor: pointer;
+    background-color: var(--dark-bg-color);
+    align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.x svg {
+    width: 2vw;
+    fill: var(--contrast-bg-color);
+}
+
+.x h1 {
+    font-size: 1.75vw;
+    color: var(--contrast-bg-color);
+    margin-left: 1vw;
+    font-weight: 600;
+}
+
+.volver:hover svg {
+    fill: var(--contrast2-bg-color);
+}
+
+.volver:hover a {
+    color: var(--contrast2-bg-color);
+}
+
+.edit-button:hover .icon-lapiz {
+    fill: var(--contrast2-bg-color)
+}
+
+.edit-button:hover h1 {
+    color: var(--contrast2-bg-color);
+}
+
+.x:hover svg {
+    fill: var(--contrast2-bg-color)
+}
+
+.x:hover h1 {
+    color: var(--contrast2-bg-color);
+}
+
+#fijo, #fijo2 {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#fijo.hidden, #fijo2.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#fijo.visible, #fijo2.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.enviar {
+    font-size: 1.25vw;
+    width: 11vw;
+    font-weight: 600;
+    margin-left: 0.5vw;
+    background-color: var(--contrast-bg-color);
+    color: var(--light-bg-color);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 1vh 0vw;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.enviar:hover {
+    color: var(--dark2-bg-color);
+    background-color: var(--contrast2-bg-color);
+}
+
+.enviar.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.enviar.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.photo-container {
+    position: relative;
+    text-align: center;
+}
+
+.photo-container h1 {
+    font-size: 1.25vw;
+    color: var(--contrast-bg-color);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.photo-container:hover h1 {
+    color: rgb(255, 189, 103);
+}
+
+.photo-container:hover .photo {
+    opacity: 0.3;
+}
+
+.photo {
+    width: 9vw;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+
+.edit-user {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5vw;
+    margin-bottom: 2vw;
+    justify-content: space-between;
+}
+
+.edit-user div {
+    display: flex;
+    align-items: center;
+}
+
+.edit-user label {
+    font-size: 1.25vw;
+    font-weight: 500;
+}
+
+.edit-user input {
+    font-size: 1.25vw;
+    font-weight: 500;
+    display: none;
+    border-style: solid;
+    border-color: var(--dark-bg-color) var(--dark-bg-color) var(--light-bg-color) var(--dark-bg-color);
+    background-color: var(--dark-bg-color);
+    color: var(--light-bg-color);
+}
+
+.edit-user input::placeholder {
+    background-color: var(--dark-bg-color);
+    color: var(--light-bg-color)
+}
+
+.edit-user svg {
+    width: 1.5vw;
+    margin-right: 1vw;
+    fill: var(--contrast-bg-color);
+}
+
+.centrar-enviar {
+    display: flex;
+    justify-content: center;
+}

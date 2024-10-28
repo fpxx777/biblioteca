@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/edit-user.css') }}" />
+    <link rel="shortcut icon" href="/static/img/logo.png" />
+    <title>BiblioNauta</title>
+    <!-- fuente link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="fondo"></div>
+    <div class="edit-container">
+        <form class="user">
+            <div class="volver-editar">
+                <div class="volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 256 256">
+                        <g >
+                            <path d="m176 104l-48 48V56Z" opacity="2" />
+                            <path
+                                d="m229.66 109.66l-48 48a8 8 0 0 1-11.32-11.32L212.69 104l-42.35-42.34a8 8 0 0 1 11.32-11.32l48 48a8 8 0 0 1 0 11.32m-48 0l-48 48A8 8 0 0 1 120 152v-39.63A88.11 88.11 0 0 0 40 200a8 8 0 0 1-16 0a104.15 104.15 0 0 1 96-103.7V56a8 8 0 0 1 13.66-5.66l48 48a8 8 0 0 1 0 11.32m-17-5.66L136 75.31v57.38Z" />
+                        </g>
+                    </svg>
+                    <a href="index2">
+                        Volver
+                    </a>
+                </div>
+                <div class="editar">
+                    <button class="edit-button" type="button">
+                        <svg class="icon-lapiz" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                            <path
+                                d="m225.9 74.78l-44.69-44.69a14 14 0 0 0-19.8 0L38.1 153.41a13.94 13.94 0 0 0-4.1 9.9V208a14 14 0 0 0 14 14h44.69a13.94 13.94 0 0 0 9.9-4.1L225.9 94.58a14 14 0 0 0 0-19.8M94.1 209.41a2 2 0 0 1-1.41.59H48a2 2 0 0 1-2-2v-44.69a2 2 0 0 1 .59-1.41L136 72.48L183.51 120ZM217.41 86.1L192 111.51L144.49 64l25.41-25.42a2 2 0 0 1 2.83 0l44.68 44.69a2 2 0 0 1 0 2.83" />
+                        </svg>
+                        <h1>
+                            editar
+                        </h1>
+                    </button>
+                    <button class="x" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                            <path
+                                d="M165.66 101.66L139.31 128l26.35 26.34a8 8 0 0 1-11.32 11.32L128 139.31l-26.34 26.35a8 8 0 0 1-11.32-11.32L116.69 128l-26.35-26.34a8 8 0 0 1 11.32-11.32L128 116.69l26.34-26.35a8 8 0 0 1 11.32 11.32M232 128A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88" />
+                        </svg>
+                        <h1>
+                            cerrar
+                        </h1>
+                    </button>
+                </div>
+            </div>
+            <div class="foto-user">
+                <div class="photo-container">
+                    <img class="photo" src="/static/img/PhUserCircleFill (1).png">
+                    <h1>Cambiar foto</h1>
+                </div>
+            </div>
+            <div class="edit-user" >
+                <div id="centrar-user">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1vw" viewBox="0 0 256 256">
+                        <path 
+                            d="M234.38 210a123.36 123.36 0 0 0-60.78-53.23a76 76 0 1 0-91.2 0A123.36 123.36 0 0 0 21.62 210a12 12 0 1 0 20.77 12c18.12-31.32 50.12-50 85.61-50s67.49 18.69 85.61 50a12 12 0 0 0 20.77-12M76 96a52 52 0 1 1 52 52a52.06 52.06 0 0 1-52-52" />
+                    </svg>
+                    <label id="Username-label" for="username">User.nombre</label>
+                    <input id="Username-input" type="text" name="username" placeholder="User.nombre" value="">
+                </div>
+            </div>
+            <div class="edit-user" id="fijo">
+                <div>
+                    <svg id="icon-gmail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                        <path 
+                            d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64" />
+                        <path 
+                            d="M904 224L656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0l210.56 240.704a128 128 0 0 0 192.704 0L818.944 224z" />
+                    </svg>
+                    <label for="useremail">User.gmail</label>
+                </div>
+            </div>
+            <div class="edit-user" id="fijo2">
+                <div>
+                    <svg id="icon-date" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                        <defs>
+                            <mask id="IconifyId1928b80f79bfb861">
+                                <g fill="none" stroke-linejoin="round" stroke-width="4">
+                                    <path fill="#fff" stroke="#fff" d="M5 19h38v21a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" />
+                                    <path stroke="#fff" d="M5 9a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v10H5z" />
+                                    <path stroke="#fff" stroke-linecap="round" d="M16 4v8m16-8v8" />
+                                    <path stroke="#000" stroke-linecap="round" d="M28 34h6m-20 0h6m8-8h6m-20 0h6" />
+                                </g>
+                            </mask>
+                        </defs>
+                        <path d="M0 0h48v48H0z" mask="url(#IconifyId1928b80f79bfb861)" />
+                    </svg>
+                    <label for="userdate">Se unio el User.date</label>
+                </div>
+            </div>
+            <div class="centrar-enviar">
+                <button class="enviar hidden" type="submit">Actualizar datos</button>
+            </div>
+            
+        </form>
+    </div>
+</body>
+
+<script src="{{ url_for('static', filename='JS/edit-user.js') }}"></script>
+
+</html>

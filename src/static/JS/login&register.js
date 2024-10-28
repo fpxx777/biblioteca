@@ -3,7 +3,8 @@ document.getElementById('cambiar').addEventListener('click', function () {
     document.getElementById('right').classList.add('move-left');
     document.getElementById('cambiar').style.display = 'none';
     document.getElementById('volver').style.display = 'block';
-    document.getElementById('cambio-p').style.color = '#EE9E59';
+    document.getElementById('cambio-p').style.display = 'none';
+    document.getElementById('volver-p').style.display = 'flex';
 
 
     setTimeout(() => {
@@ -16,7 +17,8 @@ document.getElementById('volver').addEventListener('click', function () {
     document.getElementById('right').classList.remove('move-left');
     document.getElementById('volver').style.display = 'none';
     document.getElementById('cambiar').style.display = 'block';
-    document.getElementById('cambio-p').style.color = '#6EBFC2';
+    document.getElementById('cambio-p').style.display = 'flex';
+    document.getElementById('volver-p').style.display = 'none';
 
     setTimeout(() => {
         changeForm('login');
