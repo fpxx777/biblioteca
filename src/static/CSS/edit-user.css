@@ -257,8 +257,7 @@ body {
     font-weight: 500;
     display: none;
     border-style: solid;
-    border-color: var(--dark-bg-color) var(--light-bg-color) var(--light-bg-color) var(--dark-bg-color);
-    border-radius: 0 0 5px 0;
+    border-color: var(--dark-bg-color) var(--dark-bg-color) var(--light-bg-color) var(--dark-bg-color);
     background-color: var(--dark-bg-color);
     color: var(--light-bg-color);
 }
