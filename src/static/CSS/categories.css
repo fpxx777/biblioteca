@@ -161,6 +161,11 @@ body {
     left: 12vw;
 }
 
+.categoria.mostrar-no-transition {
+    left: 12vw;
+    transition: none;
+}
+
 .align-login-container svg {
     width: 7.5vw;;
     display: block;
@@ -427,7 +432,8 @@ main h2 {
 }
 
 .social-media li {
-    margin-right: 20px;
+    margin: 0vw 1vw;
+
 }
 
 .social-media a {

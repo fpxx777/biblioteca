@@ -47,3 +47,11 @@ exterior_login.addEventListener('click', function () {
     }
   }, { once: true });
 }, false);
+
+document.querySelector('.login-button').addEventListener('click', function() {
+    sessionStorage.setItem('formType', 'login');
+});
+
+document.querySelector('.register-button').addEventListener('click', function() {
+    sessionStorage.setItem('formType', 'signup');
+});
