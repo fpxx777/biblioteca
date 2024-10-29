@@ -1,6 +1,8 @@
 # Importar la biblioteca Flask para crear una aplicación web
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, send_from_directory
 from flask_bcrypt import Bcrypt
+from datetime import datetime
+import os
 
 # Importar modelos de datos para libros, géneros, autores y inserción de datos
 from models.libros import Libros  # Modelo para libros
@@ -20,14 +22,6 @@ app.secret_key = "P4S$W0rd"
 
 bcrypt = Bcrypt(app)
 
-
-@app.route("/login&register", methods=["GET"])
-def login_register():
-    return render_template("login&register.html")
-
-@app.route("/edituser")
-def edituser():
-    return render_template("edituser.html")
 
 @app.route("/logout/", methods=["GET"])
 def logout():
@@ -96,8 +90,6 @@ def book(bookid):
 # Ruta para probar la inserción de datos
 @app.route("/test", methods=["GET", "POST"])
 def test():
-    session["id"] = 1
-    session["username"] = "fpxx"
     # Si se envía una solicitud POST, procesar la inserción de datos
     if request.method == "POST":
         # Obtener el ISBN del libro
@@ -131,46 +123,88 @@ def add():
     return redirect("/favorites/")
 # Iniciar la aplicación Flask en modo depuración
 
-@app.route("/register/", methods=["POST"])
+@app.route("/login&register", methods=["GET"])
+def login_register():
+    return render_template("login&register.html")
+
+@app.route('/register/', methods=['POST'])
 def register():
     email = request.form.get("email")
     username = request.form.get("username")
-    password = request.form.get("password")
-    confirm_password = request.form.get("confirm-password")
+    password = request.form.get("password").strip()
+    confirm_password = request.form.get("confirm-password").strip()
     errors = []
+    
     is_email = Usuarios.ver_user(email)
     if len(is_email) > 0:
         errors.append("existe")
     elif password != confirm_password:
         errors.append("no igual")
+    
     if len(errors) > 0:
         return render_template("login&register.html", errors=errors)
     else:
-        password = bcrypt.generate_password_hash(password).decode("utf-8")
-        user = Usuarios.insert_user(email, username, password)
+        hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
+        Usuarios.insert_user(email, username, hashed_password)
         return redirect("/")
 
-@app.route("/login/", methods=["POST"])
+@app.route('/login/', methods=['POST'])
 def login():
     email = request.form.get("email")
     password = request.form.get("password")
-    password = str(password)
-    print(password)
     errors = []
+    
     user = Usuarios.ver_user(email)
     if len(user) != 1:
         errors.append("no register")
         return render_template("login&register.html", errors=errors)
+    
     user = user[0]
-    print(user)
-    print("aki")
-    if not bcrypt.check_password_hash(user["contrasena"], str(password)):
+    if not bcrypt.check_password_hash(user["contrasena"], password):
         errors.append("mal")
         return render_template("login&register.html", errors=errors)
     else:
-        session["id"] = user.id_usuario
-        session["username"] = user.nombre
+        session["id"] = user["id_usuario"]
+        session["username"] = user["nombre"]
+        session["img"] = user["img"]
+        session["gmail"] = user["email"]
+        datetime_object = datetime.strptime(str(user["created_at"]), "%Y-%m-%d %H:%M:%S")
+        date_only = datetime_object.strftime('%Y-%m-%d')
+        session['created_at'] = date_only
         return redirect("/")
     
+@app.route("/profile/", methods=["GET"])
+def profile():
+    return render_template("edit-user.html", session=session)
+
+
+MEDIA_FOLDER = "media/"
+app.config["UPLOAD_FOLDER"] = MEDIA_FOLDER
+
+@app.route('/media/<path:filename>')
+def media(filename):
+    return send_from_directory(
+        app.config['UPLOAD_FOLDER'],
+        filename,
+        as_attachment=True
+    )
+
+@app.route("/profile/change/", methods=["POST"])
+def edit_profile():
+    if "file" in request.files:
+        file = request.files["file"]
+        if file.filename:
+            filename = file.filename
+            path = os.path.join(MEDIA_FOLDER, filename)
+            file.save(path)
+            print(f"Imagen guardada en: {path}") 
+            Usuarios.insert_img(session["id"], filename) 
+            session["img"] = filename
+    if request.form.get('username'):
+        new_name = request.form.get('username')
+        Usuarios.new_name(session["id"], new_name)
+        session["username"] = new_name
+    return redirect("/profile")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
