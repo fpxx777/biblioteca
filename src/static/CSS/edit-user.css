@@ -43,6 +43,7 @@ body {
     border-radius: 2.5%;
     padding: 2vw;
     width: 35%;
+    transition: height 2s;
 }
 
 #centrar-user {
@@ -212,7 +213,7 @@ body {
     text-align: center;
 }
 
-.photo-container h1 {
+.photo-container label {
     font-size: 1.25vw;
     color: var(--contrast-bg-color);
     cursor: pointer;
@@ -227,12 +228,39 @@ body {
     opacity: 0.3;
 }
 
+.photo-container div{
+    margin: 0% 0%;
+    width: 10vw;
+}
+
 .photo {
     width: 9vw;
+    height: 9vw;
     cursor: pointer;
     border-radius: 50%;
 }
 
+.visual-foto{
+    display: flex;
+    justify-content: center;
+}
+
+.visual-foto div{
+    text-align: center;
+}
+
+.photo2 {
+    width: 9vw;
+    border-radius: 50%;
+    
+}
+
+.visual-foto div h1{
+    color: var(--contrast-bg-color);
+    font-size: 1.25vw;
+    font-weight: 500;
+    cursor: none;
+}
 
 .edit-user {
     display: flex;

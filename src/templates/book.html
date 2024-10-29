@@ -1,37 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<<<<<<< HEAD
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}" />
-  <link rel="shortcut icon" href="/static/img/logo.png" />
-  <title>BiblioNauta</title>
-  <!-- fuente link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
-    rel="stylesheet" />
-</head>
-
-<body>
-  <!-- parte derecha al darle click icono -->
-  <div class="overlay hidden visuallyhidden" id="overlay"></div>
-  <div class="login-container hidden visuallyhidden" id="login-container">
-    <div class="align-login-container">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-        <path fill="#F8F1DF"
-          d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
-      </svg>
-      <a href="#" class="login-button">Iniciar Sesión</a>
-      <p>
-        No tienes cuenta? <a href="#" class="register-button">Regístrate</a>
-      </p>
-    </div>
-  </div>
-=======
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}">
+    <link rel="shortcut icon" href="/static/img/logo.png">
+    <!-- fuente link -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+            rel="stylesheet">
+  </head>
   <body>
     <!-- parte derecha al darle click icono -->
     <div class="overlay hidden visuallyhidden" id="overlay"></div>
@@ -49,7 +29,7 @@
         <div class="buttons">
           <button class="editarbutton">
             <a href="/edituser">Editar Perfil</a>
-          </button>
+          </button> 
 
           <button class="cerrarbutton">
             <a href="/logout/">Cerrar sesion</a>
@@ -75,7 +55,6 @@
       </div>
     </div>
     {% endif %}
->>>>>>> main
 
   <header class="header">
     <div>
@@ -149,41 +128,6 @@
             <p class="description-p">{{ ', '.join(categories)}}</p>
           </div>
         </div>
-        <form action="/favorites/add/" method="POST">
-          <input type="hidden" name="id-book" value="{{book[0].id_libro}}" />
-          <button class="favorite-button">
-            {% if is_book == True %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
-              <path fill="#1C1B29"
-                d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m0 152.46L176 165V72a16 16 0 0 0-16-16H96V40h96Z" />
-            </svg>
-            <div>
-<<<<<<< HEAD
-              <h1 class="description-h1-género">Eliminar de favoritos</h1>
-=======
-              <h1 class="description-h1-fecha">
-                Fecha de publicacion: {{book[0].fecha_publicacion}}
-              </h1>
-              <p class="description-p">{{book[0].paginas}} paginas</p>
-            </div>
-          </div>
-          <div class="descripcion-sub">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 256 256"
-            >
-              <path
-                fill="#F8F1DF"
-                d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z"
-              />
-            </svg>
-            <div>
-              <h1 class="description-h1-género">Género</h1>
-              <p class="description-p">{{ ', '.join(categories)}}</p>
-            </div>
-          </div>
           {% if session %}
             <form action="/favorites/add/" method="POST">
           {% else %}
@@ -205,7 +149,6 @@
               </svg>
               <div>
                 <h1 class="description-h1-género">Eliminar de favoritos</h1>
->>>>>>> main
               {% else %}
               <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
                 <g fill="#1C1B29">
@@ -230,34 +173,6 @@
       <h1 class="description-h1">Libros similares</h1>
     </div>
   </main>
-  <!--
-    <main>
-        <div class="title">
-            <h1>{{book[0].titulo}}</h1>
-            <h2>{{ ', '.join(authors)}}</h2>
-        </div>
-        <div class="cont-box">
-            <img src={{book[0].imagen}} alt="">
-            <div class="info-box">
-                <P class="description">{{book[0].descripcion}}</P>
-                <div    class="date-box">
-                    <div>
-                        <strong>Fecha de Publicacion</strong>
-                        <p>{{book[0].fecha_publicacion}}</p>
-                    </div>
-                    <div>
-                        <strong>Genero</strong>
-                        <p>{{ ', '.join(categories)}}</p>
-                    </div>
-                    <div>
-                        <strong>Numero de Paginas</strong>
-                        <p>{{book[0].paginas}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-        -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>
