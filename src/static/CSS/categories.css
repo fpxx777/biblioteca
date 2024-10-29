@@ -188,7 +188,7 @@ body {
 }
 
 .align-login-container img {
-    width: 7.5vw;;
+    width: 6vw;;
     display: block;
     margin: 10vh auto;
     border-radius: 50%;
@@ -283,7 +283,7 @@ body {
 }
 
 .header li img {
-    width: 5vw;
+    width: 4vw;
     max-height: 15vh;
     border-radius: 50%;
     border-color: var(--light-bg-color);
