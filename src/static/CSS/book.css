@@ -100,12 +100,14 @@ body {
     transition: opacity 0.5s linear;
 }
 
-.align-login-container svg{
-    width: 15vw;
+.align-login-container img{
+    width: 7.5vw;
     max-height: 15vh;
     display: block;
     margin: 10vh auto;
-
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 }
 
 .login-button{
@@ -193,9 +195,12 @@ body {
     margin-left: 2vw;
 }
 
-.header li svg {
+.header li img {
     width: 5vw;
     max-height: 15vh;
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 }
 
 .header a {

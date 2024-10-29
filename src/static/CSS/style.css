@@ -63,12 +63,19 @@ body{
     opacity: 0;
     transition: opacity 0.5s linear;
 }
+.align-login-container{
+    width: auto;
+    height: auto;
+}
 
-.align-login-container svg {
-    width: 7.5vw;;
+.align-login-container img {
+    width: 7.5vw;
+    max-height: 15vh;
     display: block;
     margin: 10vh auto;
-    display: block;
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 
 }
 
@@ -192,9 +199,12 @@ body{
     margin-left: 2vw;
 }
 
-.header li svg{
+.header li img{
     width: 5vw;
     max-height: 15vh;
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 }
 
 .header a {
