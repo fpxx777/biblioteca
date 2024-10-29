@@ -234,10 +234,11 @@ body {
 }
 
 .photo {
-    width: 9vw;
-    height: 9vw;
+    width: 6.5vw;
     cursor: pointer;
     border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 }
 
 .visual-foto{
