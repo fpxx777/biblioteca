@@ -64,6 +64,7 @@
         <div class="bottom">
           <p id="cambio-p">¿Aún no tienes cuenta?</p>
           <h4 class="cambiar" id="cambiar">Crear cuenta</h4>
+          <p id="volver-p" style="display: none; ">¿Ya tienes una cuenta?</p>
           <h4 class="volver" id="volver" style="display: none; color: #6ebfc2">
             Volver a Iniciar Sesión
           </h4>
@@ -72,118 +73,151 @@
     </div>
   </body>
   <script>
-    document.getElementById("cambiar").addEventListener("click", function () {
-      document.getElementById("left").classList.add("move-right");
-      document.getElementById("right").classList.add("move-left");
-      document.getElementById("cambiar").style.display = "none";
-      document.getElementById("volver").style.display = "block";
-      document.getElementById("cambio-p").style.color = "#EE9E59";
+    document.addEventListener('DOMContentLoaded', function () {
+    const params = new URLSearchParams(window.location.search);
+    const formType = params.get('form');
+    if (formType === 'login') {
+      changeForm('login');
+    } else if (formType === 'signup') {
+      changeForm('signup');
+    }
 
-      setTimeout(() => {
-        changeForm("signup");
-      }, 250);
+    document.getElementById('volver').addEventListener('click', function () {
+      swapForms('login');
     });
 
-    document.getElementById("volver").addEventListener("click", function () {
-      document.getElementById("left").classList.remove("move-right");
-      document.getElementById("right").classList.remove("move-left");
-      document.getElementById("volver").style.display = "none";
-      document.getElementById("cambiar").style.display = "block";
-      document.getElementById("cambio-p").style.color = "#6EBFC2";
-
-      setTimeout(() => {
-        changeForm("login");
-      }, 250);
+    document.getElementById('cambiar').addEventListener('click', function () {
+      swapForms('signup');
     });
+  });
 
-    function changeForm(type) {
-      const formContainer = document.getElementById("form-container");
-      if (type === "signup") {
-        formContainer.innerHTML = `
-          <form id="signup-form" action="/register/" method="POST">
-              <svg xmlns="http://www.w3.org/2000/svg" width="2.5vw" viewBox="0 0 256 256" class="logo">
-                  <path fill="#F8F1DF"
-                          d="M208 20H72a36 36 0 0 0-36 36v168a12 12 0 0 0 12 12h144a12 12 0 0 0 0-24H60v-4a12 12 0 0 1 12-12h136a12 12 0 0 0 12-12V32a12 12 0 0 0-12-12m-88 24h36v59l-10.51-8.41a12 12 0 0 0-15 0L120 103Zm76 128H72a35.6 35.6 0 0 0-12 2.06V56a12 12 0 0 1 12-12h24v84a12 12 0 0 0 19.5 9.37l22.49-18l22.51 18A12 12 0 0 0 180 128V44h16Z" />
-              </svg>
-              <h2 style="color:var(--contrast-bg-color)">Crea tu cuenta</h2>
-              <div class="rellenar">
-                  <label for="email" style="color:var(--contrast-bg-color)">Gmail</label>
-                  <input type="email" name="email" id="email" required>
-              </div>
-              <div class="rellenar">
-                  <label for="username" style="color:var(--contrast-bg-color)">Nombre usuario</label>
-                  <input type="text" minlength="3" name="username" id="username" required>
-              </div>
-              <div class="rellenar">
-                  <label for="password" style="color:var(--contrast-bg-color)">Contraseña</label>
-                  <input type="password" minlength="5" name="password" id="password" required>
-              </div>
-              <div class="rellenar">
-                  <label for="confirm-password" style="color:var(--contrast-bg-color)">Confirma tu contraseña</label>
-                  <input type="password" name="confirm-password" id="confirm-password" required>
-                  {% if "no igual" in errors %}
-                      <h4>Las contraseñas no coinciden</h4>
-                  {% endif %}
-              </div>
-              
-              <button type="submit";>Crear Cuenta</button>
-              {% if "existe" in errors %}
-                  <h4>*Ya existe un usuario con ese email*</h4>
-              {% endif %}
-              <style>
-                  button {
-                      background-color: var(--contrast-bg-color);
-                      color: var(--dark-bg-color);
-                  }
-                  button:hover {
-                      background-color: var(--contrast2-bg-color);;
-                      color: var(--light-bg-color)
-                  }
-              </style>
-          </form>
-      `;
+  function changeForm(type) {
+    const formContainer = document.getElementById("form-container");
+    if (type === "signup") {
+      formContainer.innerHTML = `<form id="signup-form" action="/register/" method="POST">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2.5vw" viewBox="0 0 256 256" class="logo">
+          <path fill="#F8F1DF" d="M208 20H72a36 36 0 0 0-36 36v168a12 12 0 0 0 12 12h144a12 12 0 0 0 0-24H60v-4a12 12 0 0 1 12-12h136a12 12 0 0 0 12-12V32a12 12 0 0 0-12-12m-88 24h36v59l-10.51-8.41a12 12 0 0 0-15 0L120 103Zm76 128H72a35.6 35.6 0 0 0-12 2.06V56a12 12 0 0 1 12-12h24v84a12 12 0 0 0 19.5 9.37l22.49-18l22.51 18A12 12 0 0 0 180 128V44h16Z"/>
+        </svg>
+        <h2 style="color:var(--contrast-bg-color)">Crea tu cuenta</h2>
+        <div class="rellenar">
+          <label for="email" style="color:var(--contrast-bg-color)">Gmail</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="rellenar">
+          <label for="username" style="color:var(--contrast-bg-color)">Nombre usuario</label>
+          <input type="text" minlength="3" name="username" id="username" required>
+        </div>
+        <div class="rellenar">
+          <label for="password" style="color:var(--contrast-bg-color)">Contraseña</label>
+          <input type="password" minlength="5" name="password" id="password" required>
+        </div>
+        <div class="rellenar">
+          <label for="confirm-password" style="color:var(--contrast-bg-color)">Confirma tu contraseña</label>
+          <input type="password" name="confirm-password" id="confirm-password" required>
+          {% if "no igual" in errors %}
+          <h4>Las contraseñas no coinciden</h4>
+          {% endif %}
+        </div>
+        <button type="submit">Crear Cuenta</button>
+        {% if "existe" in errors %}
+        <h4>*Ya existe un usuario con ese email*</h4>
+        {% endif %}
+        <style>
+          button {
+            background-color: var(--contrast-bg-color);
+            color: var(--dark-bg-color);
+          }
+          button:hover {
+            background-color: var(--contrast2-bg-color);
+            color: var(--light-bg-color)
+          }
+        </style>
+      </form>`;
+    } else {
+      formContainer.innerHTML = `<form id="login-form" action="/login/" method="POST">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2.5vw" viewBox="0 0 256 256" class="logo">
+          <path fill="#F8F1DF" d="M208 20H72a36 36 0 0 0-36 36v168a12 12 0 0 0 12 12h144a12 12 0 0 0 0-24H60v-4a12 12 0 0 1 12-12h136a12 12 0 0 0 12-12V32a12 12 0 0 0-12-12m-88 24h36v59l-10.51-8.41a12 12 0 0 0-15 0L120 103Zm76 128H72a35.6 35.6 0 0 0-12 2.06V56a12 12 0 0 1 12-12h24v84a12 12 0 0 0 19.5 9.37l22.49-18l22.51 18A12 12 0 0 0 180 128V44h16Z"/>
+        </svg>
+        <h2>Inicia sesión en tu cuenta</h2>
+        <div class="rellenar">
+          <label for="email">Gmail</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="rellenar">
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+        <div class="opciones">
+          <div class="checkbox">
+            <input type="checkbox" id="remember" />
+            <label for="remember">Recuérdame</label>
+          </div>
+          <a href="#" class="forgot-contraseña">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit">Iniciar Sesión</button>
+        {% if "no register" in errors %}
+        <h4>Ese gmail no esta registrado. Registrate para poder iniciarsesion!</h4>
+        {% endif %}
+        {% if "mal" in errors %}
+        <h4>El gmail y/o contraseña no coinciden</h4>
+        {% endif %}
+      </form>`;
+    }
+  }
+
+  function swapForms(type) {
+    const left = document.getElementById('left');
+    const right = document.getElementById('right');
+    const formContainer = document.getElementById('form-container');
+    const cambiar = document.getElementById('cambiar');
+    const volver = document.getElementById('volver');
+    const cambioP = document.getElementById('cambio-p');
+    const volverP = document.getElementById('volver-p');
+
+    if (window.innerWidth >= 320 && window.innerWidth <= 800) {
+      formContainer.classList.add('fade-out');
+      setTimeout(() => {
+        changeForm(type);
+        formContainer.classList.remove('fade-out');
+        formContainer.classList.add('fade-in');
+        toggleElements(type);
+      }, 250);
+    } else {
+      if (type === 'signup') {
+        left.classList.add('move-right');
+        right.classList.add('move-left');
+        setTimeout(() => {
+          changeForm('signup');
+          toggleElements('signup');
+        }, 250);
       } else {
-        formContainer.innerHTML = `
-          <form id="login-form" action="/login/" method="POST">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="2.5vw"
-              viewBox="0 0 256 256"
-              class="logo"
-            >
-              <path
-                fill="#F8F1DF"
-                d="M208 20H72a36 36 0 0 0-36 36v168a12 12 0 0 0 12 12h144a12 12 0 0 0 0-24H60v-4a12 12 0 0 1 12-12h136a12 12 0 0 0 12-12V32a12 12 0 0 0-12-12m-88 24h36v59l-10.51-8.41a12 12 0 0 0-15 0L120 103Zm76 128H72a35.6 35.6 0 0 0-12 2.06V56a12 12 0 0 1 12-12h24v84a12 12 0 0 0 19.5 9.37l22.49-18l22.51 18A12 12 0 0 0 180 128V44h16Z"
-              />
-            </svg>
-            <h2>Inicia sesión en tu cuenta</h2>
-            <div class="rellenar">
-              <label for="email">Gmail</label>
-              <input type="email" name="email" id="email" required />
-            </div>
-            <div class="rellenar">
-              <label for="password">Contraseña</label>
-              <input type="password" name="password" id="password" required />
-            </div>
-            <div class="opciones">
-              <div class="checkbox">
-                <input type="checkbox" id="remember" />
-                <label for="remember">Recuérdame</label>
-              </div>
-              <a href="#" class="forgot-contraseña"
-                >¿Olvidaste tu contraseña?</a
-              >
-            </div>
-            <button type="submit">Iniciar Sesión</button>
-            {% if "no register" in errors %}
-            <h4>Ese gmail no esta registrado. Registrate para poder iniciarsesion!</h4>
-            {% endif %}
-            {% if "mal" in errors %}
-            <h4>El gmail y/o contraseña no coinciden</h4>
-            {% endif %}
-          </form>
-      `;
+        left.classList.remove('move-right');
+        right.classList.remove('move-left');
+        setTimeout(() => {
+          changeForm('login');
+          toggleElements('login');
+        }, 250);
       }
     }
+  }
+
+  function toggleElements(type) {
+    const cambiar = document.getElementById('cambiar');
+    const volver = document.getElementById('volver');
+    const cambioP = document.getElementById('cambio-p');
+    const volverP = document.getElementById('volver-p');
+
+    if (type === 'signup') {
+      cambiar.style.display = 'none';
+      volver.style.display = 'block';
+      cambioP.style.display = 'none';
+      volverP.style.display = 'block';
+    } else {
+      cambiar.style.display = 'block';
+      volver.style.display = 'none';
+      cambioP.style.display = 'block';
+      volverP.style.display = 'none';
+    }
+  }
   </script>
 </html>
