@@ -1,6 +1,7 @@
 # Importar la biblioteca Flask para crear una aplicación web
 from flask import Flask, render_template, request, redirect, session
 from flask_bcrypt import Bcrypt
+import math
 
 # Importar modelos de datos para libros, géneros, autores y inserción de datos
 from models.libros import Libros  # Modelo para libros
