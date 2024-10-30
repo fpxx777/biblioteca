@@ -510,11 +510,12 @@ main h2 {
         justify-content: space-between;
         align-items: center;
         z-index: 0;
-        position: relative;
+        position: fixed;
         width: 95%;
         padding-left: 2.5%;
         padding-right: 2.5%;
         z-index: 3;
+        height: 17vh;
     }
 
     .header {
@@ -523,6 +524,10 @@ main h2 {
 
     .header h1{
         font-size: 6vw;
+    }
+
+    .header div img{
+        width: 13vw;
     }
 
     .searchs2 {
@@ -538,8 +543,10 @@ main h2 {
         margin-bottom: 2vw;
         border-radius: 5px;
         align-items: center;
-        position: relative;
+        position: fixed;
         z-index: 3;
+        margin-top: 17.05vh;
+        height: 5vh;
     }
 
     .searchs2 input {
@@ -560,7 +567,7 @@ main h2 {
     .categories2 {
         display: flex;
         width: 100%;
-        position: relative;
+        position: fixed;
         align-items: center;
         border-top-color: var(--light-bg-color);
         border-top: solid;
@@ -568,8 +575,13 @@ main h2 {
         padding-bottom: 1.5vw;
         z-index: 3;
         background-color: var(--dark-bg-color);
+        margin-top: 22.25vh;
+        height: 5vh;
     }
     
+    .books{
+        margin-top: 35vh;
+    }
 
     .categories2 h3 {   
         margin-left: 3vw;
@@ -585,7 +597,7 @@ main h2 {
     }
 
     #categoria-container, #categoria-container2, #categoria-container3 {
-        position: absolute;
+        position: fixed;
         top: -100%;
         left: 0;
         width: 100%;
@@ -593,7 +605,7 @@ main h2 {
         transition: top 0.5s ease;
         z-index: 1;
         height: 100%;
-        margin-top: 22vw;
+        margin-top: 19.55vh;
     }
 
     #categoria-container.mostrar, #categoria-container2.mostrar, #categoria-container3.mostrar {
@@ -611,7 +623,7 @@ main h2 {
     }
 
     .searchs2 svg {
-        width: 6vw;
+        width: 5vw;
     }
 
     .login-container {
