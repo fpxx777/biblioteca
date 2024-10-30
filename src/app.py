@@ -53,27 +53,38 @@ def search():
     return render_template("search.html", books=books, search=search)
 
 # Ruta para mostrar categorías de libros
-@app.route("/categories", methods=["GET"])
-def categories(): # Obtener la página actual
-    books = Libros.get_all()  # Obtener los libros paginados
+# Ruta para mostrar categorías de libros
+@app.route("/categories/<page>/", methods=["GET"])
+def categories(page): # Obtener la página actual
+    generos = Generos.get_categories_list()
+    autores = Autores.get_all_authors()
+    fechas = Libros.get_publication_years()
+    total_pages = len(Libros.get_all()) / 24
+    total_pages = math.ceil(total_pages)
+    books = Libros.get_all_limit_all(int(page), 25)  # Obtener los libros paginados
     # Obtener la lista de categorías
-    categories = Generos.get_categories_list(Generos)
+    categories = Generos.get_categories_list()
     # Establecer la categoría actual como "Libros destacados"
     category = "Libros destacados"
     # Renderizar la plantilla categories.html con la lista de libros y categorías
-    return render_template("categories.html", category=category, books=books, categories=categories)
+    return render_template("categories.html", category=category, books=books, categories=categories, page=int(page), total_pages=total_pages, generos=generos, autores=autores, fechas=fechas)
+
 
 # Ruta para mostrar libros de una categoría específica
-@app.route("/category/<category>", methods=["GET"])
-def categorie(category):
+@app.route("/category/<name>/<page>/", methods=["GET"])
+def categorie(name, page):
+    generos = Generos.get_categories_list()
+    autores = Autores.get_all_authors()
+    fechas = Libros.get_publication_years()
     # Obtener la lista de libros de la categoría específica
-    category_for_book = Generos.get_all(category)
+    category_for_book = Generos.get_all(name)
+    print(category_for_book)
     # Obtener la lista de libros que pertenecen a la categoría
-    books = Libros.get_all_for_category(Libros, category_for_book)
+    books = Libros.get_all_for_category(category_for_book)
     # Obtener la lista de categorías
-    categories = Generos.get_categories_list(Generos)
+    categories = Generos.get_categories_list()
     # Renderizar la plantilla categories.html con la lista de libros y categorías
-    return render_template("categories.html", category=category, books=books, categories=categories, category_for_book=category_for_book)
+    return render_template("categories.html", books=books, categories=categories, category_for_book=category_for_book, page=int(page), total_pages=1, generos=generos, autores=autores, fechas=fechas)
 
 # Ruta para mostrar información de un libro específico
 @app.route("/book/<bookid>/", methods=["GET"])
