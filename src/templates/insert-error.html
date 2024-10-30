@@ -15,14 +15,31 @@
     <h1>Agrega informacion faltante</h1>
     <form action="/test/fill/" method="post">
         <input name="isbn" type="hidden" value="{{isbn}}">
+        {% if book["autores"] == None %}
         <label for="autores">Autores(Si hay mas de uno separelo con comas; ejemplo: Miguel Tapia, Fernado Ojeda)</label>
         <input name="autores" id="autores" type="text">
+        {% else %}       
+        {% endif %}
+        {% if book["fecha_publicacion"] == None %}
         <label for="publicationDate">Fecha de Publicación</label>
         <input name="publicationDate" id="publicationDate" type="text">
+        {% else %}
+        {% endif %}
+        {% if book["generos"] == None %}
         <label for="generos">Generos(Si hay mas de uno separelo con comas; ejemplo: Ficcion, Horror)</label>
         <input name="generos" id="generos" type="text">
+        {% else %}
+        {% endif %}
+        {% if book["descripcion"] == None %}
+        <label for="descripcion">Descripcion</label>
+        <input name="descripcion" id="descripcion" type="text">
+        {% else %}
+        {% endif %}
+        {% if book["imagen"] == None %}
         <label for="img">Imagen(Ingrese el link de la imagen)</label>
         <input name="img" id="img" type="text">
+        {% else %}
+        {% endif %}
         <input type="submit" value="Enviar">
     </form>
 </body>

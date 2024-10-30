@@ -40,7 +40,28 @@ def get_book_info(isbn, info_faltante = {}):
     published_date = volume_info.get(PUBLISHED_DATE_KEY)
     description = volume_info.get(DESCRIPTION_KEY)
     page_count = volume_info.get(PAGE_COUNT_KEY)
-    key_words = ["fiction", "literary", "literature", "education"]
+    key_words = [
+    "fiction", 
+    "literary", 
+    "literature", 
+    "education", 
+    "mystery", 
+    "fantasy", 
+    "science fiction", 
+    "romance", 
+    "thriller", 
+    "horror", 
+    "historical", 
+    "biography", 
+    "autobiography", 
+    "poetry", 
+    "drama", 
+    "non-fiction", 
+    "self-help", 
+    "children's", 
+    "young adult", 
+    "dystopian"
+]
     categories = volume_info.get(CATEGORIES_KEY)
     new_categories = []
     if categories and len(categories) > 0:
@@ -60,7 +81,7 @@ def get_book_info(isbn, info_faltante = {}):
             "autores": authors if authors else errors.append("autores"),
             "fecha_publicacion": published_date if published_date else errors.append("fecha_publicacion"),
             "paginas": page_count,
-            "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
+            "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else errors.append("descripcion"),
             "generos": new_categories,
             "imagen": image_links[THUMBNAIL_KEY] if image_links else errors.append("img")
         }
@@ -71,11 +92,12 @@ def get_book_info(isbn, info_faltante = {}):
             "autores": authors if authors else info_faltante["autores"],
             "fecha_publicacion": published_date if published_date else info_faltante["fecha_publicacion"],
             "paginas": page_count,
-            "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else 'NA',
+            "descripcion": description.replace("--Publisher's description.", "").replace("'", "\\'").replace('"', '\\"') if description else info_faltante["descripcion"],
             "generos": new_categories if new_categories != [] else info_faltante["generos"],
             "imagen": image_links[THUMBNAIL_KEY] if image_links else info_faltante["img"]
         }
     if len(errors) > 0:
+        print("EL PICOOOOO")
         return errors, book
     else:
         return book

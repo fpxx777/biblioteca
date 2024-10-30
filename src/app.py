@@ -75,18 +75,22 @@ def test():
         # Obtener el ISBN del libro
         response = request.form.get("isbn")
         # Obtener la información del libro a partir del ISBN
-        book = get_book_info(response)
+        errors, book = get_book_info(response)
         # Si se obtuvo la información del libro, insertar los datos
-        if len(book) == 2:
-            return render_template("insert-error.html", isbn= book[1]["isbn"])
+        if errors:
+            return render_template("insert-error.html", isbn= book["isbn"], book=book, errors=errors)
         else:
-            print("aaaaaaaaaaa")
+            return redirect("/")
     # Renderizar la plantilla insert.html para probar la inserción de datos
     return render_template("insert.html")
 
 @app.route("/test/fill/", methods=["POST"])
 def fill():
     response = request.form.to_dict()
+    if 'autores' in response and response['autores']:
+        response['autores'] = [autor.strip() for autor in response['autores'].split(',')] if response['autores'] else []
+    if 'generos' in response and response['generos']:
+        response['generos'] = [genero.strip() for genero in response['generos'].split(',')] if response['generos'] else []
     book = get_book_info(response["isbn"], response)
     print(book)
     return redirect("/test/")
