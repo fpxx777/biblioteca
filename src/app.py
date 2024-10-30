@@ -33,7 +33,7 @@ def logout():
 @app.route("/", methods=["GET", "POST"])
 def index():
     # Obtener todos los libros
-    books = Libros.get_all_limit_all(1, 12)
+    books = Libros.get_all_limit_all(1, 25)
     # Renderizar la plantilla index.html con la lista de libros y categorías
     if session:
         return render_template("index.html", books=books, session=session)
