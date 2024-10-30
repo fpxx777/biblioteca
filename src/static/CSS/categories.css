@@ -437,6 +437,39 @@ main h2 {
 
 }
 
+.pagination-footer {
+    width: 100%;
+    padding: 20px 0;
+    background-color: var(--bg-color);
+    bottom: 0;
+    left: 0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    background-color: var(--contrast-bg-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.pagination-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.page-info {
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
 .social-media a {
     text-decoration: none;
 }
