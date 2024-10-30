@@ -12,7 +12,7 @@ class Insert:
         # Ejecutar la consulta SQL para insertar el libro
         response = connectToMySQL('biblionauta').query_db(query)
         # Llamar al método para insertar los autores del libro
-        cls.insert_autor(cls, book)
+        cls.insert_autor(book)
         return response
     # Método para insertar los autores de un libro en la base de datos
     @classmethod

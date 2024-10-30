@@ -44,7 +44,7 @@ class Libros:
     @classmethod
     def get_all_for_category(cls, category):
         # Crear una consulta SQL para obtener los libros de una categoría específica
-        query = f"SELECT * FROM libros LEFT JOIN autores ON libros.id_libro = autores.id_libro WHERE id_libro IN (%s);" % ','.join(map(str, category))
+        query = f"SELECT * FROM libros LEFT JOIN autores ON libros.id_libro = autores.id_libro WHERE libros.id_libro IN (%s);" % ','.join(map(str, category))
         # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
         # Crear una lista para almacenar los objetos Libro

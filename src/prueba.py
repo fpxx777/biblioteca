@@ -96,6 +96,8 @@ def get_book_info(isbn, info_faltante = {}):
             "generos": new_categories if new_categories != [] else info_faltante["generos"],
             "imagen": image_links[THUMBNAIL_KEY] if image_links else info_faltante["img"]
         }
+    
+    return errors, book
     if len(errors) > 0:
         print("EL PICOOOOO")
         return errors, book
