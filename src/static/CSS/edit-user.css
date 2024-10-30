@@ -59,6 +59,7 @@ body {
 }
 
 .volver-editar {
+    margin-top: 3vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -234,11 +235,12 @@ body {
 }
 
 .photo {
-    width: 6.5vw;
+    width: 5vw;
     cursor: pointer;
     border-radius: 50%;
     border-color: var(--light-bg-color);
     border: var(--light-bg-color) 5px solid;
+    border-width: 0.5vw;
 }
 
 .visual-foto{
@@ -305,4 +307,121 @@ body {
 .centrar-enviar {
     display: flex;
     justify-content: center;
+}
+
+@media (min-width:320px) and (max-width: 800px) {
+
+    .edit-container{
+        position: relative;
+    }
+
+    .fondo{
+        background-image: none;
+        background-color: var(--dark-bg-color);
+    }
+    
+    .user{
+        width: 75%;
+    }
+
+    .volver a {
+        font-size: 6vw;
+
+    }
+
+    .volver svg {
+        width: 6vw;
+    }
+
+    .icon-lapiz {
+        width: 8vw;
+        fill: var(--contrast-bg-color);
+    }
+    
+    .edit-button {
+        width: 20vw;
+    }
+
+    .edit-button h1 {
+        color: var(--contrast-bg-color);
+        margin-left: 1vw;
+        font-size: 6vw;
+        font-weight: 600;
+    }
+
+    .x svg {
+        width: 8vw;
+        fill: var(--contrast-bg-color);
+    }
+    
+    .x {
+        width: 20vw;
+    }
+
+    .x h1 {
+        color: var(--contrast-bg-color);
+        margin-left: 1vw;
+        font-size: 6vw;
+        font-weight: 600;
+    }
+
+   
+    .enviar {
+        font-size: 4vw;
+        width: 28vw;
+        margin-left: 0.5vw;
+        border-radius: 15px;
+        padding: 2vh 1vw;
+    }
+
+    .photo-container label {
+        font-size: 3.5vw;
+        color: var(--contrast-bg-color);
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    #centrar-user.move-center {
+        transform: translateX(10%);
+    }
+
+    .photo-container div{
+        margin: 0% 0%;
+        width: 20vw;
+    }
+    
+    .photo {
+        width: 15vw;
+        border-width: 0.5vw;
+        margin-top: 10vh;
+    }
+
+    .photo2 {
+        width: 13vw;
+        border-radius: 50%;
+        
+    }
+    
+    
+    .edit-user {
+        margin-left: 0.5vw;
+        margin-bottom: 2vh;
+        margin-top: 10vh;
+    }
+
+    .edit-user label {
+        font-size: 5vw;
+        font-weight: 500;
+    }
+    
+    .edit-user input {
+        font-size: 6vw;
+        display: none;
+    }
+    
+    .edit-user svg {
+        width: 5vw;
+        margin-right: 1vw;
+    }
+
 }

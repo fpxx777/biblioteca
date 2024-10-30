@@ -23,7 +23,7 @@
             <div class="volver-editar">
                 <div class="volver">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 256 256">
-                        <g >
+                        <g>
                             <path d="m176 104l-48 48V56Z" opacity="2" />
                             <path
                                 d="m229.66 109.66l-48 48a8 8 0 0 1-11.32-11.32L212.69 104l-42.35-42.34a8 8 0 0 1 11.32-11.32l48 48a8 8 0 0 1 0 11.32m-48 0l-48 48A8 8 0 0 1 120 152v-39.63A88.11 88.11 0 0 0 40 200a8 8 0 0 1-16 0a104.15 104.15 0 0 1 96-103.7V56a8 8 0 0 1 13.66-5.66l48 48a8 8 0 0 1 0 11.32m-17-5.66L136 75.31v57.38Z" />
@@ -56,54 +56,58 @@
             </div>
 
             {% if session["img"] %}
-                <div class="visual-foto">
+            <div class="visual-foto">
+                <div>
+                    <img class="photo" src="{{ url_for('media', filename=session.img) }}" alt="Foto de perfil">
+                </div>
+            </div>
+            <div class="foto-user" style="display: none;">
+                <label class="photo-container">
+                    <img class="photo" id="photo" src="{{ url_for('media', filename=session.img) }}"
+                        alt="Foto de perfil">
                     <div>
-                        <img class="photo" src="{{ url_for('media', filename=session.img) }}" alt="Foto de perfil">
+                        <label for="file">Cambiar foto</label>
+                        <input type="file" style="visibility: hidden;" name="file" id="file"
+                            accept="image/png, image/jpeg">
                     </div>
-                </div>
-                <div class="foto-user" style="display: none;">
-                    <label class="photo-container">
-                        <img class="photo" id="photo" src="{{ url_for('media', filename=session.img) }}" alt="Foto de perfil">
-                        <div>
-                            <label for="file">Cambiar foto</label>
-                            <input type="file" style="visibility: hidden;" name="file" id="file" accept="image/png, image/jpeg">
-                        </div>
                     </labe>
-                </div>
+            </div>
             {% else %}
-                <div class="visual-foto">
+            <div class="visual-foto">
+                <div>
+                    <img class="photo" src="/static/img/PhUser (1).png">
+                </div>
+            </div>
+            <div class="foto-user" style="display: none;">
+                <label class="photo-container">
+                    <img class="photo" id="photo" src="/static/img/PhUser (1).png">
                     <div>
-                        <img class="photo" src="/static/img/PhUser (1).png">
+                        <label for="file">Cambiar foto</label>
+                        <input type="file" style="visibility: hidden;" name="file" id="file"
+                            accept="image/png, image/jpeg">
                     </div>
-                </div>
-                <div class="foto-user" style="display: none;">
-                    <label class="photo-container">
-                        <img class="photo" id="photo" src="/static/img/PhUser (1).png">
-                        <div>
-                            <label for="file">Cambiar foto</label>
-                            <input type="file" style="visibility: hidden;" name="file" id="file" accept="image/png, image/jpeg">
-                        </div>
                     </labe>
-                </div>
+            </div>
             {% endif %}
 
 
-            <div class="edit-user" >
+            <div class="edit-user">
                 <div id="centrar-user">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1vw" viewBox="0 0 256 256">
-                        <path 
+                        <path
                             d="M234.38 210a123.36 123.36 0 0 0-60.78-53.23a76 76 0 1 0-91.2 0A123.36 123.36 0 0 0 21.62 210a12 12 0 1 0 20.77 12c18.12-31.32 50.12-50 85.61-50s67.49 18.69 85.61 50a12 12 0 0 0 20.77-12M76 96a52 52 0 1 1 52 52a52.06 52.06 0 0 1-52-52" />
                     </svg>
                     <label id="Username-label" for="username">{{session['username']}}</label>
-                    <input id="Username-input" type="text" name="username" placeholder="{{session['username']}}" value="">
+                    <input id="Username-input" type="text" name="username" placeholder="{{session['username']}}"
+                        value="">
                 </div>
             </div>
             <div class="edit-user" id="fijo">
                 <div>
                     <svg id="icon-gmail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-                        <path 
+                        <path
                             d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64" />
-                        <path 
+                        <path
                             d="M904 224L656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0l210.56 240.704a128 128 0 0 0 192.704 0L818.944 224z" />
                     </svg>
                     <label for="useremail">{{session["gmail"]}}</label>
@@ -130,7 +134,7 @@
             <div class="centrar-enviar">
                 <button class="enviar hidden" type="submit">Actualizar datos</button>
             </div>
-            
+
         </form>
     </div>
 </body>
@@ -171,17 +175,17 @@
         document.querySelector('.visual-foto').style.display = 'flex';
 
     });
-    const file = document.getElementById( 'file' );
-    const img = document.getElementById( 'photo' );
-    file.addEventListener( 'change', e => {
-      if( e.target.files[0] ){
-        const reader = new FileReader( );
-        reader.onload = function( e ){
-          img.src = e.target.result;
+    const file = document.getElementById('file');
+    const img = document.getElementById('photo');
+    file.addEventListener('change', e => {
+        if (e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0])
         }
-        reader.readAsDataURL(e.target.files[0])
-      }
-    } );
+    });
 </script>
 
 </html>
