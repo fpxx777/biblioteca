@@ -9,6 +9,7 @@ class Usuarios:
         self.contrasena = data['contrasena']
         self.img = data['img']
         self.created_at = data['created_at']
+        self.rango = data["rango"]
 
     @classmethod
     def ver_user(cls, email):

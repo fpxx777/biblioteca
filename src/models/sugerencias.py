@@ -14,6 +14,7 @@ class Sugerencia:
     def get_all(cls):
         query = "SELECT * FROM sugerencias"
         results = connectToMySQL('biblionauta').query_db(query)
+        print(results)
         sugerencias = []
         for sugerencia in results:
             sugerencias.append(cls(sugerencia))

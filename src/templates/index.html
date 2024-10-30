@@ -18,6 +18,25 @@
 <body>
     <!-- parte derecha al darle click icono -->
     {% if session %}
+    {% if session["rango"] == "admin" %}
+    <div class="overlay hidden visuallyhidden" id="overlay"></div>
+    <div class="login-container hidden visuallyhidden" id="login-container">
+        <div class="align-login-container">
+            <img src="{{ url_for('media', filename=session.img) }}">
+            <h1>{{session.username}}</h1>
+            <button class="editarbutton" style=" background-color: #F8F1DF">
+              <a href="/sugerencias/" style="color: #1C1B29;">Sugerencias</a>
+          </button>
+
+          <button class="cerrarbutton">
+              <a href="/logout/">Cerrar sesion</a>
+          </button>
+          <button class="editarbutton">
+            <a href="/profile/">Editar Perfil</a>
+        </button>
+        </div>
+    </div> 
+    {% else %}
     <div class="overlay hidden visuallyhidden" id="overlay"></div>
     <div class="login-container hidden visuallyhidden" id="login-container">
         <div class="align-login-container">
@@ -38,6 +57,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% else %}
     <div class="overlay hidden visuallyhidden" id="overlay"></div>
     <div class="login-container hidden visuallyhidden" id="login-container">
@@ -137,8 +157,8 @@
     </main>
     <section class="subscribe">
       <div class="container-subscribe">
-        <h2>Suscríbete para saber cuándo llegan nuevos libros</h2>
-        <a href="#">Suscribete</a>
+        <h2>Quieres sugerir un libro? Da click!!</h2>
+        <a href="/request/">Sugerir</a>
       </div>
     </section>
     <footer class="footer">

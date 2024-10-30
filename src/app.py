@@ -99,24 +99,32 @@ def book(bookid):
         return render_template("book.html", book=book, authors=authors, categories=categories)
 
 # Ruta para probar la inserción de datos
-@app.route("/test", methods=["GET", "POST"])
+@app.route("/test/", methods=["GET", "POST"])
 def test():
     # Si se envía una solicitud POST, procesar la inserción de datos
     if request.method == "POST":
         # Obtener el ISBN del libro
         response = request.form.get("isbn")
         # Obtener la información del libro a partir del ISBN
-        book = get_book_info(response)
+        errors, book = get_book_info(response)
         # Si se obtuvo la información del libro, insertar los datos
-        if book:
-            response2 = Insert.insert_all(book)
-            # Si la inserción falló, mostrar un mensaje de error
-            if response2 == False:
-                return "ISBN INVALIDO / NO TIENE IMAGEN"
+        if errors:
+            return render_template("insert-error.html", isbn= book["isbn"], book=book, errors=errors)
         else:
-            return "ISBN INVALIDO"
+            return redirect("/")
     # Renderizar la plantilla insert.html para probar la inserción de datos
     return render_template("insert.html")
+
+@app.route("/test/fill/", methods=["POST"])
+def fill():
+    response = request.form.to_dict()
+    if 'autores' in response and response['autores']:
+        response['autores'] = [autor.strip() for autor in response['autores'].split(',')] if response['autores'] else []
+    if 'generos' in response and response['generos']:
+        response['generos'] = [genero.strip() for genero in response['generos'].split(',')] if response['generos'] else []
+    book = get_book_info(response["isbn"], response)
+    print(book)
+    return redirect("/test/")
 
 @app.route("/favorites/", methods=["GET"])
 def favorites():
@@ -178,6 +186,8 @@ def login():
         errors.append("mal")
         return render_template("login&register.html", errors=errors)
     else:
+        if user["rango"] == 'admin':
+            session["rango"] = "admin"
         session["id"] = user["id_usuario"]
         session["username"] = user["nombre"]
         session["img"] = user["img"]
@@ -242,5 +252,9 @@ def request_send():
     Sugerencia.add_request(data)
     return redirect("/")
 
+@app.route("/sugerencias/", methods=["GET"])
+def sugerencias():
+    sugerencias = Sugerencia.get_all()
+    return render_template("sugerencias.html", sugerencias=sugerencias)
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
