@@ -220,5 +220,19 @@ def edit_profile():
         session["username"] = new_name
     return redirect("/profile")
 
+@app.route("/request/", methods=["GET"])
+def request():
+    return render_template("new_book.html")
+
+@app.route("/request/", methods=["POST"])
+def request_send():
+    title = request.form.get('title')
+    author = request.form.get('author')
+    isbn = request.form.get('isbn')
+    year = request.form.get('year')
+    reason = request.form.get('reason')
+    
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

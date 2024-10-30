@@ -54,12 +54,14 @@ exterior_login.addEventListener('click', function () {
 
 document.querySelectorAll('.sub-categorias').forEach(item => {
   item.addEventListener('click', () => {
+      document.body.classList.add('stop-scrolling');
       document.querySelector('.categoria').classList.toggle('mostrar');
       document.querySelector('.overlay2').classList.toggle('mostrar');
   });
 });
 
 document.querySelector('.overlay2').addEventListener('click', () => {
+  document.body.classList.remove('stop-scrolling');
   document.querySelector('.categoria').classList.remove('mostrar');
   document.querySelector('.overlay2').classList.remove('mostrar');
 });

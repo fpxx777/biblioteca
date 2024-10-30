@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='CSS/new_book.css') }}"
+    />
+    <link rel="shortcut icon" href="/static/img/logo.png" />
+    <!-- fuente link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- parte derecha al darle click icono -->
+    {% if session %}
+    <div class="overlay hidden visuallyhidden" id="overlay"></div>
+    <div class="login-container hidden visuallyhidden" id="login-container">
+      <div class="align-login-container">
+        {% if session["img"] == None %}
+        <img src="/static/img/PhUserCircleFill (1).png" />
+        {% else %}
+        <img src="{{ url_for('media', filename=session.img) }}" />
+        {% endif %}
+        <h1>{{session.username}}</h1>
+        <div class="buttons">
+          <button class="editarbutton">
+            <a href="/profile/">Editar Perfil</a>
+          </button>
+
+          <button class="cerrarbutton">
+            <a href="/logout/">Cerrar sesion</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="overlay hidden visuallyhidden" id="overlay"></div>
+    <div class="login-container hidden visuallyhidden" id="login-container">
+      <div class="align-login-container">
+        <img src="/static/img/PhUserCircleFill (1).png"">
+        <a href="/login&register" class="login-button">Iniciar Sesión</a>
+        <p>
+          No tienes cuenta?
+          <a href="/login&register" class="register-button">Regístrate</a>
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    <header class="header">
+      <div>
+        <img src="/static/img/logo.png" alt="" />
+        <a href="/">
+          <h1>BIBLIONAUTA</h1>
+        </a>
+      </div>
+      <form action="/search" method="get">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 48 48">
+          <defs>
+            <mask id="IconifyId191010337f1eb1ccc5">
+              <g
+                fill="none"
+                stroke="#fff"
+                stroke-linejoin="round"
+                stroke-width="4"
+              >
+                <path
+                  fill="#555"
+                  d="M21 38c9.389 0 17-7.611 17-17S30.389 4 21 4S4 11.611 4 21s7.611 17 17 17Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  d="M26.657 14.343A7.975 7.975 0 0 0 21 12a7.975 7.975 0 0 0-5.657 2.343m17.879 18.879l8.485 8.485"
+                />
+              </g>
+            </mask>
+          </defs>
+          <path
+            fill="#"
+            d="M0 0h48v48H0z"
+            mask="url(#IconifyId191010337f1eb1ccc5)"
+          />
+        </svg>
+        <input
+          type="text"
+          placeholder="Busca algun libro..."
+          name="search"
+          id="search"
+        />
+      </form>
+      <ul>
+        <li>
+          <a class="inicio" href="/favorites/">Favoritos</a>
+        </li>
+        <li>
+          <a href="/categories/1/">Categorias</a>
+        </li>
+        <li>
+          <a class="info" href="/">Inicio</a>
+        </li>
+        <li>
+          {% if session %} {% if session["img"] == None %}
+          <img id="user-icon" src="/static/img/PhUserCircleFill (1).png" />
+          {% else %}
+          <img
+            id="user-icon"
+            src="{{ url_for('media', filename=session.img) }}"
+          />
+          {% endif %} {% else %}
+          <img id="user-icon" src="/static/img/PhUserCircleFill (1).png" />
+          {% endif %}
+        </li>
+      </ul>
+    </header>
+    <div class="min-h-screen bg-dark text-dark relative overflow-hidden">
+      <!-- Decorative stars background -->
+      <div class="background-stars"></div>
+
+      <div class="container">
+        <div class="max-w-2xl mx-auto space-y-8">
+          <div class="text-center space-y-2">
+            <h1 class="title">Solicitar Nuevo Libro</h1>
+            <p class="subtitle">
+              ¿No encuentras el libro que buscas? ¡Solicítalo aquí!
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">
+                Formulario de Solicitud
+              </h2>
+              <p class="card-description">
+                Completa los detalles del libro que te gustaría ver en nuestra
+                biblioteca
+              </p>
+            </div>
+            <div class="card-content">
+              <form action="" method="post" class="form">
+                <div class="form-group">
+                  <label for="title">Título del Libro</label>
+                  <input
+                    type="text"
+                    id="title"
+                    required
+                    placeholder="Ingresa el título del libro"
+                    class="input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="author">Autor</label>
+                  <input
+                    type="text"
+                    id="author"
+                    required
+                    placeholder="Nombre del autor"
+                    class="input"
+                  />
+                </div>
+
+                <div class="grid">
+                  <div class="form-group">
+                    <label for="isbn">ISBN (opcional)</label>
+                    <input
+                      type="text"
+                      id="isbn"
+                      placeholder="ISBN del libro"
+                      class="input"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="year">Año de Publicación</label>
+                    <input
+                      type="date"
+                      id="year"
+                      placeholder="YYYY"
+                      class="input"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group why">
+                  <label for="reason"
+                    >¿Por qué te gustaría este libro en la biblioteca?</label
+                  >
+                  <input
+                    id="reason"
+                    placeholder="Cuéntanos por qué este libro sería una buena adición..."
+                    class="textarea"
+                  />
+                </div>
+
+                <button type="submit" class="button">
+                  Enviar Solicitud
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="footer">
+            <span>Gracias por contribuir al crecimiento de nuestra biblioteca</span>
+          </div>
+        </div>
+      </div>
+    <div/>
+  </body>
+  <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+</html>
