@@ -34,7 +34,6 @@ def logout():
 def index():
     # Obtener todos los libros
     books = Libros.get_all_limit_all(1, 12)
-    print("boo9ks", len(books))
     # Renderizar la plantilla index.html con la lista de libros y categorías
     if session:
         return render_template("index.html", books=books, session=session)
@@ -107,10 +106,12 @@ def test():
         response = request.form.get("isbn")
         # Obtener la información del libro a partir del ISBN
         errors, book = get_book_info(response)
+        print(book)
         # Si se obtuvo la información del libro, insertar los datos
         if errors:
             return render_template("insert-error.html", isbn= book["isbn"], book=book, errors=errors)
         else:
+            Insert.insert_all(book)
             return redirect("/")
     # Renderizar la plantilla insert.html para probar la inserción de datos
     return render_template("insert.html")
