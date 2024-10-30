@@ -31,10 +31,13 @@ class Favoritos:
         return results
     @classmethod
     def select_all(cls, id_usuario):
-        query = f"SELECT * FROM favoritos F LEFT JOIN usuarios U ON F.id_usuario = U.id_usuario LEFT JOIN libros L ON F.id_libro = L.id_libro WHERE U.id_usuario = {id_usuario};"
+        query = f"SELECT * FROM favoritos F LEFT JOIN usuarios U ON F.id_usuario = U.id_usuario LEFT JOIN libros L ON F.id_libro = L.id_libro LEFT JOIN autores A ON F.id_libro = A.id_libro WHERE U.id_usuario = {id_usuario};"
         results = connectToMySQL('biblionauta').query_db(query)
         books = []
-        print(results)
         for book in results:
-            books.append(Libros(book))
+            existing_book = next((b for b in books if b.id_libro == book["id_libro"]), None)
+            if existing_book:
+                existing_book.nombre_autor.append(book["nombre_autor"])
+            else:
+                books.append(Libros(book))
         return books

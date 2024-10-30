@@ -63,12 +63,20 @@ body{
     opacity: 0;
     transition: opacity 0.5s linear;
 }
+.align-login-container{
+    width: auto;
+    height: auto;
+}
 
-.align-login-container svg {
-    width: 7.5vw;;
+.align-login-container img {
+    width: 7vw;
+    height: 7vw;
+    max-height: 15vh;
     display: block;
     margin: 10vh auto;
-    display: block;
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 
 }
 
@@ -126,7 +134,9 @@ body{
 }
 
 #user-icon {
-    
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -192,9 +202,12 @@ body{
     margin-left: 2vw;
 }
 
-.header li svg{
-    width: 5vw;
+.header li img{
+    width: 4vw;
     max-height: 15vh;
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
 }
 
 .header a {
@@ -546,6 +559,7 @@ main {
     .book-container >article {
         background-color: #1D2C4B;
         border-radius: 10px;
+        width: 19vw;
         overflow: hidden;
         margin-bottom: 10vw;
     }
