@@ -62,27 +62,3 @@ document.querySelectorAll('.sub-categorias').forEach(item => {
 document.querySelector('.overlay2').addEventListener('click', () => {
   document.querySelector('.categoria').classList.remove('mostrar');
   document.querySelector('.overlay2').classList.remove('mostrar');
-});
-
-
-/*
-btn.addEventListener('click', function () {
-  
-  if (box.classList.contains('hidden')) {
-    box.classList.remove('hidden');
-    setTimeout(function () {
-      box.classList.remove('visuallyhidden');
-    }, 20);
-  } else {
-    box.classList.add('visuallyhidden');    
-    box.addEventListener('transitionend', function(e) {
-      box.classList.add('hidden');
-    }, {
-      capture: false,
-      once: true,
-      passive: false
-    });
-  }
-  
-}, false);
-*/

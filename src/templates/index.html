@@ -49,79 +49,113 @@
     {% endif %}
 
     <header class="header">
-        <div>
-            <img src="/static/img/logo.png" alt="" />
-            <a href="/">
-                <h1>BIBLIONAUTA</h1>
-            </a>
-        </div>
-        <form action="/search" method="get">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 48 48">
-                <defs>
-                    <mask id="IconifyId191010337f1eb1ccc5">
-                        <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
-                            <path fill="#555"
-                                d="M21 38c9.389 0 17-7.611 17-17S30.389 4 21 4S4 11.611 4 21s7.611 17 17 17Z" />
-                            <path stroke-linecap="round"
-                                d="M26.657 14.343A7.975 7.975 0 0 0 21 12a7.975 7.975 0 0 0-5.657 2.343m17.879 18.879l8.485 8.485" />
-                        </g>
-                    </mask>
-                </defs>
-                <path fill="#" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
-            </svg>
-            <input type="text" placeholder="Busca algun libro..." name="search" id="search" />
-        </form>
-        <ul>
-            <li>
-                <a class="inicio" href="#">Info</a>
-            </li>
-            <li>
-                <a href="/categories">Categorias</a>
-            </li>
-            <li>
-                <a class="info" href="/">Inicio</a>
-            </li>
-            <li>
-                <img id="user-icon" src="/static/img/PhUser (1).png">
-            </li>
-        </ul>
+      <div>
+        <img src="/static/img/logo.png" alt="" />
+        <a href="/">
+          <h1>BIBLIONAUTA</h1>
+        </a>
+      </div>
+      <form action="/search" method="get">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 48 48">
+          <defs>
+            <mask id="IconifyId191010337f1eb1ccc5">
+              <g
+                fill="none"
+                stroke="#fff"
+                stroke-linejoin="round"
+                stroke-width="4"
+              >
+                <path
+                  fill="#555"
+                  d="M21 38c9.389 0 17-7.611 17-17S30.389 4 21 4S4 11.611 4 21s7.611 17 17 17Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  d="M26.657 14.343A7.975 7.975 0 0 0 21 12a7.975 7.975 0 0 0-5.657 2.343m17.879 18.879l8.485 8.485"
+                />
+              </g>
+            </mask>
+          </defs>
+          <path
+            fill="#"
+            d="M0 0h48v48H0z"
+            mask="url(#IconifyId191010337f1eb1ccc5)"
+          />
+        </svg>
+        <input
+          type="text"
+          placeholder="Busca algun libro..."
+          name="search"
+          id="search"
+        />
+      </form>
+      <ul>
+        <li>
+          <a class="inicio" href="/favorites/">Favoritos</a>
+        </li>
+        <li>
+          <a href="/categories/1/">Categorias</a>
+        </li>
+        <li>
+          <a class="info" href="/">Inicio</a>
+        </li>
+        <li>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="128"
+            height="128"
+            viewBox="0 0 256 256"
+            id="user-icon"
+          >
+            <path
+              fill="#F8F1DF"
+              d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
+            />
+          </svg>
+        </li>
+      </ul>
     </header>
     <div class="img-static">
         <h2>BIBLIONAUTA</h2>
         <p>Tu Catalogo Virtual</p>
     </div>
     <main>
-        <section class="explora">
-            <p>EXPLORA AHORA</p>
-            <h2>Catalogo Espacial</h2>
-            <div class="img-promo">
-                <div class="img-izq">
-                    <h3>Explora libros de otro mundo</h3>
-                </div>
-                <div class="img-der">
-                    <h3>Pierdete en el gran universo literario</h3>
-                </div>
-            </div>
-            <div class="img-center">
-                <h3></h3>
-            </div>
-        </section>
-        <section class="book-container">
-            {% for book in books %}
-            <article>
-                <div class="book-img">
-                    <a href="/book/{{book.id_libro}}">
-                        <img src="{{book.imagen}}" width="200" height="300" alt="Book Cover" />
-                    </a>
-                </div>
-                <div class="book-info">
-                    <h3>{{book.titulo}}</h3>
-                    <p>{{book.id_libro}}</p>
-                </div>
-            </article>
-            {% endfor %}
-        </section>
-        <p class="mas">mas proximamente...</p>
+      <section class="explora">
+        <p>EXPLORA AHORA</p>
+        <h2>Catalogo Espacial</h2>
+        <div class="img-promo">
+          <div class="img-izq">
+            <h3>Explora libros de otro mundo</h3>
+          </div>
+          <div class="img-der">
+            <h3>Pierdete en el gran universo literario</h3>
+          </div>
+        </div>
+        <div class="img-center">
+          <h3></h3>
+        </div>
+      </section>
+      <section class="book-container">
+        {% for book in books %}
+        <article>
+          <div class="book-img">
+            <a href="/book/{{book.id_libro}}">
+              <img
+                src="{{book.imagen}}"
+                width="200"
+                height="300"
+                alt="Book Cover"
+              />
+            </a>
+          </div>
+          <div class="book-info">
+            <h3>{{book.titulo}}</h3>
+            <p>{{ ', '.join(book.nombre_autor)}}</p>
+          </div>
+        </article>
+        {% endfor %}
+      </section>
+      <p class="mas">mas proximamente...</p>
     </main>
     <section class="subscribe">
         <div class="container-subscribe">
