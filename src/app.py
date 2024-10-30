@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, send_from_directory, jsonify
+from flask import Flask, render_template, request, redirect, session, send_from_directory
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 import math
@@ -11,6 +11,7 @@ from models.autores import Autores  # Modelo para autores
 from models.insert import Insert  # Modelo para inserción de datos
 from models.favorites import Favoritos
 from models.usuarios import Usuarios
+from models.sugerencias import Sugerencia
 
 # Importar función para obtener información de un libro a partir de su ISBN
 from prueba import get_book_info  # Función para obtener información de un libro
@@ -34,7 +35,6 @@ def index():
     # Obtener todos los libros
     books = Libros.get_all_limit_all(1, 12)
     # Renderizar la plantilla index.html con la lista de libros y categorías
-    print(session["img"])
     return render_template("index.html", books=books, session=session)
 
 # Ruta para búsqueda de libros
@@ -205,6 +205,7 @@ def media(filename):
 
 @app.route("/profile/change/", methods=["POST"])
 def edit_profile():
+    print("aki",request.files)
     if "file" in request.files:
         file = request.files["file"]
         if file.filename:
@@ -221,18 +222,25 @@ def edit_profile():
     return redirect("/profile")
 
 @app.route("/request/", methods=["GET"])
-def request():
+def request_page():
     return render_template("new_book.html")
 
 @app.route("/request/", methods=["POST"])
 def request_send():
-    title = request.form.get('title')
-    author = request.form.get('author')
-    isbn = request.form.get('isbn')
-    year = request.form.get('year')
-    reason = request.form.get('reason')
-    
-
+    title = request.form.get("title")
+    author = request.form.get("author")
+    isbn = request.form.get("isbn")
+    year = request.form.get("year")
+    reason = request.form.get("reason")
+    data = {
+        "title": title,
+        "author": author,
+        "isbn": isbn,
+        "year": year,
+        "reason": reason
+    }
+    Sugerencia.add_request(data)
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

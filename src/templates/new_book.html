@@ -142,12 +142,13 @@
               </p>
             </div>
             <div class="card-content">
-              <form action="" method="post" class="form">
+              <form action="/request/" method="POST" class="form">
                 <div class="form-group">
                   <label for="title">Título del Libro</label>
                   <input
                     type="text"
                     id="title"
+                    name="title"
                     required
                     placeholder="Ingresa el título del libro"
                     class="input"
@@ -159,6 +160,7 @@
                   <input
                     type="text"
                     id="author"
+                    name="author"
                     required
                     placeholder="Nombre del autor"
                     class="input"
@@ -171,6 +173,7 @@
                     <input
                       type="text"
                       id="isbn"
+                      name="isbn"
                       placeholder="ISBN del libro"
                       class="input"
                     />
@@ -181,6 +184,7 @@
                     <input
                       type="date"
                       id="year"
+                      name="year"
                       placeholder="YYYY"
                       class="input"
                     />
@@ -193,6 +197,7 @@
                   >
                   <input
                     id="reason"
+                    name="reason"
                     placeholder="Cuéntanos por qué este libro sería una buena adición..."
                     class="textarea"
                   />

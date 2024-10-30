@@ -2,7 +2,6 @@
 from config.db import connectToMySQL
 
 # Importar la función para obtener la hora actual
-import time
 
 # Clase para insertar datos en la base de datos
 class Insert:
