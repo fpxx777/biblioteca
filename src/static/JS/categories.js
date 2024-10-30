@@ -108,6 +108,45 @@ exterior_categoria.addEventListener('click', () => {
     firstHover = true;
 });
 
+let subCategoriasTop = document.querySelectorAll('.sub-categorias-top');
+
+subCategoriasTop.forEach(item => {
+    item.addEventListener('click', () => {
+        let targetId = item.id;
+        let container;
+
+        if (targetId === 'categoria-genero') {
+            container = interior_categoria_genero;
+        } else if (targetId === 'categoria-autor') {
+            container = interior_categoria_autor;
+        } else if (targetId === 'categoria-fecha') {
+            container = interior_categoria_fecha;
+        }
+
+        if (activeCategory && activeCategory !== container) {
+            activeCategory.classList.remove('mostrar');
+        }
+
+        if (container.classList.contains('mostrar')) {
+            container.classList.remove('mostrar');
+            activeCategory = null;
+        } else {
+            container.classList.add('mostrar');
+            activeCategory = container;
+        }
+
+        exterior_categoria.classList.add('mostrar');
+    });
+});
+
+exterior_categoria.addEventListener('click', () => {
+    if (activeCategory) {
+        activeCategory.classList.remove('mostrar');
+    }
+    exterior_categoria.classList.remove('mostrar');
+});
+
+
 
 
 /*

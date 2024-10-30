@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/categories.css') }}">
     <link rel="shortcut icon" href="/static/img/logo.png">
     <!-- fuente link -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
-            rel="stylesheet">
-        <title>BiblioNauta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+        rel="stylesheet">
+    <title>BiblioNauta</title>
 </head>
 
 <body>
@@ -28,14 +28,14 @@
         </div>
     </div>
     <header class="header">
-        <div>
+        <div class="top-izquierda">
             <img src="/static/img/logo.png" alt="">
             <a href="/">
                 <h1>BIBLIONAUTA</h1>
             </a>
         </div>
-        <form action="/search" method="get">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 48 48">
+        <form class="searchs" action="/search" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" viewBox="0 0 48 48">
                 <defs>
                     <mask id="IconifyId191010337f1eb1ccc5">
                         <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
@@ -46,15 +46,49 @@
                         </g>
                     </mask>
                 </defs>
-                <path fill="#1C1B29" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
+                <path fill="#" d="M0 0h48v48H0z" mask="url(#IconifyId191010337f1eb1ccc5)" />
             </svg>
             <input type="text" placeholder="Busca algun libro..." name="search" id="search">
         </form>
         <ul>
-            <li><a class="inicio" href="/">Inicio</a></li>
-            <li><a href="/categories">Categorias</a></li>
-            <li><a class="info" href="#">info</a></li>
+            <li>
+                <a class="inicio" href="#">Info</a>
+            </li>
+            <li>
+                <a class="inicio" href="/categories">Categorias</a>
+            </li>
+            <li>
+                <a class="info" href="/">Inicio</a>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256" id="user-icon">
+                    <path fill="#F8F1DF"
+                        d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
+                </svg>
+            </li>
+            <li class="texto">
+                <h1>
+                    Ingresar
+                </h1>
+            </li>
+            <li class="list-menu">
+                <a href="/categories">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 256 256">
+                        <path fill="#EE9E59"
+                            d="M228 128a12 12 0 0 1-12 12H40a12 12 0 0 1 0-24h176a12 12 0 0 1 12 12M40 76h176a12 12 0 0 0 0-24H40a12 12 0 0 0 0 24m176 104H40a12 12 0 0 0 0 24h176a12 12 0 0 0 0-24" />
+                    </svg>
+                </a>
+
+            </li>
+        </ul>
     </header>
+    <form class="searchs2" action="/search" method="get">
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+            <path fill="#1C1B29"
+                d="M232.49 215.51L185 168a92.12 92.12 0 1 0-17 17l47.53 47.54a12 12 0 0 0 17-17ZM44 112a68 68 0 1 1 68 68a68.07 68.07 0 0 1-68-68" />
+        </svg>
+        <input type="text" placeholder="Busca algun libro..." name="search" id="search">
+    </form>
     <h2 class="results">Resultados para: {{search}}</h2>
     <main>
         <section class="book-container">
@@ -97,5 +131,6 @@
     </footer>
     </main>
 </body>
+<script src="{{ url_for('static', filename='JS/categories.js') }}"></script>
 
 </html>
