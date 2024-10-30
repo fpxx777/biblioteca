@@ -7,22 +7,19 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/categories.css') }}">
     <link rel="shortcut icon" href="/static/img/logo.png">
     <!-- fuente link -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
-            rel="stylesheet">
-        <title>BiblioNauta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+        rel="stylesheet">
+    <title>BiblioNauta</title>
 </head>
 
 <body>
     <div class="overlay hidden visuallyhidden" id="overlay"></div>
     <div class="login-container hidden visuallyhidden" id="login-container">
         <div class="align-login-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                <path fill="#F8F1DF"
-                    d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128" />
-            </svg>
+            <img src="/static/img/PhUser (1).png">
             <a href="/login&register" class="login-button">Iniciar Sesión</a>
             <p>No tienes cuenta? <a href="#" class="register-button">Regístrate</a></p>
         </div>
@@ -54,6 +51,9 @@
             <li><a class="inicio" href="/">Inicio</a></li>
             <li><a href="/categories">Categorias</a></li>
             <li><a class="info" href="#">info</a></li>
+            <li>
+                <img id="user-icon" src="/static/img/PhUser (1).png">
+            </li>
     </header>
     <h2 class="results">Resultados para: {{search}}</h2>
     <main>
@@ -97,5 +97,5 @@
     </footer>
     </main>
 </body>
-
+<script src="{{ url_for('static', filename='JS/categories.js') }}"></script>
 </html>
