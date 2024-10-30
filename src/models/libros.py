@@ -1,5 +1,6 @@
 # Importar la función para conectar a la base de datos
 from config.db import connectToMySQL
+from models.generos import Generos
 import math
 
 # Clase para representar a los libros
@@ -14,24 +15,21 @@ class Libros:
         self.paginas = data['paginas']  # Número de páginas del libro
         self.imagen = data['imagen']  # Imagen del libro
         self.fecha_publicacion = data['fecha_publicacion']  # Fecha de publicación del libro
+        self.nombre_autor = [data["nombre_autor"]]
 
     # Método de clase para obtener todos los libros
     @classmethod
-    def get_all_limit_all(cls, page = 1):
-        # Calcula el límite de libros por página
-        limit = 12
-        # Calcula el offset para la página actual
+    def get_all_limit_all(cls, page, limit):
         offset = (page - 1) * limit
-        # Crear una consulta SQL para obtener los libros paginados
-        query = f"SELECT * FROM libros LIMIT {limit} OFFSET {offset};"
-        # Ejecutar la consulta SQL y obtener los resultados
+        query = f"SELECT * FROM libros LEFT JOIN autores ON libros.id_libro = autores.id_libro LIMIT {limit} OFFSET {offset};"
         results = connectToMySQL('biblionauta').query_db(query)
-        # Crear una lista para almacenar los objetos Libro
         books = []
-        # Iterar sobre los resultados y agregar los objetos Libro a la lista
         for book in results:
-            books.append(cls(book))  # Crear un objeto Libro para cada resultado
-        # Regresar la lista de objetos Libro y el número total de páginas
+            existing_book = next((b for b in books if b.id_libro == book["id_libro"]), None)
+            if existing_book:
+                existing_book.nombre_autor.append(book["nombre_autor"])
+            else:
+                books.append(cls(book))
         return books
 
     # Este es un método de clase, lo que significa que pertenece a la clase en sí, en lugar de una instancia de la clase.
@@ -42,19 +40,8 @@ class Libros:
         
         # Ejecuta la consulta utilizando la función connectToMySQL, que devuelve una lista de resultados.
         results = connectToMySQL('biblionauta').query_db(query)
-        
-        # Crea una lista vacía para almacenar los objetos de libro.
-        books = []
-        
-        # Itera sobre los resultados, que probablemente son una lista de diccionarios o tuplas.
-        for book in results:
-            # Para cada resultado, crea una nueva instancia de la clase (cls) y pasa los datos del libro a ella.
-            # Esto asume que la clase tiene un método __init__ que toma un diccionario o tupla como argumento.
-            books.append(cls(book))
-        
-        # Devuelve la lista de objetos de libro.
-        return books
-    # Método para obtener todos los libros de una categoría específica
+        return results
+    @classmethod
     def get_all_for_category(cls, category):
         # Crear una consulta SQL para obtener los libros de una categoría específica
         query = f"SELECT * FROM libros WHERE id_libro IN (%s);" % ','.join(map(str, category))
@@ -68,7 +55,7 @@ class Libros:
         # Regresar la lista de objetos Libro
         return books
 
-    # Método para obtener un libro específico por su ID
+    @classmethod
     def get_book(cls, bookid):
         # Crear una consulta SQL para obtener un libro específico por su ID
         query = f"SELECT * FROM libros WHERE id_libro = {int(bookid)};"
@@ -91,3 +78,8 @@ class Libros:
             books.append(cls(book))  # Crear un objeto Libro para cada resultado
         # Regresar la lista de objetos Libro
         return books
+    @classmethod
+    def get_publication_years(cls):
+        query = "SELECT DISTINCT YEAR(fecha_publicacion) as year FROM libros ORDER BY year DESC;"
+        results = connectToMySQL('biblionauta').query_db(query)
+        return [str(result['year']) for result in results]

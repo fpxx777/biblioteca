@@ -132,70 +132,18 @@
     <main>
       <aside class="categories">
         <h3>Categorias</h3>
-        <h4 class="sub-categorias" id="categoria-genero">Géneros ></h4>
-        <h4 class="sub-categorias" id="categoria-autor">Autores ></h4>
-        <h4 class="sub-categorias" id="categoria-fecha">Fechas ></h4>
-      </aside>
-      <div class="overlay2" id="overlay2"></div>
-      <div class="categoria" id="categoria-container">
-        <h1 class="titulo-categoria" id="titulo-categoria">titulo-categoria</h1>
+        <h4 class="sub-categorias" id="categoria-genero" data-categoria="generos">Géneros ></h4>
+        <h4 class="sub-categorias" id="categoria-autor" data-categoria="autores">Autores ></h4>
+        <h4 class="sub-categorias" id="categoria-fecha" data-categoria="fechas">Fechas ></h4>
+    </aside>
+    
+    <div class="overlay2" id="overlay2"></div>
+    <div class="categoria" id="categoria-container">
+        <h1 class="titulo-categoria" id="titulo-categoria">Categorías</h1>
         <div class="for-nombre-categoria">
-          <div class="space-categoria">
-            <h1 class="nombre-categoria" id="nombre-categoria">
-              nombre-categoria
-            </h1>
-            <div>
-              <ul class="lista-categorias">
-                <li>
-                  <a href="#"> opcion 1 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 2 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 3 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 4 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 5 </a>
-                </li>
-                <li>
-                  <a href="#"> Ver más > </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="space-categoria">
-            <h1 class="nombre-categoria" id="nombre-categoria">
-              nombre-categoria
-            </h1>
-            <div>
-              <ul class="lista-categorias">
-                <li>
-                  <a href="#"> opcion 1 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 2 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 3 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 4 </a>
-                </li>
-                <li>
-                  <a href="#"> opcion 5 </a>
-                </li>
-                <li>
-                  <a href="#"> Ver más > </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+            <!-- Esta sección se llenará dinámicamente con JavaScript -->
         </div>
-      </div>
+    </div>
       <div>
         <section class="book-container">
           {% if category == "Libros destacados" %} {% for book in books %}
@@ -212,6 +160,7 @@
             </div>
             <div class="book-info">
               <h3>{{book.titulo}}</h3>
+              <p>{{ ', '.join(book.nombre_autor)}}</p>
             </div>
           </article>
           {% endfor %} {% else %} {%for book in books%} {%if book.id_libro in
@@ -235,6 +184,26 @@
         </section>
       </div>
     </main>
+    <div class="pagination-footer">
+      <div class="pagination">
+        <!-- Si no es la primera página, mostrar botón "Anterior" -->
+        {% if page > 1 %}
+        <a href="/categories/{{ page - 1 }}/" class="pagination-btn"
+          >Anterior</a
+        >
+        {% endif %}
+
+        <!-- Mostrar número de página actual y total -->
+        <span class="page-info">Página {{ page }} de {{ total_pages }}</span>
+
+        <!-- Si no es la última página, mostrar botón "Siguiente" -->
+        {% if page < total_pages %}
+        <a href="/categories/{{ page + 1 }}/" class="pagination-btn"
+          >Siguiente</a
+        >
+        {% endif %}
+      </div>
+    </div>
     <section class="subscribe">
       <div class="container-subscribe">
         <h2>Suscríbete para saber cuándo llegan nuevos libros</h2>
@@ -288,6 +257,87 @@
       </div>
     </footer>
   </body>
+  <script> 
+    let container = document.getElementById('categoria-container'),
+    icono = document.getElementById('user-icon'),
+    exterior_login = document.getElementById('overlay'),
+    interior_login = document.getElementById('login-container'),
+    subCategorias = document.querySelectorAll('.sub-categorias'),
+    exterior_categoria = document.querySelector('.overlay2'),
+    interior_categoria = document.querySelector('.categoria');
 
-  <script src="{{ url_for('static', filename='JS/categories.js') }}"></script>
+  let categorias = {};
+
+// Función para cargar las categorías desde el servidor
+async function cargarCategorias() {
+    try {
+        const response = await fetch('/api/categorias');
+        categorias = await response.json();
+    } catch (error) {
+        console.error('Error al cargar las categorías:', error);
+    }
+}
+
+// Función para mostrar las categorías
+function mostrarCategorias(categoria) {
+    const tituloCategoria = document.getElementById('titulo-categoria');
+    const contenedorCategorias = document.querySelector('.for-nombre-categoria');
+    
+    // Limpiar contenido anterior
+    contenedorCategorias.innerHTML = '';
+    
+    // Establecer título
+    tituloCategoria.textContent = categorias[categoria].titulo;
+    
+    // Crear y añadir subcategorías
+    categorias[categoria].subcategorias.forEach(subcat => {
+        const spaceCategoria = document.createElement('div');
+        spaceCategoria.className = 'space-categoria';
+        
+        const titulo = document.createElement('h1');
+        titulo.className = 'nombre-categoria';
+        titulo.textContent = subcat.nombre;
+        
+        const lista = document.createElement('div');
+        lista.innerHTML = `
+            <ul class="lista-categorias">
+                ${subcat.opciones.slice(0, 5).map(opcion => `
+                    <li><a href="/categoria/${categoria}/${encodeURIComponent(opcion)}">${opcion}</a></li>
+                `).join('')}
+                <li><a href="/categoria/${categoria}">Ver más ></a></li>
+            </ul>
+        `;
+        
+        spaceCategoria.appendChild(titulo);
+        spaceCategoria.appendChild(lista);
+        contenedorCategorias.appendChild(spaceCategoria);
+    });
+}
+
+// Event listeners
+document.querySelectorAll('.sub-categorias').forEach(item => {
+    item.addEventListener('click', () => {
+        const categoria = item.dataset.categoria;
+        mostrarCategorias(categoria);
+        document.querySelector('.categoria').classList.toggle('mostrar');
+        document.querySelector('.overlay2').classList.toggle('mostrar');
+    });
+});
+
+document.querySelector('.overlay2').addEventListener('click', () => {
+    document.querySelector('.categoria').classList.remove('mostrar');
+    document.querySelector('.overlay2').classList.remove('mostrar');
+});
+
+// Cargar las categorías cuando se carga la página
+window.addEventListener('load', cargarCategorias);
+
+// Mantener el código existente para el icono de usuario
+icono.addEventListener('click', function () {
+    // ... (mantener el código existente)
+});
+
+exterior_login.addEventListener('click', function () {
+    // ... (mantener el código existente)
+});</script>
 </html>
