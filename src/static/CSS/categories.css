@@ -360,6 +360,7 @@ main h2 {
 .book-container>article {
     background-color: var(--dark2-bg-color);
     border-radius: 10px;
+    width: 19vw;
     overflow: hidden;
 }
 

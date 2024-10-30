@@ -44,15 +44,18 @@ class Libros:
     @classmethod
     def get_all_for_category(cls, category):
         # Crear una consulta SQL para obtener los libros de una categoría específica
-        query = f"SELECT * FROM libros WHERE id_libro IN (%s);" % ','.join(map(str, category))
+        query = f"SELECT * FROM libros LEFT JOIN autores ON libros.id_libro = autores.id_libro WHERE id_libro IN (%s);" % ','.join(map(str, category))
         # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
         # Crear una lista para almacenar los objetos Libro
         books = []
         # Iterar sobre los resultados y agregar los objetos Libro a la lista
         for book in results:
-            books.append(cls(book))  # Crear un objeto Libro para cada resultado
-        # Regresar la lista de objetos Libro
+            existing_book = next((b for b in books if b.id_libro == book["id_libro"]), None)
+            if existing_book:
+                existing_book.nombre_autor.append(book["nombre_autor"])
+            else:
+                books.append(cls(book))
         return books
 
     @classmethod
@@ -68,15 +71,18 @@ class Libros:
     @classmethod
     def search(cls, letter):
         # Crear una consulta SQL para buscar libros por título
-        query = f"SELECT * FROM libros WHERE titulo LIKE '%{letter}%';"
+        query = f"SELECT * FROM libros LEFT JOIN autores ON libros.id_libro = autores.id_libro WHERE libros.titulo LIKE '%{letter}%';"
         # Ejecutar la consulta SQL y obtener los resultados
         results = connectToMySQL('biblionauta').query_db(query)
         # Crear una lista para almacenar los objetos Libro
         books = []
         # Iterar sobre los resultados y agregar los objetos Libro a la lista
         for book in results:
-            books.append(cls(book))  # Crear un objeto Libro para cada resultado
-        # Regresar la lista de objetos Libro
+            existing_book = next((b for b in books if b.id_libro == book["id_libro"]), None)
+            if existing_book:
+                existing_book.nombre_autor.append(book["nombre_autor"])
+            else:
+                books.append(cls(book))
         return books
     @classmethod
     def get_publication_years(cls):

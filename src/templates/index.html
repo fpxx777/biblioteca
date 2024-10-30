@@ -104,7 +104,7 @@
       </form>
       <ul>
         <li>
-          <a class="inicio" href="#">Info</a>
+          <a class="inicio" href="/favorites/">Favoritos</a>
         </li>
         <li>
           <a href="/categories/1/">Categorias</a>
@@ -163,7 +163,7 @@
           </div>
           <div class="book-info">
             <h3>{{book.titulo}}</h3>
-            <p>{{book.nombre_autor}}</p>
+            <p>{{ ', '.join(book.nombre_autor)}}</p>
           </div>
         </article>
         {% endfor %}
