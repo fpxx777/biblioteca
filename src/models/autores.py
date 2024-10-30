@@ -26,6 +26,6 @@ class Autores:
         return authors
     @classmethod
     def get_all_authors(cls):
-        query = "SELECT DISTINCT nombre_autor FROM autores ORDER BY nombre_autor;"
+        query = "SELECT DISTINCT nombre FROM autores ORDER BY nombre;"
         results = connectToMySQL('biblionauta').query_db(query)
-        return [result['nombre_autor'] for result in results]
+        return [result['nombre'] for result in results]

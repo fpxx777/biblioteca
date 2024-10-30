@@ -21,6 +21,7 @@ class Generos:
         categories = []
         # Iterar sobre los resultados y agregar los ID de los libros a la lista
         for category in results:
+            print(category)  # Imprimir cada resultado para depuración
             categories.append(category["id_libro"])
         # Regresar la lista de ID de libros
         return categories

@@ -63,19 +63,12 @@ body{
     opacity: 0;
     transition: opacity 0.5s linear;
 }
-.align-login-container{
-    width: auto;
-    height: auto;
-}
 
-.align-login-container img {
-    width: 6vw;
-    max-height: 15vh;
+.align-login-container svg {
+    width: 7.5vw;;
     display: block;
     margin: 10vh auto;
-    border-radius: 50%;
-    border-color: var(--light-bg-color);
-    border: var(--light-bg-color) 5px solid;
+    display: block;
 
 }
 
@@ -199,12 +192,9 @@ body{
     margin-left: 2vw;
 }
 
-.header li img{
-    width: 4vw;
+.header li svg{
+    width: 5vw;
     max-height: 15vh;
-    border-radius: 50%;
-    border-color: var(--light-bg-color);
-    border: var(--light-bg-color) 5px solid;
 }
 
 .header a {
@@ -311,7 +301,6 @@ main {
 .book-container >article {
     background-color: var(--dark2-bg-color);
     border-radius: 10px;
-    width: 19vw;
     overflow: hidden;
 }
 
