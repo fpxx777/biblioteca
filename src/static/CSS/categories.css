@@ -360,7 +360,6 @@ main h2 {
 .book-container>article {
     background-color: var(--dark2-bg-color);
     border-radius: 10px;
-    width: 19vw;
     overflow: hidden;
 }
 
@@ -459,38 +458,6 @@ main h2 {
 
 .social-media a {
     text-decoration: none;
-}
-.pagination-footer {
-    width: 100%;
-    padding: 20px 0;
-    background-color: var(--bg-color);
-    bottom: 0;
-    left: 0;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.pagination-btn {
-    padding: 8px 16px;
-    background-color: var(--contrast-bg-color);
-    color: var(--text-color);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.pagination-btn:hover {
-    background-color: var(--accent-color);
-}
-
-.page-info {
-    color: var(--text-color);
-    font-size: 0.9em;
 }
 
 @media (min-width:320px) and (max-width: 800px) {

@@ -21,11 +21,12 @@ class Generos:
         categories = []
         # Iterar sobre los resultados y agregar los ID de los libros a la lista
         for category in results:
+            print(category)  # Imprimir cada resultado para depuración
             categories.append(category["id_libro"])
         # Regresar la lista de ID de libros
         return categories
 
-    @classmethod
+    # Método de clase para obtener la lista de todos los géneros disponibles
     def get_categories_list(cls):
         # Crear una consulta SQL para obtener la lista de todos los géneros disponibles
         query = f"SELECT DISTINCT nombre_genero FROM generos;"
@@ -39,7 +40,7 @@ class Generos:
         # Regresar la lista de nombres de géneros
         return categories
 
-    @classmethod
+    # Método de clase para obtener los géneros de un libro específico
     def get_category(cls, id_libro):
         # Crear una consulta SQL para obtener los géneros de un libro específico
         query = f"SELECT * FROM generos WHERE id_libro = {id_libro};"
@@ -52,8 +53,3 @@ class Generos:
             categories.append(category["nombre_genero"])
         # Regresar la lista de nombres de géneros
         return categories
-    @classmethod
-    def get_categories_list(cls):
-        query = "SELECT DISTINCT nombre_genero FROM generos ORDER BY nombre_genero;"
-        results = connectToMySQL('biblionauta').query_db(query)
-        return [result['nombre_genero'] for result in results]

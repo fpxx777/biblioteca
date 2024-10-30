@@ -62,4 +62,3 @@ document.querySelectorAll('.sub-categorias').forEach(item => {
 document.querySelector('.overlay2').addEventListener('click', () => {
   document.querySelector('.categoria').classList.remove('mostrar');
   document.querySelector('.overlay2').classList.remove('mostrar');
-});

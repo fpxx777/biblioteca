@@ -24,8 +24,3 @@ class Autores:
             authors.append(author["nombre_autor"])
         # Regresar la lista de nombres de autores
         return authors
-    @classmethod
-    def get_all_authors(cls):
-        query = "SELECT DISTINCT nombre_autor FROM autores ORDER BY nombre_autor;"
-        results = connectToMySQL('biblionauta').query_db(query)
-        return [result['nombre_autor'] for result in results]
