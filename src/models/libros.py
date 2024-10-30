@@ -24,6 +24,7 @@ class Libros:
         query = f"SELECT * FROM libros LEFT JOIN autores ON libros.id_libro = autores.id_libro LIMIT {limit} OFFSET {offset};"
         results = connectToMySQL('biblionauta').query_db(query)
         books = []
+        print(results)
         for book in results:
             existing_book = next((b for b in books if b.id_libro == book["id_libro"]), None)
             if existing_book:

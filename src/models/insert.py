@@ -8,9 +8,15 @@ class Insert:
     # Método para insertar un libro en la base de datos
     @classmethod
     def insert_all(cls, book):
-        query = f"INSERT INTO libros (isbn, titulo, descripcion, paginas, imagen, fecha_publicacion) VALUES ('{book['isbn']}', '{book['titulo']}', '{book['descripcion']}', {book['paginas']}, '{book['imagen']}', '{book['fecha_publicacion']}');"
-        # Ejecutar la consulta SQL para insertar el libro
-        response = connectToMySQL('biblionauta').query_db(query)
+        query = f'SELECT id_libro FROM libros WHERE isbn = "{book["isbn"]}";'
+        # Ejecutar la consulta SQL para obtener el ID del libro
+        id_libro = connectToMySQL('biblionauta').query_db(query)
+        
+        if len(id_libro) == 0:
+        
+            query = f"INSERT INTO libros (isbn, titulo, descripcion, paginas, imagen, fecha_publicacion) VALUES ('{book['isbn']}', '{book['titulo']}', '{book['descripcion']}', {book['paginas']}, '{book['imagen']}', '{book['fecha_publicacion']}');"
+            # Ejecutar la consulta SQL para insertar el libro
+            response = connectToMySQL('biblionauta').query_db(query)
         # Llamar al método para insertar los autores del libro
         cls.insert_autor(cls, book)
         return response
