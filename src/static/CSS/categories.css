@@ -26,7 +26,7 @@ body {
     height: 4vw;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid var(--light-bg-color);
+    border: 3.5px solid var(--light-bg-color);
 }
 
 .align-login-container {
@@ -98,7 +98,7 @@ body {
 }
 
 .buttons {
-    margin-top: 20vh;
+    margin-top: 7.5vh;
     display: inline-grid;
     
 }
@@ -598,6 +598,10 @@ main h2 {
         border-radius: 5px;
     }
 
+    .header ul li svg{
+        width: 9vw;
+    }
+
     .searchs2 input::placeholder {
         color: var(--dark-bg-color);
         width: 100%;
@@ -705,7 +709,7 @@ main h2 {
     .align-login-container img {
         width: 16vw;
         display: block;
-        margin: 15vh auto;
+        margin: 10vh auto;
         border-radius: 50%;
         border-color: var(--light-bg-color);
         border: var(--light-bg-color) 5px solid;
@@ -713,35 +717,29 @@ main h2 {
     }
     
     .buttons {
-        margin-top: 20vh;
+        margin-top: 15vh;
         display: inline-grid;
         
     }
     
     .editarbutton{
         background-color: var(--contrast-bg-color);
-        font-size: 3vw;
+        font-size: 5.5vw;
         border-radius: 12px;
-        width: 15vw;
+        width: 25vw;
         margin-top: 15%;
         font-weight: 600;
-    }
-    
-    .editarbutton a, .cerrarbutton a{
-        text-decoration: none;
-        color: var(--light-bg-color);
     }
     
     .cerrarbutton {
         color: var(--light-bg-color);
         background-color: var(--contrast2-bg-color);
-        font-size: 2.65vw;
+        font-size: 4.65vw;
         border-radius: 12px;
-        width: 15vw;
+        width: 25vw;
         margin-top: 15%;
         cursor: pointer;
         font-weight: 600;
-        padding: 0.5vw;
     }
 
     .list-menu {
