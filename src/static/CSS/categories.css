@@ -212,7 +212,7 @@ body {
 }
 
 .categoria.mostrar {
-    left: 20vw;
+    left: 15vw;
 }
 
 .categoria.mostrar-no-transition {
@@ -633,7 +633,7 @@ main h2 {
         padding-bottom: 1.5vw;
         z-index: 3;
         background-color: var(--dark-bg-color);
-        margin-top: 22.25vh;
+        margin-top: 19.70vh;
         height: 5vh;
     }
 
@@ -665,7 +665,7 @@ main h2 {
         transition: top 0.5s ease;
         z-index: 1;
         height: 100%;
-        margin-top: 19.55vh;
+        margin-top: 15.4vh;
     }
 
     #categoria-container.mostrar,
@@ -750,6 +750,10 @@ main h2 {
         width: 25vw;
         margin-top: 15%;
         font-weight: 600;
+    }
+
+    .back{
+        background-color: var(--dark-bg-color);
     }
 
     .cerrarbutton {
@@ -846,6 +850,7 @@ main h2 {
         font-size: 15vw;
         color: #F8F1DF;
     }
+
 
     .img-static p {
         text-align: center;
