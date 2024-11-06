@@ -582,6 +582,10 @@ main h2 {
         font-size: 6vw;
     }
 
+    .overlay2 {
+        background: var(--dark-bg-color);
+    }
+
     .searchs2 {
         display: flex;
         width: 95%;
@@ -633,7 +637,7 @@ main h2 {
         padding-bottom: 1.5vw;
         z-index: 3;
         background-color: var(--dark-bg-color);
-        margin-top: 19.75vh;
+        margin-top: 20.25vh;
         height: 5vh;
     }
 
@@ -665,7 +669,7 @@ main h2 {
         transition: top 0.5s ease;
         z-index: 1;
         height: 100%;
-        margin-top: 15.4vh;
+        margin-top: 16vh;
     }
 
     #categoria-container.mostrar,
@@ -687,7 +691,7 @@ main h2 {
     }
 
     .titulo-categoria {
-        font-size: 8vw;
+        font-size: 10vw;
         color: var(--contrast-bg-color);
         margin-bottom: 3%;
     }
@@ -695,12 +699,12 @@ main h2 {
     .lista-categorias a {
         text-decoration: none;
         color: var(--light-bg-color);
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     .lista-categorias li {
         list-style: none;
-        margin-bottom: 0.5vh;
+        margin-bottom: 2vh;
     }
 
     .for-nombre-categoria {

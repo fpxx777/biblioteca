@@ -135,7 +135,10 @@ subCategoriasTop.forEach(item => {
             activeCategory = container;
         }
 
-        exterior_categoria.classList.add('mostrar');
+        if (exterior_categoria.classList.contains('mostrar')) {
+            exterior_categoria.classList.remove('mostrar'); 
+        } else { 
+            exterior_categoria.classList.add('mostrar'); }
     });
 });
 
