@@ -70,11 +70,13 @@ body{
 
 .align-login-container img {
     width: 7vw;
+    height: 7vw;
     display: block;
     margin: 12.5vh auto;
     border-radius: 50%;
     border-color: var(--light-bg-color);
     border: var(--light-bg-color) 5px solid;
+    object-fit: cover;
 
 }
 .buttons {
@@ -199,11 +201,10 @@ body{
 }
 
 .header li img{
-    width: 4vw;
-    max-height: 15vh;
     border-radius: 50%;
     border-color: var(--light-bg-color);
     border: var(--light-bg-color) 3.5px solid;
+    object-fit: cover;
 }
 
 .header a {
@@ -477,8 +478,8 @@ main {
     }
 
     #user-icon{
-        width: 7vw;
-        height: 7vw;
+        width: 9vw;
+        height: 9vw;
     }
 
     .searchs2 {
@@ -573,6 +574,7 @@ main {
 
     .align-login-container img {
         width: 16vw;
+        height: 16vw;
         margin: 10vh auto;
     }
 
@@ -612,7 +614,6 @@ main {
         cursor: pointer;
         font-weight: 600;
     }
-    }
 
     .align-login-container p{
         font-size: 0vw;
@@ -621,7 +622,6 @@ main {
     .align-login-container p a{
         font-size: 4vw;
     }
-
 
     .header form {
         border-radius: 5px;
@@ -791,9 +791,14 @@ main {
     }
 
     .book-container h3 {
-        font-size: 7vw;
+        font-size: 5vw;
         font-weight: 600;
         color: #F8F1DF;
+    }
+
+    .book-container p{
+        font-size: 4vw;
+        font-weight: 350;
     }
 
     .align-login-container svg {

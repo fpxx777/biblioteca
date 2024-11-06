@@ -89,11 +89,13 @@ body {
 
 .align-login-container img {
     width: 7vw;
+    height: 7vw;
     display: block;
     margin: 12.5vh auto;
     border-radius: 50%;
     border-color: var(--light-bg-color);
     border: var(--light-bg-color) 5px solid;
+    object-fit: cover;
 
 }
 
@@ -566,9 +568,6 @@ main h2 {
         font-size: 6vw;
     }
 
-    .header div img{
-        width: 13vw;
-    }
 
     .searchs2 {
         display: flex;
@@ -600,6 +599,10 @@ main h2 {
 
     .header ul li svg{
         width: 9vw;
+    }
+
+    .header ul li img{
+        object-fit: cover;
     }
 
     .searchs2 input::placeholder {
@@ -708,12 +711,13 @@ main h2 {
     
     .align-login-container img {
         width: 16vw;
+        height: 16vw;
         display: block;
         margin: 10vh auto;
         border-radius: 50%;
         border-color: var(--light-bg-color);
         border: var(--light-bg-color) 5px solid;
-    
+        object-fit: cover;
     }
     
     .buttons {
@@ -935,6 +939,7 @@ main h2 {
         margin: 2vw;
         gap: 2.5vw;
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 30vh;
     }
 
     .book-container>article {

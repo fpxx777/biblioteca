@@ -68,11 +68,13 @@ body{
 
 .align-login-container img {
     width: 7vw;
+    height: 7vw;
     display: block;
     margin: 12.5vh auto;
     border-radius: 50%;
     border-color: var(--light-bg-color);
     border: var(--light-bg-color) 5px solid;
+    object-fit: cover;
 
 }
 
@@ -178,9 +180,6 @@ body{
     width: 20vw;
 }
 
-#search{
-    height: 3vw;
-}
 
 .header h1 {
     color: var(--light-bg-color);
@@ -448,9 +447,10 @@ body{
         align-items: center;
     }
 
-    .header div a h1{
-        font-size: 5vw;
+    .header ul li img{
+        object-fit: cover;
     }
+
 
     .header a {
         text-decoration: none;
@@ -490,6 +490,7 @@ body{
 
     .align-login-container img {
         width: 16vw;
+        height: 16vw;
         margin: 10vh auto;
     }
 
