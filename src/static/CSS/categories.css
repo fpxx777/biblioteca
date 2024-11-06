@@ -431,14 +431,14 @@ main h2 {
     display: flex;
     justify-content: center;
     width: 60%;
-    height: 12vh;
+    height: 10vw;
     color: var(--light-bg-color);
     align-items: center;
     border-radius: 15px;
 }
 
 .container-subscribe h2 {
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
 
 .container-subscribe a {
@@ -446,8 +446,8 @@ main h2 {
     color: var(--light-bg-color);
     margin-left: 2vw;
     background-color: var(--contrast-bg-color);
-    font-size: 1.5vw;
-    border-radius: 20px;
+    font-size: 2vw;
+    border-radius: 10px;
     padding: 0.5vw;
 }
 
@@ -932,14 +932,15 @@ main h2 {
     }
 
     .container-subscribe h2 {
-        font-size: 2.75vw;
+        font-size: 4vw;
     }
 
     .container-subscribe a {
-        font-size: 2.75vw;
+        font-size: 4vw;
         border-radius: 8.5px;
         padding: 0.5vw;
         color: var(--dark-bg-color);
+        border-radius: 7px;
     }
 
     .Titulo-D {

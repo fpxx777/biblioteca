@@ -351,9 +351,12 @@ main {
     color: var(--light-bg-color);
 }
 
+.upmas{
+    padding: 20px 0px;
+}
+
 .mas{
     color: var(--light-bg-color);
-    padding-bottom: 9vh;
 }
 
 .subscribe{
@@ -369,14 +372,14 @@ main {
     display: flex;
     justify-content: center;
     width: 60%;
-    height: 12vh;
+    height: 10vh;
     color: var(--light-bg-color);
     align-items: center;
     border-radius: 15px;
 }
 
 .container-subscribe h2{
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
 
 .container-subscribe a{
@@ -384,9 +387,9 @@ main {
     color: var(--light-bg-color);
     margin-left: 2vw;
     background-color: var(--contrast-bg-color);
-    font-size: 1.5vw;
-    border-radius: 20px;
-    padding: 0.5vw;
+    font-size: 2vw;
+    border-radius: 10px;
+    padding: 0.5vw;     
 }
 
 .footer {
@@ -426,12 +429,16 @@ main {
 .fav{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-left: 2vw;
 }
+
 .fav h1{
-    margin-top: 3vw;
+    width: 2vw;
 }
+
 .fav svg{
-    width: 5vw;
+    width: 7.5vw;
 }
 
 .no-fav{
@@ -479,6 +486,7 @@ main {
     .header h1{
         font-size: 6vw;
     }
+
 
     #user-icon{
         width: 9vw;
@@ -728,14 +736,15 @@ main {
     }
 
     .container-subscribe h2 {
-        font-size: 2.75vw;
+        font-size: 4vw;
     }
     
     .container-subscribe a {
-        font-size: 2.75vw;
-        border-radius: 8.5px;
+        font-size: 4vw;
+        border-radius: 5px;
         padding: 0.5vw;
         color: var(--dark-bg-color);
+        border: 7px;
     }
 
     .Titulo-D{
