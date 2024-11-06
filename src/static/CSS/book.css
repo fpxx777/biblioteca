@@ -52,7 +52,8 @@ body {
     height: 4vw;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid var(--light-bg-color);
+    border: 3.5px solid var(--light-bg-color);
+    object-fit: cover;
 }
 
 
@@ -103,12 +104,48 @@ body {
     transition: opacity 0.5s linear;
 }
 
-.align-login-container svg {
-    width: 15vw;
-    max-height: 15vh;
+.align-login-container img {
+    width: 7vw;
+    height: 7vw;
     display: block;
-    margin: 10vh auto;
+    margin: 12.5vh auto;
+    border-radius: 50%;
+    border-color: var(--light-bg-color);
+    border: var(--light-bg-color) 5px solid;
+    object-fit: cover;
+}
 
+.buttons {
+    margin-top: 7.5vh;
+    display: inline-grid;
+
+}
+
+.editarbutton {
+    background-color: var(--contrast-bg-color);
+    font-size: 3vw;
+    border-radius: 12px;
+    width: 15vw;
+    margin-top: 15%;
+    font-weight: 600;
+}
+
+.editarbutton a,
+.cerrarbutton a {
+    text-decoration: none;
+    color: var(--light-bg-color);
+}
+
+.cerrarbutton {
+    color: var(--light-bg-color);
+    background-color: var(--contrast2-bg-color);
+    font-size: 2.65vw;
+    border-radius: 12px;
+    width: 15vw;
+    margin-top: 15%;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5vw;
 }
 
 .login-button {
@@ -118,7 +155,6 @@ body {
     font-size: 3vw;
     border-radius: 10px;
     width: 10vw;
-    margin-top: 15%;
 }
 
 .register-button {
@@ -128,8 +164,10 @@ body {
 }
 
 .login-container p {
-    margin-top: 2vh;
+    margin-top: 5vh;
     color: var(--light-bg-color);
+    font-size: 1.25vw;
+    font-family: 600;
 }
 
 .header {
@@ -546,6 +584,8 @@ main div {
         width: 95%;
         padding-left: 2.5%;
         padding-right: 2.5%;
+        border-bottom: none;
+        height: 17vh;
     }
 
     .searchs2 {
@@ -613,6 +653,10 @@ main div {
         align-items: center;
     }
 
+    .header h1{
+        font-size: 4vw;
+    }
+
     .header a {
         text-decoration: none;
         color: #F8F1DF;
@@ -627,16 +671,27 @@ main div {
         width: 16vw;
     }
 
+    .header div h1{
+        font-size: 6vw;
+    }
+
     .header ul li svg {
         width: 9vw;
+    }
+
+    .header ul li img{
+        object-fit: cover;
+    }
+
+    #user-icon{
+        width: 9vw;
+        height: 9vw;
     }
 
     .info,
     .inicio {
         display: none;
     }
-
-
 
     .header form {
         border-radius: 5px;
@@ -811,21 +866,52 @@ main div {
         color: #F8F1DF;
     }
 
-    .align-login-container svg {
-        width: 12.5vw;
-        margin: 15vw auto;
+    .align-login-container {
+        width: auto;
+        height: auto;
     }
 
-    .login-button {
-        text-decoration: none;
+    .align-login-container img {
+        width: 16vw;
+        height: 16vw;
+        display: block;
+        margin: 10vh auto;
+        border-radius: 50%;
+        border-color: var(--light-bg-color);
+        border: var(--light-bg-color) 5px solid;
+        object-fit: cover;
+    }
+
+    .align-login-container p a {
+        font-size: 4vw;
+    }
+
+    .buttons {
+        margin-top: 15vh;
+        display: inline-grid;
+
+    }
+
+    .editarbutton {
+        background-color: var(--contrast-bg-color);
+        font-size: 5.5vw;
+        border-radius: 12px;
+        width: 25vw;
+        margin-top: 15%;
+        font-weight: 600;
+    }
+
+    .cerrarbutton {
         color: var(--light-bg-color);
         background-color: var(--contrast2-bg-color);
-        font-size: 4vw;
-        border-radius: 7.5px;
-        width: 15vw;
+        font-size: 4.65vw;
+        border-radius: 12px;
+        width: 25vw;
         margin-top: 15%;
-        padding: 0vw 1vw;
+        cursor: pointer;
+        font-weight: 600;
     }
+
 
     .social-media {
         list-style: none;
@@ -845,6 +931,16 @@ main div {
         width: 7.5vw;
     }
 
+    .login-button {
+        text-decoration: none;
+        color: var(--light-bg-color);
+        background-color: var(--contrast2-bg-color);
+        font-size: 6vw;
+        border-radius: 7.5px;
+        width: 17.5vw;
+        padding: 0vw 1vw;
+    }
+
     .register-button {
         text-decoration: none;
         color: var(--contrast-bg-color);
@@ -854,7 +950,8 @@ main div {
     .login-container p {
         margin-top: 2vh;
         color: var(--light-bg-color);
-        font-size: 3vw;
+        font-size: 4.5vw;
+        font-weight: 600;
     }
 
 

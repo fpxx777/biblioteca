@@ -129,6 +129,8 @@ body{
 .login-container p {
     margin-top: 5vh;
     color: var(--light-bg-color);
+    font-weight: 600;
+    font-size: 1.5vw;
 }
 
 #user-icon {
@@ -471,6 +473,7 @@ main {
         width: 95%;
         padding-left: 2.5%;
         padding-right: 2.5%;
+        height: 17vh;
     }
 
     .header h1{
@@ -582,10 +585,9 @@ main {
         text-decoration: none;
         color: var(--light-bg-color);
         background-color: var(--contrast2-bg-color);
-        font-size: 4vw;
+        font-size: 6vw;
         border-radius: 7.5px;
-        width: 15vw;
-        margin-top: 15%;
+        width: 17.5vw;
         padding: 0vw 1vw;
     }
     
@@ -615,13 +617,6 @@ main {
         font-weight: 600;
     }
 
-    .align-login-container p{
-        font-size: 0vw;
-    }
-
-    .align-login-container p a{
-        font-size: 4vw;
-    }
 
     .header form {
         border-radius: 5px;
@@ -681,6 +676,7 @@ main {
         font-size: 5vw;
         padding-top: 2vw;
     }
+    
 
     .img-promo {
         margin: 2vw;
@@ -828,11 +824,13 @@ main {
     .login-container p {
         margin-top: 2vh;
         color: var(--light-bg-color);
-        font-size: 3vw;
+        font-size: 4.5vw;
+        font-weight: 600;
     }
 
     .login-container p a{
-        font-size: 3vw;
+        font-size: 4vw;
+        font-weight: 600;
     }
 
 }

@@ -205,6 +205,7 @@ body{
     border-radius: 50%;
     border-color: var(--light-bg-color);
     border: var(--light-bg-color)3.5px solid;
+    object-fit: cover;
 }
 
 .header a {
@@ -371,7 +372,9 @@ body{
         width: 95%;
         padding-left: 2.5%;
         padding-right: 2.5%;
+        height: 17vh;
     }
+    
 
     .searchs2 {
         display: flex;
@@ -498,10 +501,9 @@ body{
         text-decoration: none;
         color: var(--light-bg-color);
         background-color: var(--contrast2-bg-color);
-        font-size: 4vw;
+        font-size: 6vw;
         border-radius: 7.5px;
-        width: 15vw;
-        margin-top: 15%;
+        width: 17.5vw;
         padding: 0vw 1vw;
     }
 
