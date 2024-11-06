@@ -353,6 +353,7 @@ main {
 
 .upmas{
     padding: 20px 0px;
+    margin-top: 10px;
 }
 
 .mas{
@@ -372,7 +373,7 @@ main {
     display: flex;
     justify-content: center;
     width: 60%;
-    height: 10vh;
+    height: 10vw;
     color: var(--light-bg-color);
     align-items: center;
     border-radius: 15px;
