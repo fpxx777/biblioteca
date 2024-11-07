@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}">
-    <link rel="shortcut icon" href="/static/img/logo.png">
-    <!-- fuente link -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
-            rel="stylesheet">
-  </head>
-  <body>
-    <!-- parte derecha al darle click icono -->
-    <div class="overlay hidden visuallyhidden" id="overlay"></div>
-    {% if session %}
-    <div class="overlay hidden visuallyhidden" id="overlay"></div>
-    <div class="login-container hidden visuallyhidden" id="login-container">
-      <div class="align-login-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-          <path
-            fill="#F8F1DF"
-            d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
-          />
-        </svg>
-        <h1>{{session.username}}</h1>
-        <div class="buttons">
-          <button class="editarbutton">
-            <a href="/edituser">Editar Perfil</a>
-          </button> 
 
-          <button class="cerrarbutton">
-            <a href="/logout/">Cerrar sesion</a>
-          </button>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static',filename='CSS/book.css') }}">
+  <link rel="shortcut icon" href="/static/img/logo.png">
+  <!-- fuente link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- parte derecha al darle click icono -->
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  {% if session %}
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  <div class="login-container hidden visuallyhidden" id="login-container">
+    <div class="align-login-container">
+      {% if session["img"] == None %}
+      <img src="/static/img/PhUserCircleFill (1).png">
+      {% else %}
+      <img src="{{ url_for('media', filename=session.img) }}">
+      {% endif %}
+      <h1>{{session.username}}</h1>
+      <div class="buttons">
+        <button class="editarbutton">
+          <a href="/profile">Editar Perfil</a>
+        </button>
+
+        <button class="cerrarbutton">
+          <a href="/logout/">Cerrar sesion</a>
+        </button>
       </div>
     </div>
-    {% else %}
-    <div class="overlay hidden visuallyhidden" id="overlay"></div>
-    <div class="login-container hidden visuallyhidden" id="login-container">
-      <div class="align-login-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-          <path
-            fill="#F8F1DF"
-            d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
-          />
-        </svg>
-        <a href="/login&register" class="login-button">Iniciar Sesión</a>
-        <p>
-          No tienes cuenta?
-          <a href="/login&register" class="register-button">Regístrate</a>
-        </p>
-      </div>
+  </div>
+  {% else %}
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  <div class="login-container hidden visuallyhidden" id="login-container">
+    <div class="align-login-container">
+      <img src="/static/img/PhUserCircleFill (1).png">
+      <a href="/login&register" class="login-button">Iniciar Sesión</a>
+      <p>
+        No tienes cuenta?
+        <a href="/login&register" class="register-button">Regístrate</a>
+      </p>
     </div>
-    {% endif %}
+  </div>
+  {% endif %}
 
   <header class="header">
     <div>
@@ -83,18 +79,18 @@
         <a class="inicio" href="/favorites/">Favoritos</a>
       </li>
       <li>
-        <a href="/categories/1/">Categorias</a>
+        <a class="inicio" href="/categories/1/">Categorias</a>
       </li>
       <li>
-        <a class="info" href="#">Inicio</a>
+        <a class="info" href="/">Inicio</a>
       </li>
       <li>
         {% if session %}
-          {% if session["img"] == None %}
-          <img id="user-icon" src="/static/img/PhUserCircleFill (1).png">
-          {% else %}
-          <img id="user-icon" src="{{ url_for('media', filename=session.img) }}">
-          {% endif %}
+        {% if session["img"] == None %}
+        <img id="user-icon" src="/static/img/PhUserCircleFill (1).png">
+        {% else %}
+        <img id="user-icon" src="{{ url_for('media', filename=session.img) }}">
+        {% endif %}
         {% else %}
         <img id="user-icon" src="/static/img/PhUserCircleFill (1).png">
         {% endif %}
@@ -117,11 +113,11 @@
   </header>
   <form class="searchs2" action="/search" method="get">
     <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
-        <path fill="#1C1B29"
-            d="M232.49 215.51L185 168a92.12 92.12 0 1 0-17 17l47.53 47.54a12 12 0 0 0 17-17ZM44 112a68 68 0 1 1 68 68a68.07 68.07 0 0 1-68-68" />
+      <path fill="#1C1B29"
+        d="M232.49 215.51L185 168a92.12 92.12 0 1 0-17 17l47.53 47.54a12 12 0 0 0 17-17ZM44 112a68 68 0 1 1 68 68a68.07 68.07 0 0 1-68-68" />
     </svg>
     <input type="text" placeholder="Busca algun libro..." name="search" id="search">
-</form>
+  </form>
 
   <main>
     <div>
@@ -154,45 +150,39 @@
             <p class="description-p">{{ ', '.join(categories)}}</p>
           </div>
         </div>
-          {% if session %}
-            <form action="/favorites/add/" method="POST">
+        {% if session %}
+        <form action="/favorites/add/" method="POST">
           {% else %}
-            <form action="/login&register" method="GET">
-          {% endif %}
+          <form action="/login&register" method="GET">
+            {% endif %}
             <input type="hidden" name="id-book" value="{{book[0].id_libro}}" />
             <button class="favorite-button">
-              {% if is_book == True %} 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="128"
-                height="128"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  fill="#1C1B29"
-                  d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m0 152.46L176 165V72a16 16 0 0 0-16-16H96V40h96Z"
-                />
+              {% if is_book == True %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+                <path fill="#1C1B29"
+                  d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m0 152.46L176 165V72a16 16 0 0 0-16-16H96V40h96Z" />
               </svg>
               <div>
                 <h1 class="description-h1-género">Eliminar de favoritos</h1>
-              {% else %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
-                <g fill="#1C1B29">
-                  <path d="M200 40v152l-32-22.85V72a8 8 0 0 0-8-8H88V40a8 8 0 0 1 8-8h96a8 8 0 0 1 8 8" opacity=".2" />
-                  <path
-                    d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m-32 184.46l-43.36-31a8 8 0 0 0-9.3 0L64 208.45V72h96Zm32-32L176 165V72a16 16 0 0 0-16-16H96V40h96Z" />
-                </g>
-              </svg>
-              <div>
-                <h1 class="description-h1-género">Agregar a favoritos</h1>
-              {% endif %}
-              </div>
-          </button>
-        </form>
-        <div>
-          <h1 class="description-h1">Autor/es</h1>
-          <h1 class="description-h1">{{ ', '.join(authors)}}</h1>
-        </div>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256">
+                  <g fill="#1C1B29">
+                    <path d="M200 40v152l-32-22.85V72a8 8 0 0 0-8-8H88V40a8 8 0 0 1 8-8h96a8 8 0 0 1 8 8"
+                      opacity=".2" />
+                    <path
+                      d="M192 24H96a16 16 0 0 0-16 16v16H64a16 16 0 0 0-16 16v152a8 8 0 0 0 12.65 6.51L112 193.83l51.36 36.68A8 8 0 0 0 176 224v-39.31l19.35 13.82A8 8 0 0 0 208 192V40a16 16 0 0 0-16-16m-32 184.46l-43.36-31a8 8 0 0 0-9.3 0L64 208.45V72h96Zm32-32L176 165V72a16 16 0 0 0-16-16H96V40h96Z" />
+                  </g>
+                </svg>
+                <div>
+                  <h1 class="description-h1-género">Agregar a favoritos</h1>
+                  {% endif %}
+                </div>
+            </button>
+          </form>
+          <div>
+            <h1 class="description-h1">Autor/es</h1>
+            <h1 class="description-h1">{{ ', '.join(authors)}}</h1>
+          </div>
       </div>
     </div>
   </main>

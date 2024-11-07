@@ -19,45 +19,59 @@
     <!-- parte derecha al darle click icono -->
     <div class="overlay hidden visuallyhidden" id="overlay"></div>
     {% if session %}
-    <div class="overlay hidden visuallyhidden" id="overlay"></div>
-    <div class="login-container hidden visuallyhidden" id="login-container">
-      <div class="align-login-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-          <path
-            fill="#F8F1DF"
-            d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
-          />
-        </svg>
-        <h1>{{session.username}}</h1>
-        <div class="buttons">
-          <button class="editarbutton">
-            <a href="/edituser">Editar Perfil</a>
-          </button> 
+  {% if session["rango"] == "admin" %}
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  <div class="login-container hidden visuallyhidden" id="login-container">
+    <div class="align-login-container">
+      <img src="{{ url_for('media', filename=session.img) }}">
+      <h1>{{session.username}}</h1>
+      <button class="editarbutton" style=" background-color: #F8F1DF">
+        <a href="/sugerencias/" style="color: #1C1B29;">Sugerencias</a>
+      </button>
 
-          <button class="cerrarbutton">
-            <a href="/logout/">Cerrar sesion</a>
-          </button>
-        </div>
+      <button class="cerrarbutton">
+        <a href="/logout/">Cerrar sesion</a>
+      </button>
+      <button class="editarbutton">
+        <a href="/profile/">Editar Perfil</a>
+      </button>
+    </div>
+  </div>
+  {% else %}
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  <div class="login-container hidden visuallyhidden" id="login-container">
+    <div class="align-login-container">
+      {% if session["img"] == None %}
+      <img src="/static/img/PhUserCircleFill (1).png">
+      {% else %}
+      <img src="{{ url_for('media', filename=session.img) }}">
+      {% endif %}
+      <h1>{{session.username}}</h1>
+      <div class="buttons">
+        <button class="editarbutton">
+          <a href="/profile/">Editar Perfil</a>
+        </button>
+
+        <button class="cerrarbutton">
+          <a href="/logout/">Cerrar sesion</a>
+        </button>
       </div>
     </div>
-    {% else %}
-    <div class="overlay hidden visuallyhidden" id="overlay"></div>
-    <div class="login-container hidden visuallyhidden" id="login-container">
-      <div class="align-login-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-          <path
-            fill="#F8F1DF"
-            d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44m60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.7 79.7 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.7 79.7 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128"
-          />
-        </svg>
-        <a href="/login&register" class="login-button">Iniciar Sesión</a>
-        <p>
-          No tienes cuenta?
-          <a href="/login&register" class="register-button">Regístrate</a>
-        </p>
-      </div>
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="overlay hidden visuallyhidden" id="overlay"></div>
+  <div class="login-container hidden visuallyhidden" id="login-container">
+    <div class="align-login-container">
+      <img src="/static/img/PhUserCircleFill (1).png">
+            <a href=" /login&register" class="login-button">Iniciar Sesión</a>
+      <p>
+        No tienes cuenta?
+        <a href="/login&register" class="register-button">Regístrate</a>
+      </p>
     </div>
-    {% endif %}
+  </div>
+  {% endif %}
 
   <header class="header">
     <div>
@@ -86,10 +100,10 @@
         <a class="inicio" href="/favorites/">Favoritos</a>
       </li>
       <li>
-        <a href="/categories/1/">Categorias</a>
+        <a class="inicio" href="/categories/1/">Categorias</a>
       </li>
       <li>
-        <a class="info" href="#">Inicio</a>
+        <a class="info" href="/">Inicio</a>
       </li>
       <li>
         {% if session %}
@@ -127,12 +141,12 @@
 </form>
     <h2 class="results">Resultados para: {{search}}</h2>
     <main>
-        <section class="book-container">
+        <section class="book-container" id="space">
             {% for book in books %}
             <article>
                 <div class="book-img">
                     <a href="/book/{{book.id_libro}}">
-                        <img src={{book.imagen}} width="200" height="300" alt="Book Cover" />
+                        <img src={{book.imagen}} />
                     </a>
                 </div>
                 <div class="book-info">
@@ -167,5 +181,5 @@
     </footer>
     </main>
 </body>
-
+<script src="{{ url_for('static', filename='JS/categories.js') }}"></script>
 </html>

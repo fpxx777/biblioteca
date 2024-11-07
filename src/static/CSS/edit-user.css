@@ -235,13 +235,16 @@ body {
 }
 
 .photo {
-    width: 5vw;
+    width: 6vw;
+    height: 6vw;
     cursor: pointer;
     border-radius: 50%;
     border-color: var(--light-bg-color);
-    border: var(--light-bg-color) 5px solid;
+    border: var(--light-bg-color) 3.5px solid;
     border-width: 0.5vw;
+    object-fit: cover;
 }
+
 
 .visual-foto{
     display: flex;
@@ -250,12 +253,6 @@ body {
 
 .visual-foto div{
     text-align: center;
-}
-
-.photo2 {
-    width: 9vw;
-    border-radius: 50%;
-    
 }
 
 .visual-foto div h1{
@@ -392,14 +389,10 @@ body {
     
     .photo {
         width: 15vw;
+        height: 15vw;
         border-width: 0.5vw;
         margin-top: 10vh;
-    }
-
-    .photo2 {
-        width: 13vw;
-        border-radius: 50%;
-        
+        object-fit: cover;
     }
     
     
