@@ -637,7 +637,7 @@ main h2 {
         padding-bottom: 1.5vw;
         z-index: 3;
         background-color: var(--dark-bg-color);
-        margin-top: 19.90vh;
+        margin-top: 20vh;
         height: 5vh;
     }
 
@@ -669,7 +669,7 @@ main h2 {
         transition: top 0.5s ease;
         z-index: 1;
         height: 100%;
-        margin-top: 16vh;
+        margin-top: 15vh;
     }
 
     #categoria-container.mostrar,
@@ -1048,5 +1048,91 @@ main h2 {
         color: var(--light-bg-color);
         font-size: 4.5vw;
         font-weight: 600;
+    }
+}
+
+
+@media (min-width:320px) and (max-width: 340px){
+    .categories2{
+        margin-top: 19.75vh;
+    }
+}
+
+@media (min-width:340px) and (max-width: 344px) and (min-height: 640px) and (max-height: 667px){
+    .categories2{
+        margin-top: 20.25vh;
+    }
+}
+
+@media (min-width:340px) and (max-width: 344px) and (min-height: 740px) and (max-height:854px){
+    .categories2{
+        margin-top: 19.75vh;
+    }
+}
+
+@media (min-width:320px) and (max-width: 340px) and (min-height: 533px) and (max-height:640px){
+    .categories2{
+        margin-top: 20.5vh;
+    }
+}
+
+
+@media (min-width: 480px) and (max-width: 540px) and (min-height:854px) and (max-height:882px){
+    .categories2{
+        margin-top: 20.4vh;
+    }
+}
+
+@media (min-width:375px) and (max-width:390px) and (min-height: 667px) and (max-height: 720px) {
+    .categories2{
+        margin-top: 20.4vh;
+    }
+}
+
+@media (min-width:414px) and (max-width: 433px) and (min-height:896px) and (max-height:914px) {
+    .categories2{
+        margin-top: 19.75vh;
+    }
+}
+
+@media (min-width:390px) and (max-width: 412px) and (min-height:844px) and (max-height:854px) {
+    .categories2{
+        margin-top: 19.75vh;
+    }
+}
+
+@media (min-width:412px) and (max-width: 414px) and (min-height:915px) and (max-height:1024px) {
+    .categories2{
+        margin-top: 19.7vh;
+    }
+}
+
+@media (min-width:768px) and (max-width: 800px) and (min-height:1024px) {
+    .categories2{
+        margin-top: 21.5vh
+    }
+}
+
+@media (min-width:540px) and (max-width: 768px) and (min-height: 720px) and (max-height:740px) {
+    .categories2{
+        margin-top: 21.5vh;
+    }
+}
+
+@media (min-width:344px) and (max-width: 375px) and (min-height: 882px) and (max-height: 896px) {
+    .categories2{
+        margin-top: 19.3vh;
+    }
+}
+
+@media (min-width:412px) and (max-width: 414px) and (min-height: 914px) and (max-height: 915px) {
+    .categories2{
+        margin-top: 19.7vh;
+    }
+}
+
+@media (min-width: 433px) and (max-width: 480px){
+    .categories2{
+        margin-top: 20.75vh;
     }
 }
