@@ -12,6 +12,7 @@ from models.insert import Insert  # Modelo para inserción de datos
 from models.favorites import Favoritos
 from models.usuarios import Usuarios
 from models.sugerencias import Sugerencia
+from models.comentarios import Comentario
 
 # Importar función para obtener información de un libro a partir de su ISBN
 from prueba import get_book_info  # Función para obtener información de un libro
@@ -19,7 +20,7 @@ from prueba import get_book_info  # Función para obtener información de un lib
 # Crear una aplicación Flask
 app = Flask(__name__)
 
-app.secret_key = "P4S$W0rd"
+app.secret_key = "G7&fP9!xQ2#dJzL8"
 
 bcrypt = Bcrypt(app)
 
@@ -33,7 +34,7 @@ def logout():
 @app.route("/", methods=["GET", "POST"])
 def index():
     # Obtener todos los libros
-    books = Libros.get_all_limit_all(1, 25)
+    books = Libros.get_all_limit_all(1, 22)
     # Renderizar la plantilla index.html con la lista de libros y categorías
     if session:
         return render_template("index.html", books=books, session=session)
@@ -56,7 +57,7 @@ def categories(page): # Obtener la página actual
     generos = Generos.get_categories_list()
     total_pages = len(Libros.get_all()) / 24
     total_pages = math.ceil(total_pages)
-    books = Libros.get_all_limit_all(int(page), 25)  # Obtener los libros paginados
+    books = Libros.get_all_limit_all(int(page), 26)  # Obtener los libros paginados
     # Obtener la lista de categorías
     categories = Generos.get_categories_list()
     # Establecer la categoría actual como "Libros destacados"
@@ -87,34 +88,39 @@ def book(bookid):
     authors = Autores.get_all(bookid)
     # Obtener la categoría del libro
     categories = Generos.get_category(bookid)
+    comentarios = Comentario.get_commets(book[0]["id_libro"])
     if session:
         is_book = Favoritos.verify_book(bookid, session["id"])
         if len(is_book) > 0:
             is_book = True
         else:
             is_book = False
-        return render_template("book.html", book=book, authors=authors, categories=categories, is_book=is_book)
+        return render_template("book.html", book=book, authors=authors, categories=categories, is_book=is_book, comentarios=comentarios)
     else:
-        return render_template("book.html", book=book, authors=authors, categories=categories)
+        return render_template("book.html", book=book, authors=authors, categories=categories, comentarios=comentarios)
 
 # Ruta para probar la inserción de datos
 @app.route("/test/", methods=["GET", "POST"])
 def test():
+    if not "rango" in session :
+        return redirect('/')
+    else:
     # Si se envía una solicitud POST, procesar la inserción de datos
-    if request.method == "POST":
-        # Obtener el ISBN del libro
-        response = request.form.get("isbn")
-        # Obtener la información del libro a partir del ISBN
-        errors, book = get_book_info(response)
-        print(book)
-        # Si se obtuvo la información del libro, insertar los datos
-        if errors:
-            return render_template("insert-error.html", isbn= book["isbn"], book=book, errors=errors)
-        else:
-            Insert.insert_all(book)
-            return redirect("/")
-    # Renderizar la plantilla insert.html para probar la inserción de datos
-    return render_template("insert.html")
+        if request.method == "POST":
+            # Obtener el ISBN del libro
+            response = request.form.get("isbn")
+            # Obtener la información del libro a partir del ISBN
+            errors, book = get_book_info(response)
+            if Insert.ver_book(book["isbn"]):
+                return redirect("/test/")
+            else:
+                if errors:
+                    return render_template("insert-error.html", isbn= book["isbn"], book=book, errors=errors)
+                else:
+                    Insert.insert_all(book)
+                    return redirect("/")
+        # Renderizar la plantilla insert.html para probar la inserción de datos
+        return render_template("insert.html")
 
 @app.route("/test/fill/", methods=["POST"])
 def fill():
@@ -123,9 +129,14 @@ def fill():
         response['autores'] = [autor.strip() for autor in response['autores'].split(',')] if response['autores'] else []
     if 'generos' in response and response['generos']:
         response['generos'] = [genero.strip() for genero in response['generos'].split(',')] if response['generos'] else []
-    book = get_book_info(response["isbn"], response)
+    print(response)
+    errors, book = get_book_info(response["isbn"], response)
     print(book)
-    return redirect("/test/")
+    if Insert.ver_book(book["isbn"]):
+        return redirect("/test/")
+    else:
+        Insert.insert_all(book)
+        return redirect("/")
 
 @app.route("/favorites/", methods=["GET"])
 def favorites():
@@ -234,7 +245,10 @@ def edit_profile():
 
 @app.route("/request/", methods=["GET"])
 def request_page():
-    return render_template("new_book.html")
+    if not session:
+        return redirect("/login&register")
+    else:
+        return render_template("new_book.html")
 
 @app.route("/request/", methods=["POST"])
 def request_send():
@@ -248,14 +262,36 @@ def request_send():
         "author": author,
         "isbn": isbn,
         "year": year,
-        "reason": reason
+        "reason": reason,
+        "id_usuario": session["id"]
     }
     Sugerencia.add_request(data)
     return redirect("/")
 
 @app.route("/sugerencias/", methods=["GET"])
 def sugerencias():
-    sugerencias = Sugerencia.get_all()
-    return render_template("sugerencias.html", sugerencias=sugerencias)
+    if not "rango" in session :
+        return redirect('/')
+    else:
+        sugerencias = Sugerencia.get_all()
+        return render_template("sugerencias.html", sugerencias=sugerencias)
+
+@app.route("/sugerencias/submit/",methods=["POST"])
+def ready():
+    id_sugerencia = request.form.get("id_sugerencia")
+    Sugerencia.del_request(id_sugerencia)
+    return redirect("/sugerencias/")
+
+@app.route("/send/",methods=["POST"])
+def comments():
+    if not session:
+        return redirect("/login&register")
+    else:
+        rating = request.form.get('rating')
+        text = request.form.get('texto')
+        id_libro = request.form.get('id_libro')
+
+        Comentario.add_comment(id_libro, session["id"], text, rating)
+        return redirect(f'/book/{id_libro}/')
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

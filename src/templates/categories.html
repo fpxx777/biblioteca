@@ -155,7 +155,7 @@
           </div>
           <div class="book-info">
             <h3>{{book.titulo}}</h3>
-            <p>{{ ', '.join(book.nombre_autor)}}</p>
+            <p>{{book.nombre_autor[0]}}</p>
           </div>
         </article>
         {% endfor %} {% else %} {%for book in books%} {%if book.id_libro in

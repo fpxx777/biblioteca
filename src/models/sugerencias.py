@@ -2,23 +2,19 @@ from config.db import connectToMySQL
 
 class Sugerencia:
     def __init__(self, data):
-        # Asignar los valores de la base de datos a los atributos del objeto
-        self.id_sugerencia = data['id_sugerencia']  # ID de la sugerencia
-        self.titulo = data['titulo']  # Título de la sugerencia
-        self.autor = data['autor']  # Autor de la sugerencia
-        self.isbn = data.get('isbn')  # ISBN de la sugerencia (opcional)
-        self.ano = data['ano']  # Año de la sugerencia (timestamp)
-        self.razon = data['razon']  # Razón de la sugerencia
+        self.id_sugerencia = data['id_sugerencia']  
+        self.titulo = data['titulo']  
+        self.autor = data['autor']  
+        self.isbn = data.get('isbn')  
+        self.ano = data['ano']  
+        self.razon = data['razon']  
+        self.id_usuario = data['id_usuario']
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM sugerencias"
+        query = "SELECT * FROM sugerencias JOIN usuarios ON sugerencias.id_usuario = usuarios.id_usuario;"
         results = connectToMySQL('biblionauta').query_db(query)
-        print(results)
-        sugerencias = []
-        for sugerencia in results:
-            sugerencias.append(cls(sugerencia))
-        return sugerencias
+        return results
     @classmethod
     def add_request(cls, data):
         if not data["isbn"]:
@@ -27,6 +23,11 @@ class Sugerencia:
             data["year"] = "NULL"
         if not data["reason"]:
             data["reason"] = "NULL"
-        query = f"INSERT INTO sugerencias (titulo, autor, isbn, ano, razon) VALUES ('{data['title']}', '{data['author']}', {data['isbn']}, {data['year']}, '{data['reason']}')"
+        query = f"INSERT INTO sugerencias (titulo, autor, isbn, ano, razon, id_usuario) VALUES ('{data['title']}', '{data['author']}', {data['isbn']}, {data['year']}, '{data['reason']}', {data['id_usuario']});"
+        results = connectToMySQL('biblionauta').query_db(query)
+        return results
+    @classmethod
+    def del_request(cls, id_sugerencia):
+        query = f"DELETE FROM sugerencias WHERE id_sugerencia = {id_sugerencia}"
         results = connectToMySQL('biblionauta').query_db(query)
         return results

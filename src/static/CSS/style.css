@@ -92,9 +92,20 @@ body{
     width: 15vw;
     margin-top: 15%;
     font-weight: 600;
+    border-style: none;
 }
 
-.editarbutton a, .cerrarbutton a{
+.sugerenciabutton{
+    background-color: var(--light-bg-color);
+    font-size: 3vw;
+    border-radius: 12px;
+    width: 15vw;
+    margin-top: 5%;
+    font-weight: 600;
+    border-style: none;
+}
+
+.editarbutton a, .cerrarbutton a, .sugerenciabutton a{
     text-decoration: none;
     color: var(--light-bg-color);
 }
@@ -109,6 +120,7 @@ body{
     cursor: pointer;
     font-weight: 600;
     padding: 0.5vw;
+    border-style: none;
 }
 
 .login-button {
@@ -372,8 +384,8 @@ main {
     background-color: var(--dark2-bg-color);
     display: flex;
     justify-content: center;
-    width: 60%;
-    height: 10vw;
+    width: 45vw;
+    height: 5vw;
     color: var(--light-bg-color);
     align-items: center;
     border-radius: 15px;
@@ -390,7 +402,7 @@ main {
     background-color: var(--contrast-bg-color);
     font-size: 2vw;
     border-radius: 10px;
-    padding: 0.5vw;     
+    padding: 0.4vw .6vw;     
 }
 
 .footer {

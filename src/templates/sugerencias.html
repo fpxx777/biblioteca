@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comentarios de Libros</title>
@@ -13,19 +12,41 @@
     />
 </head>
 <body>
-
+    <a href="/" class="volver">
+    <svg xmlns="http://www.w3.org/2000/svg" width="2vw" color viewBox="0 0 256 256">
+        <g >
+            <path d="m176 104l-48 48V56Z" opacity="2" />
+            <path
+                d="m229.66 109.66l-48 48a8 8 0 0 1-11.32-11.32L212.69 104l-42.35-42.34a8 8 0 0 1 11.32-11.32l48 48a8 8 0 0 1 0 11.32m-48 0l-48 48A8 8 0 0 1 120 152v-39.63A88.11 88.11 0 0 0 40 200a8 8 0 0 1-16 0a104.15 104.15 0 0 1 96-103.7V56a8 8 0 0 1 13.66-5.66l48 48a8 8 0 0 1 0 11.32m-17-5.66L136 75.31v57.38Z" />
+        </g>
+    </svg>
+    <a/>
     <h1>Sugerencias de Libros</h1>
-    <div class="comment-section">
+    <div action="/sugerencias/submit/" method="post" class="comment-section">
         {% for sugerencia in sugerencias %}
+        <form action="/sugerencias/submit/" method="post">
+        <div class="user-cont">
+        	{% if sugerencia["img"] == None %}
+        	<img id="user-icon" src="/static/img/PhUserCircleFill (1).png">
+        	{% else %}
+        	<img id="user-icon" src="{{ url_for('media', filename=sugerencia['img']) }}">
+        	{% endif %}
+        	<h2>{{sugerencia["nombre"]}}</h2>
+            <input type="hidden" name="id_sugerencia" value="{{sugerencia.id_sugerencia}}">
+            <button type="submit">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNGOEYxREYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAxIDEtMTggMGE5IDkgMCAwIDEgMTggMCIvPjxwYXRoIGQ9Im04LjY2NyAxMi42MzNsMS41MDUgMS43MjFhMSAxIDAgMCAwIDEuNTY0LS4wNzNMMTUuMzMzIDkuMyIvPjwvZz48L3N2Zz4=" alt="">
+            </button>
+    	</div>
         <div class="comment">
-            <h3>Título: {{sugerencia.titulo}}</h3>
-            <p><strong>Autor:</strong> {{sugerencia.autor}}</p>
-            <p><strong>ISBN:</strong> {{sugerencia.isbn}}</p>
-            <p><strong>Año:</strong> {{sugerencia.ano}}</p>
-            <p class="recommendation">Recomendación: {{sugerencia.razon}}</p>
+            <h3>Título: {{sugerencia["titulo"]}}</h3>
+            <p><strong>Autor:</strong> {{sugerencia["autor"]}}</p>
+            <p><strong>ISBN:</strong> {{sugerencia["isbn"]}}</p>
+            <p><strong>Año:</strong> {{sugerencia["ano"]}}</p>
+            <p class="recommendation">Recomendación: {{sugerencia["razon"]}}</p>
         </div>
+    </form>
         {% endfor %}
-    </div>
+    <div/>
     <style>
         body {
             font-family: "Advent Pro", sans-serif;
@@ -47,8 +68,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .comment {
-            border-bottom: 1px solid #ddd;
             padding: 10px 0;
+        }
+        form {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
         }
         .comment:last-child {
             border-bottom: none;
@@ -63,6 +87,53 @@
         .comment .recommendation {
             font-style: italic;
             color: #6EBFC2;
+        }
+
+        .user-cont{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .user-cont h2{
+            margin-left: 1vw;
+        }
+
+        .user-cont button{
+            width: 4vw;
+            height: 4vw;
+            margin-left: 30vw;
+            background-color: transparent;
+            border-style: none;
+            cursor: pointer;
+        }
+
+        .user-cont button img{
+            width: 5vw;
+            height: 5vw;
+            border-radius: 50%;
+        }
+
+        .user-cont button:hover img{
+            background-color: #6EBFC2;
+        }
+
+        #user-icon{
+            width: 4vw;
+            height: 4vw;
+            border-radius: 50%;
+            border: #F8F1DF 3.5px solid;
+        }
+
+        .volver{
+            background-color: transparent;
+            border-style: none;
+        }
+        .volver svg{
+            transform: rotate(180deg);
+            fill: #6EBFC2;
+        }
+        .volver svg:hover{
+            fill: #EE9E59;
         }
     </style>
 

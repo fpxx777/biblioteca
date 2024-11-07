@@ -24,7 +24,7 @@
     <div class="align-login-container">
       <img src="{{ url_for('media', filename=session.img) }}">
       <h1>{{session.username}}</h1>
-      <button class="editarbutton" style=" background-color: #F8F1DF">
+      <button class="sugerenciabutton" >
         <a href="/sugerencias/" style="color: #1C1B29;">Sugerencias</a>
       </button>
 
@@ -32,7 +32,7 @@
         <a href="/logout/">Cerrar sesion</a>
       </button>
       <button class="editarbutton">
-        <a href="/profile/">Editar Perfil</a>
+        <a href="/test">Agregar libro</a>
       </button>
     </div>
   </div>
@@ -174,9 +174,6 @@
       {% endfor %}
     </section>
   </main>
-  <div class="upmas">
-    <p class="mas">mas proximamente...</p>
-  </div>
   <section class="subscribe">
     <div class="container-subscribe">
       <h2>Quieres sugerir un libro? Da click!!</h2>

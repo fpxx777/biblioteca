@@ -1,2 +1,5 @@
 Instalaciones necesarias:
 
+-python3 -m venv .venv
+
+pip install flask flask_bcrypt pymysql requests

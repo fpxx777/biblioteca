@@ -186,6 +186,51 @@
       </div>
     </div>
   </main>
+  <section class="comment-section">
+    <form action="/send/" method="post">
+      <div class="comment-cont">
+        <h2>Comentarios</h2>
+        <div class="star-rating">
+          <input type="radio" id="5-stars" name="rating" value="5" />
+          <label for="5-stars" title="5 estrellas">★</label>
+          <input type="radio" id="4-stars" name="rating" value="4" />
+          <label for="4-stars" title="4 estrellas">★</label>
+          <input type="radio" id="3-stars" name="rating" value="3" />
+          <label for="3-stars" title="3 estrellas">★</label>
+          <input type="radio" id="2-stars" name="rating" value="2" />
+          <label for="2-stars" title="2 estrellas">★</label>
+          <input type="radio" id="1-star" name="rating" value="1" checked />
+          <label for="1-star" title="1 estrella">★</label>
+        </div>
+      </div>
+      <textarea name="texto" id="texto" placeholder="Escribe un comentario..." required></textarea>
+      <input type="hidden" name="id_libro" id="id_libro" value="{{book[0].id_libro}}">
+      <button type="submit">Publicar comentario</button>
+    </form>
+    {% for comentario in comentarios %}
+    <div class="comment">
+      <div>
+        {% if comentario.img == None %}
+        <img id="user-icon" src="/static/img/PhUserCircleFill (1).png">
+        {% else %}
+        <img id="user-icon" src="{{ url_for('media', filename=comentario.img) }}">
+        {% endif %}
+        <h4>{{comentario.nombre}}</h4>
+        <ul>
+          {% for a in range(comentario.estrellas) %}
+          <li class="color">★</li>
+          {% endfor %}
+          {% if 5 > comentario.estrellas %}
+            {% for a in range(5 - comentario.estrellas) %}
+            <li>★</li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+      <p>{{comentario.texto}}</p>
+    </div>
+    {% endfor %}
+  <section/>
   <footer class="footer">
     <div class="container">
       <p>&copy; 2024 Biblionauta || Todos los derechos reservados</p>
