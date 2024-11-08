@@ -662,7 +662,7 @@ main {
         background-repeat: no-repeat;
         background-size: 100%;
         background-attachment: fixed;
-        height: 120vw;
+        height: 105vw;
         padding: 0 1vw;
     }
 
@@ -731,6 +731,10 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .txt-destacados{
+        font-size: 7vw;
     }
 
     .subscribe {
