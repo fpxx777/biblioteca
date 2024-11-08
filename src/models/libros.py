@@ -1,6 +1,6 @@
 # Importar la función para conectar a la base de datos
-from config.db import connectToMySQL
-from models.generos import Generos
+from ..config.db import connectToMySQL
+from .generos import Generos
 import math
 
 # Clase para representar a los libros
