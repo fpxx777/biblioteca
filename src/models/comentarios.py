@@ -1,4 +1,4 @@
-from config.db import connectToMySQL
+from ..config.db import connectToMySQL
 
 class Comentario:
     def __init__(self, data):

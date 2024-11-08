@@ -1,5 +1,5 @@
 # Importar la función para conectar a la base de datos
-from config.db import connectToMySQL
+from ..config.db import connectToMySQL
 
 # Importar la función para obtener la hora actual
 
