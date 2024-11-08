@@ -1,5 +1,5 @@
 # Importar la función para conectar a la base de datos
-from config.db import connectToMySQL
+from ..config.db import connectToMySQL
 
 # Clase para representar a los autores de un libro
 class Autores:
