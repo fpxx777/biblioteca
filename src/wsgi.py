@@ -15,7 +15,7 @@ from .models.sugerencias import Sugerencia
 from .models.comentarios import Comentario
 
 # Importar función para obtener información de un libro a partir de su ISBN
-from prueba import get_book_info  # Función para obtener información de un libro
+from .prueba import get_book_info  # Función para obtener información de un libro
 
 # Crear una aplicación Flask
 app = Flask(__name__)
